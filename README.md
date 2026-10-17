@@ -276,20 +276,6 @@ location ~ /\.(?!well-known(?:/|$)) { deny all; }
 
 PHP cURL 始终验证服务器证书。已设置 `curl.cainfo` 时使用管理员的 CA 配置；未设置时使用 `assets/vendor/certificates/cacert.pem`。请保留证书包及其许可证，并随依赖更新维护。遇到 HTTPS 请求失败时检查 CA、系统时间、DNS 和网络，不要关闭证书验证。
 
-## 源码维护与发布内容
-
-| 目录 | 用途 |
-| --- | --- |
-| `index.php`、`api.php`、`danmaku.php`、`tj.php` | 播放页及站点接口 |
-| `admin/` | 站点管理后台 |
-| `class/`、`includes/` | PHP 业务与配置装载 |
-| `assets/player/` | 浏览器运行文件及构建结果 |
-| `assets/vendor/` | 第三方运行依赖、许可证与来源清单 |
-| `assets/admin/` | 后台控制台样式、脚本 |
-| `assets/branding/`、`assets/docs/` | 品牌资源与使用说明 |
-| `src/player/` | 播放器核心模块、界面扩展、样式及动画源文件 |
-| `tools/`、`install/` | 构建、管理员账号维护、安装入口 |
-
 在项目根目录构建：
 
 ```sh
@@ -297,8 +283,6 @@ node tools/build-player.cjs
 ```
 
 构建工具只使用 Node.js 内置模块，不需要安装打包器。修改 `src/player/` 后重新构建，并同步相应 `assets/player/` 产物；PHP、后台和独立说明页的修改直接随文件部署。
-
-`src/player/modules/` 使用 `danmaku-api.js`、`danmaku.js`、`player.js` 等语义化文件名；`src/player/module-manifest.json` 显式保存模块加载顺序，构建不依赖文件名字母排序。Layer 主题位于 `assets/vendor/layer/theme/`，签名图片位于 `assets/player/sign.png`。
 
 ## 常见问题
 
