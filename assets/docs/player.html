@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Xplayer 使用说明</title>
+  <style>
+    :root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#111216;color:#eef0f5;font:16px/1.8 system-ui,-apple-system,"Segoe UI","Microsoft YaHei",sans-serif;overflow-wrap:anywhere}main,header,footer{width:min(100% - 40px,860px);margin:auto}header{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:22px 0;border-bottom:1px solid #30333d}header strong{font-size:20px}a{color:#62c7ec;text-underline-offset:4px}a:hover{color:#a5e5fc}a:focus-visible{outline:2px solid #00aeec;outline-offset:4px}h1{font-size:34px;line-height:1.4;margin:36px 0 10px}h2{font-size:23px;line-height:1.5;margin:0 0 12px}h3{font-size:17px;margin:20px 0 6px}p{margin:0 0 14px}.lead{color:#b5bccb}section{padding:28px 0;border-bottom:1px solid #30333d}ul,ol{margin:12px 0;padding-left:24px}li{padding:3px 0}code{padding:2px 5px;background:#272b34;border-radius:4px;font-size:14px}pre{padding:16px;background:#1b1e25;border:1px solid #30333d;border-radius:8px;white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.7}pre code{padding:0;background:none}dl{margin:0}dt{font-weight:650;margin:16px 0 3px}dd{margin:0;color:#b5bccb}.note{border-left:3px solid #00aeec;padding:12px 16px;background:#00aeec0a;color:#c2c9d7}footer{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:25px 0 36px;font-size:14px;color:#aab2c2}@media(max-width:540px){main,header,footer{width:calc(100% - 32px)}header{font-size:14px}h1{font-size:28px;margin-top:28px}h2{font-size:21px}section{padding:24px 0}}
+  </style>
+</head>
+<body>
+  <header><strong>Xplayer</strong><a href="../../">返回播放器首页</a></header>
+  <main>
+    <h1>播放器使用说明</h1>
+    <p class="lead">从一个播放链接开始，按需要使用弹幕、选集和画中画。</p>
+    <section aria-labelledby="start">
+      <h2 id="start">开始播放</h2>
+      <p>在播放器首页输入视频地址并点击播放。MP4、HLS 等媒体直链通常可以直接播放；平台网页链接和片名搜索需要站长配置相应接口。</p>
+      <p>通过链接接入时，将原地址完整编码后传给 <code>url</code> 参数：</p>
+      <pre><code>https://player.example.com/?url=https%3A%2F%2Fmedia.example.com%2Fmovie.mp4</code></pre>
+      <p>不要遗漏原链接中的参数。浏览器未允许自动播放时，点击播放按钮即可开始。</p>
+    </section>
+    <section aria-labelledby="controls">
+      <h2 id="controls">常用功能在哪里？</h2>
+      <dl>
+        <dt>底部控制栏</dt><dd>播放与暂停、拖动进度、调节音量、选择倍速、弹幕、选集及全屏。进度预览需要片源允许读取画面。</dd>
+        <dt>齿轮与更多播放设置</dt><dd>镜像、循环、自动开播、自动切集或播完暂停、画面比例、关灯、音量均衡、编码和画中画方式。</dd>
+        <dt>播放器右键菜单</dt><dd>视频色彩调整、视频音效调节、快捷键说明和统计信息。均衡器支持 3、5、10 段；可以按喜好调整并恢复预设。</dd>
+      </dl>
+      <p class="note">编码、音效和画面预览是否可用，与浏览器和实际片源有关。选择编码不会把不支持的视频转码；音效加载失败时会恢复原声。</p>
+    </section>
+    <section aria-labelledby="danmaku">
+      <h2 id="danmaku">弹幕与选集</h2>
+      <p>弹幕开关控制是否显示弹幕，发送区用于提交内容。请遵守<a href="danmaku-rules.html">弹幕礼仪</a>；支持举报的弹幕库可在弹幕或列表中举报不当内容。</p>
+      <p>站长配置多个弹幕库时，播放器按顺序读取。接口失败或没有有效视频弹幕会尝试下一库；发送只提交给当前采用的库，不会同时发送到多个库。</p>
+      <p>选集默认读取平台列表，也可由站长开启资源站补全。程序按当前原链接定位节目，保留正片与特别节目的原名称；列表数量表示条目数。资源站只采用包含当前原链接的候选结果，存在多个候选时选取条目最多的一部。没有可靠匹配时会显示说明。</p>
+    </section>
+    <section aria-labelledby="pip">
+      <h2 id="pip">使用画中画</h2>
+      <p>点击画中画按钮，支持的浏览器会打开带弹幕的独立小窗。小窗左侧保留播放、时间与弹幕开关，右侧为倍速和竖向音量；不显示发送区或多余的退出、全屏按钮。</p>
+      <p>用系统窗口的关闭按钮，或主页面的返回按钮退出。浏览器不支持独立弹幕画中画时，会使用页内悬浮窗；页内浮窗可以拖动顶部透明区域，并可按 Esc 返回。</p>
+      <p>若开启“原生画中画”，使用浏览器原生视频小窗，此时不包含网页弹幕。独立画中画通常需要 HTTPS 或 localhost，嵌入网页及浏览器策略也可能限制它。</p>
+    </section>
+    <section aria-labelledby="help">
+      <h2 id="help">遇到播放问题</h2>
+      <ul>
+        <li>视频无法播放：确认原地址仍然有效，再查看播放器给出的错误提示。</li>
+        <li>没有选集或弹幕：这些服务独立于视频播放，请联系站长核对对应接口和视频匹配。</li>
+        <li>自动开播未生效：先手动点击播放，浏览器可能限制有声音的自动播放。</li>
+        <li>返回标签页后画面未恢复：播放器会检查画面状态；仍异常时尝试暂停后继续或刷新页面。</li>
+      </ul>
+      <p>站点安装、后台配置和源码维护说明见发行包中的 <code>README.md</code>。</p>
+    </section>
+  </main>
+  <footer><span>项目开源仓库</span><a href="https://github.com/XG2020/Xplayer">github</a></footer>
+</body>
+</html>

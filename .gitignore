@@ -1,0 +1,11 @@
+/includes/Mysql.Include.php
+/includes/Admin.Credentials.php
+/includes/Setup.Token.php
+/install.lock
+/var/*
+!/var/.htaccess
+/Cache/*
+!/Cache/.htaccess
+/count.txt
+/clean.txt
+*.log

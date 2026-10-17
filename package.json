@@ -1,0 +1,15 @@
+{
+  "name": "xplayer",
+  "version": "1.12.0",
+  "description": "Xplayer browser video player and PHP management console",
+  "author": "XGGM",
+  "private": true,
+  "scripts": {
+    "build": "node tools/build-player.cjs",
+    "check:endpoints": "node tools/check-endpoints.cjs",
+    "test:endpoints": "node tests/endpoint-privacy.cjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

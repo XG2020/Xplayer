@@ -1,0 +1,5 @@
+#xplayer-loading.Loading{position:fixed!important;inset:0!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;height:100%!important;margin:0!important;padding:24px!important;box-sizing:border-box!important;transform:none!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:18px;background:#000!important;z-index:100;color:#cdd1d7;pointer-events:auto}
+#xplayer-loading.Loading[hidden]{display:none!important}
+#xplayer-loading .xplayer-loading-animation{display:block;width:72px!important;height:72px!important;flex:none}
+#xplayer-loading .xplayer-loading-animation svg{display:block;width:100%!important;height:100%!important}
+#xplayer-loading .xplayer-loading-status{position:static!important;margin:0!important;padding:0!important;font:14px/1.6 Arial,"Microsoft YaHei",sans-serif!important;text-align:center!important;color:#cdd1d7!important;letter-spacing:.05em}

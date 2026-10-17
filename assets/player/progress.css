@@ -1,0 +1,11 @@
+/* Preview and actual danmaku density sit above the unchanged Xplayer progress bar. */
+.xplayer .xplayer-progress-density{position:absolute;left:0;right:0;bottom:100%;height:26px;pointer-events:none;z-index:0}
+.xplayer .xplayer-progress-density svg{display:block;width:100%;height:100%;overflow:visible;pointer-events:none}
+.xplayer .xplayer-progress-density svg path{fill:rgba(210,210,210,.34);stroke:rgba(225,225,225,.6);stroke-width:1;vector-effect:non-scaling-stroke}
+.xplayer .xplayer-bar-preview.xplayer-progress-preview{display:none;top:auto;bottom:calc(100% + 32px);height:auto;min-width:64px;max-width:calc(100vw - 24px);background:rgba(20,20,20,.96);border:1px solid rgba(255,255,255,.2);border-radius:3px;overflow:hidden;box-sizing:border-box;box-shadow:0 2px 8px #0005;pointer-events:none;z-index:5;text-align:center}
+.xplayer .xplayer-progress-preview .xplayer-progress-frame{display:none;position:static;width:100%;height:auto;object-fit:contain;pointer-events:none}
+.xplayer .xplayer-progress-preview[data-state=ready] .xplayer-progress-frame{display:block}
+.xplayer .xplayer-progress-preview-time{display:block;height:22px;color:#fff;font:12px/22px Arial,"Microsoft YaHei",sans-serif;text-shadow:0 1px 2px #000}
+.xplayer .xplayer-bar-wrap.xplayer-progress-hover .xplayer-bar-time{visibility:hidden}
+.xplayer .xplayer-preview-source{display:none!important}
+@media(max-width:600px){.xplayer .xplayer-progress-density{height:20px}.xplayer .xplayer-bar-preview.xplayer-progress-preview{bottom:calc(100% + 24px)}}

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>弹幕礼仪 · Xplayer</title>
+  <style>
+    :root { color-scheme: dark; --bg: #111216; --surface: #1a1c22; --line: #30333d; --text: #f0f1f5; --muted: #b4b8c6; --accent: #fb7299; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.8 system-ui, -apple-system, "Segoe UI", "Microsoft YaHei", sans-serif; overflow-wrap: anywhere; }
+    a { color: var(--accent); text-underline-offset: 4px; }
+    a:hover { color: #ffa2be; }
+    a:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; border-radius: 3px; }
+    .page { width: min(100% - 48px, 880px); margin: 0 auto; }
+    .topbar { display: flex; justify-content: space-between; align-items: center; gap: 20px; min-height: 80px; border-bottom: 1px solid var(--line); }
+    .brand { color: var(--text); font-size: 19px; font-weight: 700; text-decoration: none; letter-spacing: .02em; }
+    .topbar > a:last-child { font-size: 14px; }
+    .intro { padding: 48px 0 28px; }
+    .eyebrow { margin: 0 0 8px; color: var(--accent); font-size: 13px; letter-spacing: .12em; font-weight: 600; }
+    h1 { margin: 0; font-size: clamp(28px, 5vw, 40px); line-height: 1.35; letter-spacing: .02em; }
+    .lead { margin: 14px 0 20px; color: var(--muted); }
+    .values { margin: 0; padding: 15px 20px; border-left: 3px solid var(--accent); border-radius: 0 8px 8px 0; background: #fb72990b; font-weight: 600; word-spacing: .5em; }
+    .contents { display: flex; flex-wrap: wrap; gap: 12px 24px; margin-top: 24px; font-size: 14px; }
+    section { padding: 30px 0; border-top: 1px solid var(--line); }
+    h2 { margin: 0 0 14px; font-size: 23px; line-height: 1.45; }
+    h3 { margin: 0 0 6px; font-size: 17px; line-height: 1.6; }
+    p { margin: 0 0 12px; }
+    .section-note { color: var(--muted); margin-bottom: 24px; }
+    .encouraged { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0; margin: 20px 0 0; list-style: none; }
+    .encouraged li { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; }
+    .encouraged li::before { content: "✓"; color: var(--accent); font-weight: 700; margin-right: 10px; }
+    .rules { padding: 0; margin: 0; list-style: none; counter-reset: rules; }
+    .rules > li { position: relative; padding: 20px 0 20px 48px; counter-increment: rules; border-bottom: 1px solid #282b33; }
+    .rules > li:first-child { padding-top: 0; }
+    .rules > li:last-child { padding-bottom: 0; border-bottom: 0; }
+    .rules > li::before { content: counter(rules, decimal-leading-zero); position: absolute; left: 0; top: 21px; color: var(--accent); font-size: 14px; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .rules > li:first-child::before { top: 1px; }
+    .rules p { margin: 0; color: var(--muted); }
+    .help { padding: 22px 24px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+    .help p { color: var(--muted); }
+    .help p:last-child { margin-bottom: 0; }
+    footer { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 24px 0 44px; color: var(--muted); font-size: 14px; }
+    .return { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 18px; border: 1px solid var(--line); border-radius: 8px; text-decoration: none; white-space: nowrap; }
+    .return:hover { background: var(--surface); border-color: var(--accent); }
+    @media (max-width: 540px) {
+      .page { width: calc(100% - 32px); }
+      .topbar { min-height: 68px; }
+      .intro { padding-top: 30px; }
+      .values { padding: 12px 14px; font-size: 15px; word-spacing: 0; }
+      h2 { font-size: 21px; }
+      .encouraged { grid-template-columns: 1fr; gap: 9px; }
+      .encouraged li { padding: 12px 14px; }
+      .rules > li { padding-left: 38px; }
+      .help { padding: 18px; }
+      footer { flex-direction: column; align-items: flex-start; gap: 14px; padding-bottom: 30px; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <a class="brand" href="../../" aria-label="Xplayer 播放器首页">Xplayer</a>
+      <a href="../../">返回播放器首页</a>
+    </header>
+    <main>
+      <div class="intro">
+        <p class="eyebrow">一起营造良好的观看氛围</p>
+        <h1>弹幕礼仪</h1>
+        <p class="lead">弹幕是大家共同分享感受的地方。发送前，请多一点体谅，让精彩内容和友善交流都被看见。</p>
+        <p class="values">阳光 · 理性 · 平和 · 友善</p>
+        <nav class="contents" aria-label="页面目录">
+          <a href="#encouraged">倡议内容</a>
+          <a href="#rules">弹幕规范</a>
+          <a href="#report">遇到不当弹幕</a>
+        </nav>
+      </div>
+      <section id="encouraged" aria-labelledby="encouraged-title">
+        <h2 id="encouraged-title">我们欢迎这样的弹幕</h2>
+        <p class="section-note">围绕作品交流，尊重每个人的观看体验。</p>
+        <ul class="encouraged">
+          <li>与视频内容相关的讨论</li>
+          <li>符合当下气氛的感受</li>
+          <li>认真、负责的字幕补充</li>
+          <li>准确、专业的科普解说</li>
+        </ul>
+      </section>
+      <section id="rules" aria-labelledby="rules-title">
+        <h2 id="rules-title">请共同遵守弹幕规范</h2>
+        <p class="section-note">以下行为会影响他人观看。请避免发送相关内容，违规弹幕可被举报并由站长处理。</p>
+        <ol class="rules">
+          <li><h3>遵守法律法规</h3><p>不要发布违反适用法律法规的信息。</p></li>
+          <li><h3>不发送垃圾广告</h3><p>不要以宣传或引流为目的，反复发送链接、网站名、账号、群号等无关信息。</p></li>
+          <li><h3>不提前剧透</h3><p>可以合理讨论和推测，但不要提前揭露角色结局、故事走向或关键悬念，给第一次观看的人留一份期待。</p></li>
+          <li><h3>不进行人身攻击</h3><p>不要谩骂、羞辱或嘲讽其他观众。遇到分歧，请理性交流；遇到不当内容，请使用举报功能，避免争吵影响他人。</p></li>
+          <li><h3>不挑衅、歧视或引战</h3><p>尊重不同群体、创作者及其作品。不要发布歧视、煽动对立或恶意贬低的言论，也不要在不合适的场景中刻意制造争议。</p></li>
+          <li><h3>不恶意刷屏</h3><p>不要在短时间内反复发送大量相同弹幕。多位观众因视频气氛自然产生的共同表达，与单人恶意刷屏有所区别。</p></li>
+          <li><h3>保护个人隐私</h3><p>弹幕是公开内容。不要泄露自己或他人的姓名、电话、住址、联系方式等个人信息。</p></li>
+          <li><h3>不发送无关、无意义的内容</h3><p>尽量围绕当前视频表达想法，避免无意义的占位、接龙或与作品无关的聊天。</p></li>
+          <li><h3>不遮挡字幕</h3><p>视频底部已有字幕时，请避免发送底部弹幕，也不要用大字号或密集内容遮挡重要画面。</p></li>
+          <li><h3>避免低俗词汇</h3><p>请保持文明表达，避免使用低俗词汇或低俗空耳，尤其不要破坏原视频的氛围。</p></li>
+          <li><h3>不过度跟风</h3><p>流行词和玩笑应适度、应景，不要长时间重复刷同一个梗，让正常讨论有空间。</p></li>
+          <li><h3>不在无关视频中刷口号</h3><p>有共鸣的话语，也需要合适的时间和场景。不要在无关视频或段落中反复刷口号。</p></li>
+          <li><h3>不传播误导信息</h3><p>发布知识、字幕或解说前，请尽量核实。尚未确认的内容应说明是个人推测，不要把猜测当作事实。</p></li>
+          <li><h3>尊重视频气氛</h3><p>请结合内容和场景发言，尊重他人的情绪与喜好，避免扫兴、攀比或以优越感贬低他人的感受。</p></li>
+        </ol>
+      </section>
+      <section id="report" aria-labelledby="report-title">
+        <div class="help">
+          <h2 id="report-title">遇到不当弹幕怎么办？</h2>
+          <p>在播放器中点击对应弹幕，或打开弹幕列表选择“举报”，再选择合适的原因提交。举报会交由站长处理。</p>
+          <p>也可以关闭弹幕显示，继续观看视频。请勿通过刷屏或争吵回应不当内容。</p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <span>项目开源仓库</span>
+      <a class="return" href="https://github.com/XG2020/Xplayer">github</a>
+    </footer>
+  </div>
+</body>
+</html>

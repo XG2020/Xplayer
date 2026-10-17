@@ -1,0 +1,33 @@
+/* Original xplayer.css is loaded first. Only local-bootstrap integration below. */
+html,body{height:100%;width:100%;margin:0;background:#000;overflow:hidden;font-family:Arial,"Microsoft YaHei",sans-serif}
+#player{width:100%;height:100%;margin:0;padding:0;background:#000}
+.Loading,#error{position:absolute;inset:0;z-index:100;background:#000;color:#ddd;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;box-sizing:border-box;font-size:15px}
+.Loading[hidden],#error[hidden],#xplayer-open[hidden]{display:none!important}
+#error.xplayer-playback-error{position:fixed!important;inset:0!important;top:0!important;left:0!important;right:0!important;bottom:0!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;box-sizing:border-box!important;display:flex!important;align-items:center!important;justify-content:center!important;padding:32px 24px!important;background:#000!important;color:#ddd!important;border:0!important;border-radius:0!important;transform:none!important;overflow:auto!important;z-index:100}
+#error.xplayer-playback-error[hidden]{display:none!important}
+#error.xplayer-playback-error .xplayer-error-message{display:block!important;width:100%!important;max-width:900px!important;height:auto!important;max-height:100%!important;box-sizing:border-box;margin:0!important;padding:0!important;color:#ddd!important;font:16px/1.8 Arial,"Microsoft YaHei",sans-serif!important;text-align:center!important;white-space:pre-wrap!important;overflow-wrap:anywhere!important;word-break:break-word!important;overflow:auto!important;background:none!important;border:0!important}
+@media(max-width:480px){#error.xplayer-playback-error .xplayer-error-message{font-size:14px!important}}
+#xplayer-open{position:absolute;top:40%;left:10%;right:10%;display:flex;gap:12px;align-items:center;color:#eee}
+#xplayer-open input{flex:1;min-width:0;padding:10px}#xplayer-open button{padding:10px 18px;cursor:pointer}
+#ADplayer,#ADtip{position:absolute;inset:0;z-index:20}#ADplayer:empty,#ADtip:empty{display:none}
+#time_ad{position:absolute;right:16px;top:16px;background:#000a;color:white;padding:8px;z-index:25}
+.xplayer .xplayer-episode-button{color:white;width:auto!important;padding:0 10px!important;font:14px/40px Arial,"Microsoft YaHei",sans-serif}
+#xplayer-vlist{position:absolute;right:8px;top:40px;bottom:64px;width:min(420px,85%);padding:28px 30px;box-sizing:border-box;z-index:25;overflow:auto;border-radius:12px;background:rgba(20,20,20,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid #ffffff16;color:#eee;font-size:14px;line-height:1.5}
+#xplayer-vlist h2{margin:10px 0;font-size:18px;color:#fff}#xplayer-vlist h3{margin:16px 0 12px;font-size:14px}
+#xplayer-vlist button{cursor:pointer}#xplayer-vlist .xplayer-vlist-close{position:absolute;right:16px;top:10px;background:none;border:0;font:30px/1 Arial;color:#eee}
+.xplayer-list-notice{border-bottom:1px solid #ffffff18;padding:18px 0;color:#bbb}
+.xplayer-series-poster{float:left;width:90px;max-height:130px;object-fit:cover;margin:16px 12px 16px 0;border-radius:8px}
+.xplayer-vlist-header{display:flex;align-items:center;gap:16px;padding:10px 12px 12px 0}
+.xplayer-vlist-header>div{min-width:0;flex:1}.xplayer-vlist-header h2{overflow-wrap:anywhere}
+.xplayer-vlist-header .xplayer-series-poster{float:none;flex:none;margin:0;width:90px;height:126px;object-fit:cover}
+.xplayer-vlist-header .xplayer-series-poster--episode{width:128px;height:auto;max-width:44%;aspect-ratio:16/9;object-fit:contain;background:#ffffff08}
+.xplayer-vlist-header .xplayer-series-poster--empty{display:flex;align-items:center;justify-content:center;box-sizing:border-box;border:1px solid #ffffff16;background:#ffffff08;color:#999;font-size:12px;letter-spacing:1px}
+.xplayer-episode-grid{clear:both;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.xplayer-episode-grid button{padding:15px 6px;background:#ffffff0d;border:1px solid #ffffff1a;border-radius:10px;color:#eee;font-size:13px}
+.xplayer-episode-grid button.current{color:var(--xplayer-theme,#00aeec);border-color:var(--xplayer-theme,#00aeec);box-shadow:0 0 6px #0005}
+.danmuku-list .report{cursor:pointer}#player_pause a{display:block}.xplayer .xplayer-info-panel-item-url{display:block}
+@media(max-width:600px){#xplayer-vlist{top:18px;bottom:55px;padding:20px 18px}.xplayer-episode-grid{gap:8px}#xplayer-open{flex-wrap:wrap}.xplayer .xplayer-episode-button{padding:0 6px!important}}
+
+/* Keep episode text independent of the legacy player's inherited rem sizing. */
+#xplayer-vlist p{font-size:14px;line-height:1.6;margin:10px 0}#xplayer-vlist .xplayer-list-notice{font-size:13px}#xplayer-vlist h2{line-height:1.4}
+@media(max-width:600px){.xplayer .xplayer-episode-button{font-size:12px}#xplayer-vlist h2{font-size:16px}#xplayer-vlist p,#xplayer-vlist .xplayer-episode-grid button{font-size:12px}}

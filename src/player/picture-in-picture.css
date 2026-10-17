@@ -1,0 +1,95 @@
+/* Standalone PiP surfaces. All player controls retain their existing local styles. */
+.xplayer-pip-placeholder{box-sizing:border-box;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:18px;width:100%;min-height:180px;background:#101116;color:#c9ccd5;font:16px/1.6 system-ui,"Microsoft YaHei",sans-serif;text-align:center;padding:24px}
+.xplayer-pip-placeholder p{margin:0}
+.xplayer-pip-placeholder button{appearance:none;border:1px solid #4b4f5b;border-radius:6px;color:#fff;background:#292d38;font:inherit;padding:8px 22px;cursor:pointer;min-height:42px}
+.xplayer-pip-placeholder button:hover{border-color:var(--xplayer-theme,currentColor);background:#343a47}
+html.xplayer-pip-document,body.xplayer-pip-document-body{width:100%!important;height:100%!important;margin:0!important;padding:0!important;overflow:hidden!important;background:#000!important}
+.xplayer-pip-host{display:block;width:100%;height:100%;min-width:0;min-height:0;box-sizing:border-box;background:#000;color:#e7e9ee;overflow:hidden;container-type:inline-size}
+.xplayer-pip-placeholder button:focus-visible{outline:2px solid var(--xplayer-theme,currentColor);outline-offset:2px}
+#player.xplayer-pip-container{position:relative!important;inset:auto!important;width:100%!important;height:100%!important;max-width:none!important;max-height:none!important;min-width:0!important;min-height:0!important;margin:0!important}
+.xplayer-pip-floating{position:fixed;right:20px;bottom:20px;width:480px;height:auto;aspect-ratio:16/9;max-width:calc(100vw - 16px);max-height:calc(100vh - 16px);min-width:min(280px,calc(100vw - 16px));min-height:180px;border:1px solid #555b68;border-radius:8px;box-shadow:0 12px 48px #0009;z-index:2147483000;resize:both}
+.xplayer-pip-drag-handle{position:absolute;left:35%;top:0;width:30%;height:16px;z-index:50;cursor:grab;touch-action:none;background:transparent}
+.xplayer-pip-drag-handle:active{cursor:grabbing}
+.xplayer-pip-drag-handle:focus-visible{outline:1px dashed #fff;outline-offset:-2px}
+.xplayer-pip-container .xplayer-cplayer .vod-title{max-width:100%}
+.xplayer-pip-container .xplayer-danmaku-top,.xplayer-pip-container .xplayer-danmaku-bottom{height:auto!important}
+.xplayer-pip-container .xplayer-info-panel{max-width:calc(100% - 24px);max-height:calc(100% - 28px);overflow:auto}
+.xplayer-pip-host #player.xplayer-pip-container .xplayer-full-in-icon,.xplayer-pip-host #player.xplayer-pip-container .xplayer-full-icon,.xplayer-pip-host #player.xplayer-pip-container .xplayer-fulloff-icon,.xplayer-pip-host #player.xplayer-pip-container .xplayer-full{display:none!important}
+.xplayer-pip-container .xplayer-notice{box-sizing:border-box;width:max-content;max-width:calc(100% - 32px);height:auto;padding:8px 12px;font:13px/1.6 system-ui,"Microsoft YaHei",sans-serif}
+.xplayer-pip-only{display:none!important}
+.xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-only{display:inline-flex!important;align-items:center;justify-content:center}
+.xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-speed{position:relative;width:48px!important;flex:none;height:32px!important;margin:0!important;padding:0!important}
+.xplayer-pip-speed-button{appearance:none;display:inline-flex;align-items:center;justify-content:center;box-sizing:border-box;border:0;border-radius:3px;background:none;color:#fff;font:600 15px/1 system-ui,"Microsoft YaHei",sans-serif;cursor:pointer;width:48px;height:32px;margin:0;padding:0;vertical-align:middle}
+.xplayer-pip-speed-menu{position:absolute;bottom:36px;right:50%;transform:translateX(50%);z-index:30;min-width:80px;width:88px;box-sizing:border-box;max-height:290px;overflow:auto;overscroll-behavior:contain;scrollbar-width:thin;background:rgba(24,24,27,.9);backdrop-filter:blur(5px);border-radius:3px;padding:6px 0}
+.xplayer-pip-speed-menu[hidden]{display:none!important}
+.xplayer-pip-speed-menu>button{appearance:none;display:block;box-sizing:border-box;width:100%;height:32px;padding:0;margin:0;border:0;background:transparent;color:#f5f5f5;text-align:center;font:14px/32px system-ui,"Microsoft YaHei",sans-serif;cursor:pointer;white-space:nowrap}
+.xplayer-pip-speed-menu>button[aria-checked="true"]{color:var(--xplayer-theme,currentColor)}
+.xplayer-pip-speed-menu>button:hover{background:#ffffff12}
+.xplayer-pip-speed-menu>button:focus-visible,.xplayer-pip-speed-button:focus-visible{outline:1px solid var(--xplayer-theme,currentColor);outline-offset:-2px}
+.xplayer-pip-danmaku-svg{display:block;width:26px;height:26px;flex:none;overflow:visible}
+.xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-danmaku-frame,.xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-danmaku-off{fill:#fff!important;stroke:none!important}
+.xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-danmaku-check{fill:var(--xplayer-theme,currentColor)!important;stroke:none!important}
+.xplayer-pip-danmaku-off{display:none}
+.xplayer-pip-danmaku-toggle[aria-checked="false"] .xplayer-pip-danmaku-check,.xplayer-pip-danmaku-toggle[aria-checked="false"] .xplayer-pip-danmaku-frame{display:none}
+.xplayer-pip-danmaku-toggle[aria-checked="false"] .xplayer-pip-danmaku-off{display:block}
+.xplayer-pip-danmaku-toggle:focus-visible{outline:1px solid var(--xplayer-theme,currentColor);outline-offset:1px;border-radius:4px}
+.xplayer-pip-host #player.xplayer-pip-container .xplayer-volume-icon .xplayer-icon-content{display:flex!important;align-items:center;justify-content:center;background:none!important}
+.xplayer-pip-host #player.xplayer-pip-container .xplayer-volume-icon .xplayer-icon-content>:not(.xplayer-pip-volume-svg){display:none!important}
+.xplayer-pip-volume-svg{display:block;width:24px;height:24px;flex:none;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-volume-svg path{fill:none!important;stroke:#fff!important;stroke-width:1.8!important}
+.xplayer-pip-volume-svg .xplayer-pip-volume-muted{display:none}
+.xplayer-pip-volume-svg[data-muted="true"] .xplayer-pip-volume-muted{display:block}
+.xplayer-pip-volume-svg[data-muted="true"] .xplayer-pip-volume-waves{display:none}
+.xplayer-pip-host [data-balloon]::before,.xplayer-pip-host [data-balloon]::after{content:none!important;display:none!important}
+.xplayer-pip-host #player.xplayer-pip-container .xplayer-progress-preview,.xplayer-pip-host #player.xplayer-pip-container .xplayer-bar-time{display:none!important}
+.xplayer-pip-host #player.xplayer-pip-container .xplayer-comment-box,.xplayer-pip-host #player.xplayer-pip-container .xplayer-comment-setting-box,.xplayer-pip-host #player.xplayer-pip-container .dmrules,.xplayer-pip-host #player.xplayer-pip-container .xplayer-episode-button,.xplayer-pip-host #player.xplayer-pip-container .xplayer-list-icon,.xplayer-pip-host #player.xplayer-pip-container .xplayer-setting-speeds,.xplayer-pip-host #player.xplayer-pip-container .icon-xj,.xplayer-pip-host #player.xplayer-pip-container .xplayer-setting{display:none!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-controller{height:48px!important;padding:0 8px!important;bottom:0!important;z-index:100!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-showing{z-index:3!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-bar-wrap{bottom:36px!important;left:8px!important;width:calc(100% - 16px)!important;height:20px!important;z-index:2!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons-left{left:12px!important;right:auto!important;top:auto!important;bottom:0!important;height:40px!important;width:auto!important;display:flex!important;align-items:center!important;gap:12px;z-index:5!important;font-size:12px;line-height:1}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons-right{right:12px!important;left:auto!important;top:auto!important;bottom:0!important;height:40px!important;width:auto!important;display:flex!important;align-items:center!important;gap:12px;z-index:5!important;font-size:12px;line-height:1}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons:not(.xplayer-comment-box) .xplayer-icon{position:static!important;inset:auto!important;float:none!important;transform:none!important;box-sizing:border-box!important;flex:none!important;width:36px!important;height:32px!important;padding:0!important;margin:0!important;border:0!important;line-height:1!important;vertical-align:middle!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-play-icon,.xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-danmaku-toggle,.xplayer-pip-host #player.xplayer-pip-container .xplayer-volume-icon{display:inline-flex!important;align-items:center!important;justify-content:center!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-play-icon .xplayer-icon-content,.xplayer-pip-host #player.xplayer-pip-container .xplayer-volume-icon .xplayer-icon-content{position:static!important;float:none!important;display:flex!important;align-items:center!important;justify-content:center!important;width:24px!important;height:24px!important;line-height:0!important;margin:0!important;padding:0!important;transform:none!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-play-icon svg{display:block!important;width:24px!important;height:24px!important;vertical-align:middle!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons .xplayer-time{position:static!important;inset:auto!important;display:inline-flex!important;align-items:center!important;gap:3px;float:none!important;height:32px!important;margin:0!important;padding:0!important;font-size:12px!important;line-height:1!important;font-variant-numeric:tabular-nums;white-space:nowrap;color:#fff!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-time .xplayer-ptime,.xplayer-pip-host #player.xplayer-pip-container .xplayer-time .xplayer-dtime{position:static!important;inset:auto!important;margin:0!important;padding:0!important;font-size:inherit!important;line-height:1!important;color:inherit!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-volume{position:relative!important;display:flex!important;align-items:center!important;justify-content:center!important;flex:none!important;width:36px!important;height:32px!important;margin:0!important;padding:0!important;float:none!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-volume-bar-wrap,.xplayer-pip-host #player.xplayer-pip-container .xplayer-volume:hover .xplayer-volume-bar-wrap,.xplayer-pip-host #player.xplayer-pip-container .xplayer-volume.xplayer-volume-active .xplayer-volume-bar-wrap{display:none!important}
+ .xplayer-pip-volume-panel{display:none;position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:30;box-sizing:border-box;width:38px;height:144px;padding:9px 7px;gap:7px;align-items:center;flex-direction:column;border-radius:4px;background:rgba(24,24,27,.92);backdrop-filter:blur(5px)}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-volume-panel:not([hidden]){display:flex!important}
+ .xplayer-pip-volume-panel[hidden]{display:none!important}
+ .xplayer-pip-volume-value{display:block;flex:none;width:100%;height:14px;margin:0;padding:0;color:#fff;text-align:center;font:11px/14px Arial,sans-serif}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-volume-range{appearance:none;writing-mode:vertical-lr;direction:rtl;display:block;box-sizing:border-box;flex:1;min-height:36px;width:20px;height:auto;margin:0!important;padding:0!important;background:transparent;border:0;border-radius:0;cursor:pointer;touch-action:none;outline:none}
+ .xplayer-pip-volume-range::-webkit-slider-runnable-track{width:3px;height:100%;border:0;border-radius:2px;background:linear-gradient(to top,var(--xplayer-theme,currentColor) 0 var(--volume-fill,70%),#aaa8 var(--volume-fill,70%) 100%)}
+ .xplayer-pip-volume-range::-webkit-slider-thumb{appearance:none;width:12px;height:12px;margin:0 0 0 -4.5px;border:0;border-radius:50%;background:#fff;box-shadow:0 0 2px #0006}
+ .xplayer-pip-volume-range::-moz-range-track{width:3px;height:100%;border:0;border-radius:2px;background:#aaa8}
+ .xplayer-pip-volume-range::-moz-range-progress{width:3px;border-radius:2px;background:var(--xplayer-theme,currentColor)}
+ .xplayer-pip-volume-range::-moz-range-thumb{width:12px;height:12px;border:0;border-radius:50%;background:#fff}
+ .xplayer-pip-volume-range:focus-visible{outline:1px solid var(--xplayer-theme,currentColor);outline-offset:3px}
+ .xplayer-pip-host #player.xplayer-pip-container.xplayer-no-danmaku .xplayer-controller{height:48px!important}
+ .xplayer-pip-host #player.xplayer-pip-container.xplayer-no-danmaku .xplayer-bar-wrap{bottom:36px!important}
+@media(max-width:540px){.xplayer-pip-floating{right:8px;bottom:8px;width:calc(100vw - 16px)}}
+@container(max-width:540px){
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons-left{left:10px!important;gap:10px}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons-right{right:10px!important;gap:10px}
+}
+@container(max-width:400px){
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons-left{left:8px!important;gap:8px}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons-right{right:8px!important;gap:8px}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons:not(.xplayer-comment-box) .xplayer-icon,.xplayer-pip-host #player.xplayer-pip-container .xplayer-volume{width:32px!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons .xplayer-time{font-size:11px!important;gap:2px}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-speed,.xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-speed-button{width:44px!important;font-size:14px}
+}
+@container(max-width:280px){
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons-left{left:6px!important;gap:6px}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons-right{right:6px!important;gap:6px}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons .xplayer-time{font-size:10px!important;gap:2px}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-speed,.xplayer-pip-host #player.xplayer-pip-container .xplayer-pip-speed-button{width:38px!important;font-size:13px}
+ .xplayer-pip-danmaku-svg{width:24px;height:24px}
+}
+@container(max-width:260px){
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-icons .xplayer-time{font-size:0!important;gap:0}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-time .xplayer-ptime{font-size:10px!important}
+ .xplayer-pip-host #player.xplayer-pip-container .xplayer-time .xplayer-dtime{display:none!important}
+}

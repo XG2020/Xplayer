@@ -1,0 +1,19 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule (^|/)\.(?!well-known(?:/|$)) - [F,L]
+    RewriteRule ^(?:src|tools|class|includes|var|Cache|tests|_readable-source)(?:/|$) - [F,L,NC]
+    RewriteRule ^(?:config\.php|install\.lock)$ - [F,L,NC]
+    RewriteRule \.(?:bak|zip|sql|log)$ - [F,L,NC]
+</IfModule>
+
+<FilesMatch "^(?:config\.php|install\.lock|\.htaccess)$|\.(?:bak|zip|sql|log)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Order allow,deny
+        Deny from all
+    </IfModule>
+</FilesMatch>

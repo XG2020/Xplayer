@@ -1,0 +1,300 @@
+/* Recovered Xplayer desktop skin. */
+.icon-xj {
+    left: 4px;
+}
+
+.xplayer-play-icon span {
+    float: unset !important;
+}  
+
+@media screen and (min-width: 768px) {
+    /* Use the same inline layout as the adjacent toolbar buttons. */
+    .xplayer.xplayer-danmaku-enabled .xplayer-controller .xplayer-icons .xplayer-list-icon {
+        display: inline-block;
+    }
+    .xplayer-notice {
+        bottom: 4rem;
+        left: 0.8rem;
+        font-size: 18px;
+    }
+    .xplayer-controller .xplayer-bar-wrap {
+        bottom: 2rem;
+    }
+    .xplayer-controller {
+        height: 54px;
+    }
+    .xplayer-controller .xplayer-bar-wrap .xplayer-bar, .xplayer-controller .xplayer-bar-wrap .xplayer-bar .xplayer-loaded, .xplayer-controller .xplayer-bar-wrap .xplayer-bar .xplayer-played {
+    	height: 4px;
+    	margin-top: auto;
+    }
+    .xplayer .xplayer-controller .xplayer-icons.xplayer-comment-box {
+        bottom: .65rem;
+    }
+    /* .xplayer-controller .xplayer-icons {
+        height: 2.3rem; 
+    } */
+    .xplayer-controller .xplayer-icons .xplayer-icon {
+        width: 54px;
+    }
+    .xplayer-controller .xplayer-icons.xplayer-icons-right .xplayer-icon {
+        padding: unset;
+    }
+    .xplayer-full-icon span, .xplayer-fulloff-icon span, .xplayer-volume-icon span, .xplayer-setting-icon span, .xplayer-list-icon span, .xplayer-full-in-icon span, .xplayer-play-icon span, .xplayer-comment-setting-icon span {
+        width: 54px;
+        height: 28px;
+    }
+    .xplayer-play-icon svg {
+        width: 54px;
+        height: 32px;
+    }
+    .icon-xj {
+        left: 5px !important;
+        top: 1px !important;
+    }
+    .icon-xj span svg {
+        width: 54px;
+        height: 33px;
+    }
+    .xplayer-controller .xplayer-icons .xplayer-volume .xplayer-volume-bar-wrap .xplayer-volume-bar {
+        top: .75rem;
+        height: .2rem;
+    }
+    .xplayer-controller .xplayer-icons .xplayer-volume .xplayer-volume-bar-wrap .xplayer-volume-bar .xplayer-volume-bar-inner .xplayer-thumb {
+        height: 0.5rem;
+        width: 0.5rem;
+    }
+    .xplayer-icons-left {
+        width: 100%;
+        left: .3rem !important;
+    }
+    .xplayer-icons-right { 
+        right:.3rem !important;
+    }
+    .xplayer-controller .xplayer-icons.xplayer-icons-left .xplayer-icon {
+        padding: unset; 
+    }
+    .xplayer .xplayer-controller .xplayer-icons.xplayer-comment-box .yzm-xplayer-comment-input, .xplayer .xplayer-controller .xplayer-icons.xplayer-comment-box .yzm-xplayer-send-icon {
+        height:34px;
+        bottom: 0.1rem;
+    }
+    .xplayer .xplayer-controller .xplayer-icons.xplayer-comment-box .yzm-xplayer-comment-input {
+        width: 25vw;
+    }
+    .xplayer-choose-icon {
+        font-size: 16px;
+    }
+    .showdan-setting .xplayer-toggle {
+        top: 6px !important;
+	    right: 20px !important;
+    }
+    .xplayer-controller .xplayer-bar-wrap {
+        padding: unset;
+        height: 1rem;
+        left: .6rem;
+        width: calc(100% - 30px);
+    }
+    .xplayer-bar-time {
+        top: -30px;
+    }
+    .xplayer-controller .xplayer-icons .xplayer-live-badge, .xplayer-controller .xplayer-icons .xplayer-time {
+        font-size: .65rem !important;
+    }
+}
+
+@media screen and (min-width: 9999px) {
+    .xplayer-controller .xplayer-icons .xplayer-toggle input+label {
+        height: 25px;
+        width: 40px;
+        border-radius: 100px;
+    }
+    .xplayer-controller .xplayer-icons .xplayer-toggle input:checked+label:after {
+        margin-left: -22px;
+    }
+    .xplayer-controller .xplayer-icons .xplayer-toggle input+label:after, .xplayer-controller .xplayer-icons .xplayer-toggle input+label:before {
+        height: 20px;
+        width: 20px;
+        line-height: 18px;
+        font-weight: 900;
+        font-size: 15px;
+        font-family: ui-rounded;
+    }
+    .xplayer-hide-controller .xplayer-controller {
+        transition: all .3s ease;
+        visibility: hidden !important;
+    }
+    .xplayer-cplayer .video-info .u-title #vodtitle, .video-info .u-title #vodlink, #llqwatch {
+        font-size: 20px;
+    }
+    .xplayer-cplayer .video-info .u-title #vodtitle {
+        position: relative;
+        top: .3em;
+        left: .5em;
+    }
+    .video-info .u-title #vodlink {
+        position: relative;
+        top: .35em;
+        left: .2em;
+    }
+    .xplayer-icon.xplayer-choose-icon {
+        font-size: 25px;
+        margin-right: 10px;
+    }
+    .xplayer-home {
+        bottom: 12rem;
+    }
+    .xplayer-notice {
+        bottom: 8rem;
+        left: 1.5rem;
+        font-size: 20px;
+    }
+    .xplayer-controller .xplayer-icons .xplayer-setting .xplayer-setting-box {
+        right: 7.5rem;
+        bottom: 3rem;
+    }
+    .xplayer-controller .xplayer-icons.xplayer-comment-box .xplayer-comment-setting-box {
+        bottom: 3rem;
+    }
+    #back_top {
+        bottom: 15rem;
+    }
+    .xplayer .xplayer-showing {
+        bottom: 7rem;
+        height: 100px;
+        width: 120px;
+    }
+    .xplayer-controller .xplayer-icons .xplayer-volume .xplayer-volume-bar-wrap {
+        margin: 0 0 0 2.5rem;
+    	z-index: 10;
+    }
+    .xplayer-controller .xplayer-icons .xplayer-live-badge, .xplayer-controller .xplayer-icons .xplayer-time {
+        font-size: 20px;
+        position: fixed;
+        right: 1px;
+        right: 1rem;
+        bottom: 4.9rem;
+    }
+    .xplayer-controller .xplayer-bar-wrap .xplayer-bar .xplayer-played .xplayer-thumb {
+        transform: scale(1);
+        margin:unset !important;
+        height: 35px;
+        width: 30px;
+        top: -15px;
+        right: -15px;
+    }
+    .xplayer .xplayer-controller .xplayer-icons.xplayer-comment-box {
+        margin: 0px 30%;
+    }
+    .xplayer-controller .xplayer-bar-wrap:hover .xplayer-bar, .xplayer-controller .xplayer-bar-wrap:hover .xplayer-bar .xplayer-loaded, .xplayer-controller .xplayer-bar-wrap:hover .xplayer-bar .xplayer-played {
+        height: 6.5px;
+    }
+    .xplayer-controller-mask {
+        height: 4.5rem;
+    }
+    .xplayer-controller .xplayer-bar-wrap {
+        bottom: 5.55rem;
+        width: calc(100% - 10rem);
+        left: 1.65rem;
+    }
+    .xplayer-controller {
+        height: 95px;
+    }
+    .xplayer-controller .xplayer-bar-wrap .xplayer-bar, .xplayer-controller .xplayer-bar-wrap .xplayer-bar .xplayer-loaded, .xplayer-controller .xplayer-bar-wrap .xplayer-bar .xplayer-played {
+        height: 6.5px;
+    	margin-top: auto;
+    	
+        -webkit-transition: height .2s ease;
+        -o-transition: height .2s ease;
+        -moz-transition: height .2s ease;
+        transition: height .2s ease;
+        will-change: height;
+    }
+    
+    .xplayer .xplayer-controller .xplayer-icons.xplayer-comment-box {
+        bottom: 2.45rem;
+    }
+    .xplayer-controller .xplayer-icons.xplayer-icons-right { 
+        right: 1rem;
+    }
+    .xplayer-controller .xplayer-icons {
+        height: 2.3rem;
+    }
+    .xplayer-controller .xplayer-icons .xplayer-icon {
+        width: 4.2rem;
+    }
+    .xplayer-controller .xplayer-icons.xplayer-icons-right .xplayer-icon {
+        padding:unset;
+    }
+    .xplayer-full-icon span, .xplayer-fulloff-icon span, .xplayer-volume-icon span, .xplayer-setting-icon span, .xplayer-list-icon span, .xplayer-full-in-icon span, .xplayer-play-icon span, .xplayer-comment-setting-icon span {
+        width: 108px;
+        height: 54px;
+    }
+    .xplayer-play-icon svg {
+        width: 108px;
+        height: 54px;
+    }
+    .icon-xj {
+        left: 5px !important;
+        top: 1px !important;
+    }
+    .icon-xj span svg {
+        width: 108px;
+        height: 54px;
+    }
+    .xplayer-controller .xplayer-icons .xplayer-volume .xplayer-volume-bar-wrap .xplayer-volume-bar {
+        top: 1.05rem;
+        height: 0.2rem;
+    }
+    .xplayer-controller .xplayer-icons .xplayer-volume .xplayer-volume-bar-wrap .xplayer-volume-bar .xplayer-volume-bar-inner .xplayer-thumb {
+        height: 0.5rem;
+        width: 0.5rem;
+    }
+    .xplayer-icons-left{
+        width:100%;
+        left: 1rem;
+    }
+    .xplayer-controller .xplayer-icons.xplayer-icons-left .xplayer-icon {
+        padding: unset; 
+    }
+    .xplayer .xplayer-controller .xplayer-icons.xplayer-comment-box .yzm-xplayer-comment-input, .xplayer .xplayer-controller .xplayer-icons.xplayer-comment-box .yzm-xplayer-send-icon {
+        height: 54px;
+        bottom: 0.1rem;
+        border-radius: 5px 5px 5px 5px;
+        width: 4rem;
+    }
+    .xplayer .xplayer-controller .xplayer-icons.xplayer-comment-box .yzm-xplayer-comment-input {
+        width: 25vw;
+        background: rgba(255, 255, 255, 0);
+        font-size: 25px;
+    }
+    .dmrules {
+        right: 8rem;
+        margin-top: .6rem;
+        font-size: 15px;
+    }
+    .xplayer-choose-icon {
+        font-size: 16px;
+    }
+    .showdan-setting .xplayer-toggle {
+	    top: 15px !important;
+	    right: 20px !important;
+    }
+    #dmtext::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+      color: #FFFFFF80;
+      font-size: 20px;
+    }
+    
+    #dmtext:-moz-placeholder, textarea:-moz-placeholder {
+      color: #FFFFFF80;
+      font-size: 20px;
+    }
+    
+    #dmtext::-moz-placeholder, textarea::-moz-placeholder {
+      color: #FFFFFF80;
+      font-size: 20px;
+    }
+    
+    #dmtext:-ms-input-placeholder, textarea:-ms-input-placeholder {
+      color: #FFFFFF80;
+      font-size: 20px;
+    }
+}

@@ -1,0 +1,79 @@
+[
+  {
+    "package": "hls.js",
+    "version": "1.7.3",
+    "source": "https://registry.npmjs.org/hls.js/-/hls.js-1.7.3.tgz",
+    "integrity": "sha512-MsPlx6yVW4Qv4C7mEVou4/gk/5cN2dVxOTnrNjPSmyH2f0Ln+/UkG10Ax1PE6OvrmTVPKgQYozTtBaPOuCzq7A==",
+    "sha256": {
+      "assets/vendor/hls/hls.min.js": "a12e7ee1cd64a69dcdb314157e45dafcba705bfb0b1440b7935cb265d374423e",
+      "assets/vendor/hls/LICENSE": "ca8773cf798c7ed997d4dd7c8e23c348699f8d5b7462636694cc14de6cda12db"
+    }
+  },
+  {
+    "package": "jquery",
+    "version": "3.6.0",
+    "source": "https://registry.npmjs.org/jquery/-/jquery-3.6.0.tgz",
+    "integrity": "sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==",
+    "sha256": {
+      "assets/vendor/jquery/jquery.min.js": "ff1523fb7389539c84c65aba19260648793bb4f5e29329d2ee8804bc37a3fe6e",
+      "assets/vendor/jquery/LICENSE": "d4db9ebe6f29f5168eac45ad713f055623ac5d0dcd5ba92da23d650ae012020d"
+    }
+  },
+  {
+    "package": "legacy-bundled",
+    "version": "as-shipped",
+    "source": "original package assets",
+    "integrity": null,
+    "sha256": {
+      "assets/vendor/flv/flv.min.js": "0beb90b8f1e467daeaade056ac59ea90493783f521ec67f4cdd7b4856345682e",
+      "assets/vendor/layer/layer.js": "0d0eabd8a6ec8e58fc6288667fc486adb170440580206d06e9120537aaadae55",
+      "assets/vendor/flv/LICENSE": "49bbe9114e49214df2ccc324cb3ac8d1d1aa1c3a0947f94c286765e86647b32e",
+      "assets/vendor/layer/theme/icon-ext.png": "e2e7a838c43d0a9a9ffc179fc7bd41435883df6f5103a45dc77db4d30c8825e2",
+      "assets/vendor/layer/theme/icon.png": "99942159547fc45a02ddeb5af9570b6c870b18c36f83fd53ccb7c0644d346c89",
+      "assets/vendor/layer/theme/layer.css": "ee2ba1153ff53d5976f6959f863087304595ec427ebda0adb1b90c2cc3e0e21d",
+      "assets/vendor/layer/theme/loading-0.gif": "07236f6814a40623bab43f2043860c97678bc7deedbf06feff92f0d6e6673bf5",
+      "assets/vendor/layer/theme/loading-1.gif": "7c6380e9985c8e4982f41f8dba64d6b1c4a7997d0aa635d9f4bb7643ab815248",
+      "assets/vendor/layer/theme/loading-2.gif": "16ea0cf66d51efdbbc2a62b11ab0419fa72fb3320844f1d0d710480245ac9925"
+    },
+    "notes": "Layer default theme path flattened to theme/; bundled CSS and images remain available offline."
+  },
+  {
+    "package": "lottie-web",
+    "version": "5.12.2",
+    "source": "https://registry.npmjs.org/lottie-web/-/lottie-web-5.12.2.tgz",
+    "sha256": {
+      "assets/vendor/lottie/LICENSE.md": "4750849de81eeee983513f7e66c419abf4656146a23283e8e93532075e2c242b",
+      "assets/vendor/lottie/lottie.min.js": "c9cf6870d0cc66451d2d653063ddbf6f16b3f579425d7b6122c48987211385ed"
+    }
+  },
+  {
+    "package": "certifi",
+    "version": "2026.7.22",
+    "source": "https://certifi.io/",
+    "sha256": {
+      "assets/vendor/certificates/cacert.pem": "9cc2a774b5198dcff14d9be1e66091f538975d867ce029a96bce15a55dfd730f",
+      "assets/vendor/certificates/LICENSE": "e93716da6b9c0d5a4a1df60fe695b370f0695603d21f6f83f053e42cfc10caf7"
+    }
+  },
+  {
+    "package": "uuid/md5-browser",
+    "version": "3.4.0",
+    "source": "https://github.com/uuidjs/uuid/tree/v3.4.0",
+    "notes": "Browser MD5 implementation with a small MD5-only compatibility facade; original notices retained.",
+    "sha256": {
+      "assets/vendor/crypto/crypto-js.min.js": "db4a9d639e074ceff0ae41bd01033ca40a93a7ffecf27125bc5ee1b847a8c6fb",
+      "assets/vendor/crypto/LICENSE.md": "3df5f9a382da026c813ce3fc95c6c07815eb3ba39f009f482df64eb6af1a3b39"
+    }
+  },
+  {
+    "package": "dashjs",
+    "version": "5.2.1",
+    "source": "https://registry.npmjs.org/dashjs/-/dashjs-5.2.1.tgz",
+    "integrity": "sha512-axcJmLeJCTJMLUfQRErUJB1KOiU5iHF+DMLBc3FKeox1HPYtGUQlC6Xm5Mm6vhBUR3CHHLIPOqw0JDIqMtP+Dw==",
+    "sha256": {
+      "assets/vendor/dash/dash.all.min.js": "3a22b1f4576ab294f41e56f156cec7972a5f83edda379416778293ff22d2eb49",
+      "assets/vendor/dash/dash.all.min.js.LICENSE.txt": "cfd1ec4de22f2e75338aeeccf1ec01afe14407646c6c2f8e2df2dceccd631670",
+      "assets/vendor/dash/LICENSE.md": "f7cc4ba24850cc564766c75923d07c3d22fa27f304285f4d25ecffeaec964e28"
+    }
+  }
+]

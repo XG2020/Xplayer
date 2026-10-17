@@ -1,0 +1,24 @@
+/* Video group moderation, sharing the existing danmaku theme and components. */
+#danmaku-groups,.dmg-panel{min-width:0;max-width:100%}
+.dmg-search{display:grid;grid-template-columns:minmax(220px,1fr) minmax(150px,.4fr) auto;align-items:end;gap:16px}
+.dmg-search .field{min-width:0}
+.dmg-table{min-width:780px;margin-top:0}
+.dmg-table th:nth-child(1){width:38px}
+.dmg-table th:nth-child(2){width:auto}
+.dmg-table th:nth-child(3),.dmg-table th:nth-child(4){width:90px}
+.dmg-table th:nth-child(5){width:146px}
+.dmg-table th:nth-child(6){width:115px}
+.dmg-player{display:block;white-space:pre-wrap;font:13px/1.7 ui-monospace,Consolas,monospace;overflow-wrap:anywhere;color:var(--text)}
+.dmg-count{font-variant-numeric:tabular-nums}
+.dmg-reported{color:var(--error);font-weight:600}
+.dmg-actions{gap:10px}
+.dmg-actions a{color:var(--accent);font-size:13px;line-height:1.6;padding:3px 0}
+.dmg-actions a:hover{text-decoration:underline}
+#danmaku-groups button:disabled{opacity:.45;cursor:not-allowed}
+#danmaku-groups button:focus-visible,#danmaku-groups input:focus-visible,#dmg-results:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+#dmg-confirm-preview li+li{margin-top:9px}
+#dmg-confirm-preview .dmg-player{font-size:12px}
+#dmg-confirm-preview .dm-meta{margin-top:2px}
+#dmg-confirm-status:empty{display:none}
+@media(max-width:1000px){.dmg-search{grid-template-columns:1fr 1fr}.dmg-search .dm-search-actions{grid-column:1/-1;justify-content:flex-end}}
+@media(max-width:760px){.dmg-search{grid-template-columns:1fr;gap:14px}.dmg-search .dm-search-actions{grid-column:auto}.dmg-panel .dm-toolbar>.button{align-self:flex-end}}
