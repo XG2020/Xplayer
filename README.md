@@ -1,8 +1,8 @@
 # Xplayer Pro
 
-仿哔哩哔哩的弹幕网页播放器项目
+仿哔哩哔哩的弹幕网页播放器项目,项目适用许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
-适用许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
+**喜欢的话烦请点点Start🌟，感谢支持！！！**
 
 ## 项目截图
 <img width="1440" height="960" alt="4cfc9e425bf8c19dfc8525bcc4976f89" src="https://github.com/user-attachments/assets/a61b1281-d7a1-4a79-829d-fb031216397e" />
