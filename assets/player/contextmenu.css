@@ -35,7 +35,8 @@
 .xplayer-shortcut-row{display:flex;justify-content:space-between;gap:20px;margin:0 10px;white-space:nowrap}
 .xplayer-shortcut-row span:last-child{color:#aaa}
 @media(max-width:380px){.xplayer-feature-dialog .btn-panel-box{gap:14px 18px}.xplayer-feature-row{gap:6px}.xplayer-range-limit{font-size:10px}}
-@media(pointer:coarse){.xplayer-video-wrap{touch-action:none}}
+.xplayer-mobile .xplayer-video-wrap,.xplayer-mobile .xplayer-controller-mask{touch-action:none}
+@media(any-pointer:coarse){.xplayer-video-wrap,.xplayer-controller-mask{touch-action:none}}
 
 /* The equalizer is a separate view matching the reference audio panel. */
 .xplayer-equalizer-dialog.layui-layer{background:rgba(27,27,27,.9);border-radius:6px}

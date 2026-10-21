@@ -7,7 +7,8 @@
   "scripts": {
     "build": "node tools/build-player.cjs",
     "check:endpoints": "node tools/check-endpoints.cjs",
-    "test:endpoints": "node tests/endpoint-privacy.cjs"
+    "test:endpoints": "node tests/endpoint-privacy.cjs",
+    "test:gestures": "node tests/mobile-gesture.cjs"
   },
   "engines": {
     "node": ">=18"

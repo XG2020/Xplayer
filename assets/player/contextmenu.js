@@ -599,6 +599,125 @@ const engine = {
         return engine;
     }
 
+    function attachSeekGesture(player) {
+        const container = player.container, pointerEvents = !!global.PointerEvent;
+        const startEvent = pointerEvents ? 'pointerdown' : 'touchstart';
+        const moveEvent = pointerEvents ? 'pointermove' : 'touchmove';
+        const endEvent = pointerEvents ? 'pointerup' : 'touchend';
+        const cancelEvent = pointerEvents ? 'pointercancel' : 'touchcancel';
+        let gesture = null, suppressClickUntil = 0;
+
+        function validVideo() {
+            return !player.options.live && Number.isFinite(player.video.duration) && player.video.duration > 0 && Number.isFinite(player.video.currentTime);
+        }
+        function point(event) {
+            if (pointerEvents) return gesture && event.pointerId === gesture.id ? event : null;
+            const touches = event.type === 'touchmove' ? event.touches : event.changedTouches;
+            return touches && Array.from(touches).find(touch => gesture && touch.identifier === gesture.id);
+        }
+        function clock(seconds) {
+            seconds = Math.floor(seconds);
+            const parts = [Math.floor(seconds / 60) % 60, seconds % 60];
+            if (seconds >= 3600) parts.unshift(Math.floor(seconds / 3600));
+            return parts.map(part => String(part).padStart(2, '0')).join(':');
+        }
+        function cancelSession() {
+            if (!gesture || gesture.cancelled) return;
+            gesture.cancelled = true;
+            if (gesture.horizontal) player.notice('已取消快进快退');
+        }
+        function update(event) {
+            const touch = point(event);
+            if (!touch || gesture.cancelled || gesture.vertical) return;
+            const dx = touch.clientX - gesture.x, dy = touch.clientY - gesture.y;
+            if (!Number.isFinite(dx) || !Number.isFinite(dy)) return;
+            if (!gesture.horizontal) {
+                if (Math.max(Math.abs(dx), Math.abs(dy)) < 12) return;
+                if (Math.abs(dy) >= Math.abs(dx)) {gesture.vertical = true; return;}
+                gesture.horizontal = true;
+            }
+            if (event.cancelable) event.preventDefault();
+            if (dy < -50) {
+                cancelSession();
+                return;
+            }
+            // Five CSS pixels per second makes the result independent of event frequency.
+            const offset = Math.sign(dx) * Math.round(Math.abs(dx) / 5);
+            gesture.position = Math.max(0, Math.min(player.video.duration, gesture.time + offset));
+            const seconds = Math.round(Math.abs(gesture.position - gesture.time));
+            const action = gesture.position < gesture.time ? '快退 ' : '快进 ';
+            player.notice(action + seconds + ' 秒 · ' + clock(gesture.position) + ' / ' + clock(player.video.duration) + '（上滑取消）', 60000);
+        }
+        function finish(event, commit) {
+            if (!gesture || event && !point(event)) return;
+            const sameVideo = validVideo() && player.video === gesture.video && player.video.src === gesture.source;
+            if (commit && event && sameVideo) update(event);
+            const session = gesture;
+            gesture = null;
+            session.document.removeEventListener(startEvent, additionalTouch, true);
+            session.document.removeEventListener(moveEvent, move, true);
+            session.document.removeEventListener(endEvent, end, true);
+            session.document.removeEventListener(cancelEvent, cancel, true);
+            session.document.removeEventListener('lostpointercapture', lostCapture, true);
+            session.window.removeEventListener('blur', blur);
+            try {
+                if (pointerEvents && session.target.hasPointerCapture(session.id)) session.target.releasePointerCapture(session.id);
+            } catch (_) {}
+            if (!session.horizontal) return;
+            // Refresh on release so holding the finger still cannot let a synthetic click through.
+            suppressClickUntil = Date.now() + 700;
+            if (event?.cancelable) event.preventDefault();
+            if (commit && sameVideo && !session.cancelled && session.position !== session.time) {
+                player.seek(Math.max(0, Math.min(player.video.duration, session.position)));
+            } else if (!session.cancelled) {
+                player.notice('已取消快进快退');
+            }
+        }
+        function move(event) {
+            if (!pointerEvents && event.touches.length !== 1) {cancelSession(); return;}
+            if (gesture && !validVideo()) {finish(null, false); return;}
+            update(event);
+        }
+        function end(event) {finish(event, true);}
+        function cancel(event) {finish(event, false);}
+        function blur() {finish(null, false);}
+        function lostCapture(event) {if (point(event)) cancelSession();}
+        function additionalTouch(event) {
+            if (pointerEvents ? event.pointerType === 'touch' && event.pointerId !== gesture.id : event.touches.length !== 1) cancelSession();
+        }
+        function begin(event) {
+            if (gesture) return;
+            if (pointerEvents ? event.pointerType !== 'touch' || event.isPrimary === false : event.touches.length !== 1) return;
+            suppressClickUntil = 0;
+            const target = event.target;
+            if (!validVideo() || !target.closest?.('.xplayer-video-wrap,.xplayer-controller-mask') ||
+                target.closest('button,a,input,textarea,select,[contenteditable],.xplayer-controller,.xplayer-bar-wrap,.xplayer-menu')) return;
+            const touch = pointerEvents ? event : event.touches[0];
+            if (!Number.isFinite(touch.clientX) || !Number.isFinite(touch.clientY)) return;
+            const owner = container.ownerDocument;
+            gesture = {id: pointerEvents ? event.pointerId : touch.identifier, x: touch.clientX, y: touch.clientY,
+                time: player.video.currentTime, position: player.video.currentTime, video: player.video, source: player.video.src,
+                horizontal: false, vertical: false, cancelled: false, target, document: owner, window: owner.defaultView || global};
+            owner.addEventListener(startEvent, additionalTouch, {capture: true, passive: true});
+            owner.addEventListener(moveEvent, move, {capture: true, passive: false});
+            owner.addEventListener(endEvent, end, {capture: true, passive: false});
+            owner.addEventListener(cancelEvent, cancel, true);
+            if (pointerEvents) owner.addEventListener('lostpointercapture', lostCapture, true);
+            gesture.window.addEventListener('blur', blur);
+            try {if (pointerEvents) target.setPointerCapture(event.pointerId);} catch (_) {}
+        }
+        function click(event) {
+            if (Date.now() < suppressClickUntil) {event.preventDefault(); event.stopImmediatePropagation();}
+        }
+        container.addEventListener(startEvent, begin, {capture: true, passive: true});
+        container.addEventListener('click', click, true);
+        return () => {
+            finish(null, false);
+            container.removeEventListener(startEvent, begin, true);
+            container.removeEventListener('click', click, true);
+        };
+    }
+
     function stateFor(player) {
         if (states.has(player)) return states.get(player);
         const state = {player, color: [100, 100, 100], effect: 'default', eq: 'default', eqBands: 10, customEq: null, customEqByBands: {}, equalizerEnabled: false, gain: 0, normalization: 'off', normalizationRequest: 0, audio: null, dialog: null};
@@ -619,44 +738,11 @@ const engine = {
             }
         };
         document.addEventListener('keydown', onKey);
-        // Original Hammer gesture semantics: a 50px threshold, one second per pan event,
-        // and an upward movement of 50px to cancel before releasing the pointer.
-        let gesture = null, suppressClickUntil = 0;
-        const pointerDown = event => {
-            if(event.pointerType !== 'touch' || !event.isPrimary || !event.target.closest('.xplayer-video-wrap') || !Number.isFinite(player.video.duration)) return;
-            gesture={id:event.pointerId,x:event.clientX,y:event.clientY,time:Math.round(player.video.currentTime),offset:0,cancelled:false};
-            event.target.setPointerCapture?.(event.pointerId);
-        };
-        const pointerMove = event => {
-            if(!gesture || event.pointerId !== gesture.id || gesture.cancelled) return;
-            const dx=event.clientX-gesture.x,dy=event.clientY-gesture.y;
-            if(gesture.offset && dy < -50) {gesture.offset=0;gesture.cancelled=true;player.notice('取消');suppressClickUntil=Date.now()+500;return;}
-            if((Math.abs(dx)>50 || gesture.offset) && Math.abs(dy)<50) {
-                gesture.offset += dx > 0 ? 1 : -1;
-                const seconds=Math.abs(gesture.offset);
-                player.notice((gesture.offset>0?'快进 ':'快退 ')+seconds+' 秒，上滑取消');
-                suppressClickUntil=Date.now()+500;
-            }
-        };
-        const pointerEnd = event => {
-            if(!gesture || event.pointerId !== gesture.id) return;
-            if(!gesture.cancelled && gesture.offset && event.type !== 'pointercancel') player.seek(gesture.time+gesture.offset);
-            gesture=null;
-        };
-        const gestureClick = event => {if(Date.now()<suppressClickUntil){event.preventDefault();event.stopImmediatePropagation();}};
-        player.container.addEventListener('pointerdown',pointerDown);
-        player.container.addEventListener('pointermove',pointerMove);
-        player.container.addEventListener('pointerup',pointerEnd);
-        player.container.addEventListener('pointercancel',pointerEnd);
-        player.container.addEventListener('click',gestureClick,true);
+        const cleanupGesture = attachSeekGesture(player);
         player.on('play', () => {if(state.audio?.audioCtx?.state === 'suspended') state.audio.audioCtx.resume().catch(() => {});});
         player.on('destroy', () => {
             document.removeEventListener('keydown', onKey);
-            player.container.removeEventListener('pointerdown',pointerDown);
-            player.container.removeEventListener('pointermove',pointerMove);
-            player.container.removeEventListener('pointerup',pointerEnd);
-            player.container.removeEventListener('pointercancel',pointerEnd);
-            player.container.removeEventListener('click',gestureClick,true);
+            cleanupGesture();
             if (state.dialog !== null) global.layer.close(state.dialog);
             if (state.audio?.audioCtx) {
                 state.audio.y.stop();
