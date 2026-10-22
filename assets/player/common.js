@@ -165,6 +165,7 @@ function (module, exports, requireModule) {
     subtitle: value13.default,
     loading: value14.default
   };
+  options.danmakuSwitch = "<svg class=\"xplayer-pip-danmaku-svg\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path class=\"xplayer-pip-danmaku-frame\" fill-rule=\"evenodd\" d=\"M11.989 4.828c-.47 0-.975.004-1.515.012l-1.71-2.566a1.008 1.008 0 0 0-1.678 1.118l.999 1.5c-.681.018-1.403.04-2.164.068a4.013 4.013 0 0 0-3.83 3.44c-.165 1.15-.245 2.545-.245 4.185 0 1.965.115 3.67.35 5.116a4.012 4.012 0 0 0 3.763 3.363l.906.046c1.205.063 1.808.095 3.607.095a.988.988 0 0 0 0-1.975c-1.758 0-2.339-.03-3.501-.092l-.915-.047a2.037 2.037 0 0 1-1.91-1.708c-.216-1.324-.325-2.924-.325-4.798 0-1.563.076-2.864.225-3.904.14-.977.96-1.713 1.945-1.747 2.444-.087 4.465-.13 6.063-.131 1.598 0 3.62.044 6.064.13.96.034 1.71.81 1.855 1.814.075.524.113 1.962.141 3.065v.002c.01.342.017.65.025.88a.987.987 0 1 0 1.974-.068c-.008-.226-.016-.523-.025-.856v-.027c-.03-1.118-.073-2.663-.16-3.276-.273-1.906-1.783-3.438-3.74-3.507-.9-.032-1.743-.058-2.531-.078l1.05-1.46a1.008 1.008 0 0 0-1.638-1.177l-1.862 2.59c-.38-.004-.744-.007-1.088-.007h-.13Zm.521 4.775h-1.32v4.631h2.222v.847h-2.618v1.078h2.618l.003.678c.36.026.714.163 1.01.407h.11v-1.085h2.694v-1.078h-2.695v-.847H16.8v-4.63h-1.276a8.59 8.59 0 0 0 .748-1.42L15.183 7.8a14.232 14.232 0 0 1-.814 1.804h-1.518l.693-.308a8.862 8.862 0 0 0-.814-1.408l-1.045.352c.297.396.572.847.825 1.364Zm-4.18 3.564.154-1.485h1.98V8.294h-3.2v.98H9.33v1.43H7.472l-.308 3.453h2.277c0 1.166-.044 1.925-.12 2.277-.078.352-.386.528-.936.528-.308 0-.616-.022-.902-.055l.297 1.067.062.005c.285.02.551.04.818.04 1.001-.067 1.562-.419 1.694-1.057.11-.638.176-1.903.176-3.795h-2.2Zm7.458.11v-.858h-1.254v.858h1.254Zm-2.376-.858v.858h-1.199v-.858h1.2Zm-1.199-.946h1.2v-.902h-1.2v.902Zm2.321 0v-.902h1.254v.902h-1.254Z\"/><path class=\"xplayer-pip-danmaku-check\" fill-rule=\"evenodd\" d=\"M22.846 14.627a1 1 0 0 0-1.412.075l-5.091 5.703-2.216-2.275-.097-.086-.008-.005a1 1 0 0 0-1.322 1.493l2.963 3.041.093.083.007.005c.407.315 1 .27 1.354-.124l5.81-6.505.08-.102.005-.008a1 1 0 0 0-.166-1.295Z\"/><path class=\"xplayer-pip-danmaku-off\" fill-rule=\"evenodd\" d=\"m8.085 4.891-.999-1.499a1.008 1.008 0 0 1 1.679-1.118l1.709 2.566c.54-.008 1.045-.012 1.515-.012h.13c.345 0 .707.003 1.088.007l1.862-2.59a1.008 1.008 0 0 1 1.637 1.177l-1.049 1.46c.788.02 1.631.046 2.53.078 1.958.069 3.468 1.6 3.74 3.507.088.613.13 2.158.16 3.276l.001.027c.01.333.017.63.025.856a.987.987 0 0 1-1.974.069c-.008-.23-.016-.539-.025-.881v-.002c-.028-1.103-.066-2.541-.142-3.065-.143-1.004-.895-1.78-1.854-1.813-2.444-.087-4.466-.13-6.064-.131-1.598 0-3.619.044-6.063.13a2.037 2.037 0 0 0-1.945 1.748c-.15 1.04-.225 2.341-.225 3.904 0 1.874.11 3.474.325 4.798.154.949.95 1.66 1.91 1.708a97.58 97.58 0 0 0 5.416.139.988.988 0 0 1 0 1.975c-2.196 0-3.61-.047-5.513-.141A4.012 4.012 0 0 1 2.197 17.7c-.236-1.446-.351-3.151-.351-5.116 0-1.64.08-3.035.245-4.184A4.013 4.013 0 0 1 5.92 4.96c.761-.027 1.483-.05 2.164-.069Zm4.436 4.707h-1.32v4.63h2.222v.848h-2.618v1.078h2.431a5.01 5.01 0 0 1 3.575-3.115V9.598h-1.276a8.59 8.59 0 0 0 .748-1.42l-1.089-.384a14.232 14.232 0 0 1-.814 1.804h-1.518l.693-.308a8.862 8.862 0 0 0-.814-1.408l-1.045.352c.297.396.572.847.825 1.364Zm-4.18 3.564.154-1.485h1.98V8.289h-3.2v.979h2.067v1.43H7.483l-.308 3.454h2.277c0 1.166-.044 1.925-.12 2.277-.078.352-.386.528-.936.528-.308 0-.616-.022-.902-.055l.297 1.067.062.004c.285.02.551.04.818.04 1.001-.066 1.562-.418 1.694-1.056.11-.638.176-1.903.176-3.795h-2.2Zm7.458.11v-.858h-1.254v.858H15.8Zm-2.376-.858v.858h-1.199v-.858h1.2Zm-1.199-.946h1.2v-.902h-1.2v.902Zm2.321 0v-.902H15.8v.902h-1.254Zm3.517 10.594a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-.002-1.502a2.5 2.5 0 0 1-2.217-3.657l3.326 3.398a2.49 2.49 0 0 1-1.109.259Zm2.5-2.5c0 .42-.103.815-.286 1.162l-3.328-3.401a2.5 2.5 0 0 1 3.614 2.239Z\"/></svg>";
   exports.default = options;
 },
 /* Recovered original module 3: template-runtime-export. Bindings renamed by scope, not rewritten. */
@@ -244,6 +245,7 @@ function (module, exports, requireModule) {
     }
   }(playerModule);
   console.log('Xplayer by XG.GM');
+  value.default.danmakuSwitchIcon = requireModule(2).default.danmakuSwitch;
   exports.default = value.default;
 },
 /* Recovered original module 6: style-placeholder. Bindings renamed by scope, not rewritten. */
@@ -1746,7 +1748,9 @@ function (module, exports, requireModule) {
         this.yzmcomment = this.container.querySelector(".yzm-xplayer-comment-input");
         this.commentSettingBox = this.container.querySelector(".xplayer-comment-setting-box");
         this.commentSettingButton = this.container.querySelector(".xplayer-comment-setting-icon");
-        this.commentSettingFill = this.container.querySelector(".xplayer-comment-setting-icon path");
+        this.sendStyleButton = this.container.querySelector(".xplayer-send-style-icon");
+        this.danmakuDisplayBox = this.container.querySelector(".xplayer-danmaku-display-box");
+        this.commentSettingFill = this.container.querySelector(".xplayer-send-style-icon span");
         this.commentSendButton = this.container.querySelector(".xplayer-send-icon");
         this.commentSendFill = this.container.querySelector(".xplayer-send-icon path");
         this.commentColorSettingBox = this.container.querySelector(".xplayer-comment-setting-color");
@@ -2181,15 +2185,9 @@ function (module, exports, requireModule) {
     value += $escape(options2.theme);
     value += "\">\n                <span class=\"xplayer-thumb\" style=\"background: ";
     value += $escape(options2.theme);
-    value += "\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\" width=\"18\" height=\"18\" preserveAspectRatio=\"xMidYMid meet\" style=\"width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);\"><defs><clipPath id=\"__lottie_element_25\"><rect width=\"18\" height=\"18\" x=\"0\" y=\"0\"></rect></clipPath></defs><g clip-path=\"url(#__lottie_element_25)\"><g transform=\"matrix(1,0,0,1,8.937000274658203,8.25)\" opacity=\"0.14\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(1,0,0,1,0.07500000298023224,1.2130000591278076)\"><path fill=\"rgb(251,114,153)\" fill-opacity=\"1\" d=\" M9,-3.5 C9,-3.5 9,3.5 9,3.5 C9,5.707600116729736 7.207600116729736,7.5 5,7.5 C5,7.5 -5,7.5 -5,7.5 C-7.207600116729736,7.5 -9,5.707600116729736 -9,3.5 C-9,3.5 -9,-3.5 -9,-3.5 C-9,-5.707600116729736 -7.207600116729736,-7.5 -5,-7.5 C-5,-7.5 5,-7.5 5,-7.5 C7.207600116729736,-7.5 9,-5.707600116729736 9,-3.5z\"></path></g></g><g transform=\"matrix(1,0,0,1,9.140999794006348,8.67199993133545)\" opacity=\"0.28\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(1,0,0,1,-0.1509999930858612,0.7990000247955322)\"><path fill=\"rgb(251,114,153)\" fill-opacity=\"1\" d=\" M8,-3 C8,-3 8,3 8,3 C8,4.931650161743164 6.431650161743164,6.5 4.5,6.5 C4.5,6.5 -4.5,6.5 -4.5,6.5 C-6.431650161743164,6.5 -8,4.931650161743164 -8,3 C-8,3 -8,-3 -8,-3 C-8,-4.931650161743164 -6.431650161743164,-6.5 -4.5,-6.5 C-4.5,-6.5 4.5,-6.5 4.5,-6.5 C6.431650161743164,-6.5 8,-4.931650161743164 8,-3z\"></path></g></g><g transform=\"matrix(0.9883429408073425,-0.7275781631469727,0.6775955557823181,0.920446515083313,7.3224687576293945,-0.7606706619262695)\" opacity=\"1\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(0.9937776327133179,-0.11138220876455307,0.11138220876455307,0.9937776327133179,-2.5239999294281006,1.3849999904632568)\"><path fill=\"rgb(0,0,0)\" fill-opacity=\"1\" d=\" M0.75,-1.25 C0.75,-1.25 0.75,1.25 0.75,1.25 C0.75,1.663925051689148 0.4139249920845032,2 0,2 C0,2 0,2 0,2 C-0.4139249920845032,2 -0.75,1.663925051689148 -0.75,1.25 C-0.75,1.25 -0.75,-1.25 -0.75,-1.25 C-0.75,-1.663925051689148 -0.4139249920845032,-2 0,-2 C0,-2 0,-2 0,-2 C0.4139249920845032,-2 0.75,-1.663925051689148 0.75,-1.25z\" style=\"fill: #000;\"></path></g></g><g transform=\"matrix(1.1436611413955688,0.7535901665687561,-0.6317168474197388,0.9587040543556213,16.0070743560791,2.902894973754883)\" opacity=\"1\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(0.992861807346344,0.1192704513669014,-0.1192704513669014,0.992861807346344,-2.5239999294281006,1.3849999904632568)\"><path fill=\"rgb(0,0,0)\" fill-opacity=\"1\" d=\" M0.75,-1.25 C0.75,-1.25 0.75,1.25 0.75,1.25 C0.75,1.663925051689148 0.4139249920845032,2 0,2 C0,2 0,2 0,2 C-0.4139249920845032,2 -0.75,1.663925051689148 -0.75,1.25 C-0.75,1.25 -0.75,-1.25 -0.75,-1.25 C-0.75,-1.663925051689148 -0.4139249920845032,-2 0,-2 C0,-2 0,-2 0,-2 C0.4139249920845032,-2 0.75,-1.663925051689148 0.75,-1.25z\" style=\"fill: #000;\"></path></g></g><g transform=\"matrix(1,0,0,1,8.890999794006348,8.406000137329102)\" opacity=\"1\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(1,0,0,1,0.09099999815225601,1.1009999513626099)\"><path fill=\"rgb(255,255,255)\" fill-opacity=\"1\" d=\" M7,-3 C7,-3 7,3 7,3 C7,4.379749774932861 5.879749774932861,5.5 4.5,5.5 C4.5,5.5 -4.5,5.5 -4.5,5.5 C-5.879749774932861,5.5 -7,4.379749774932861 -7,3 C-7,3 -7,-3 -7,-3 C-7,-4.379749774932861 -5.879749774932861,-5.5 -4.5,-5.5 C-4.5,-5.5 4.5,-5.5 4.5,-5.5 C5.879749774932861,-5.5 7,-4.379749774932861 7,-3z\"></path><path stroke-linecap=\"butt\" stroke-linejoin=\"miter\" fill-opacity=\"0\" stroke-miterlimit=\"4\" stroke=\"rgb(0,0,0)\" stroke-opacity=\"1\" stroke-width=\"1.5\" d=\" M7,-3 C7,-3 7,3 7,3 C7,4.379749774932861 5.879749774932861,5.5 4.5,5.5 C4.5,5.5 -4.5,5.5 -4.5,5.5 C-5.879749774932861,5.5 -7,4.379749774932861 -7,3 C-7,3 -7,-3 -7,-3 C-7,-4.379749774932861 -5.879749774932861,-5.5 -4.5,-5.5 C-4.5,-5.5 4.5,-5.5 4.5,-5.5 C5.879749774932861,-5.5 7,-4.379749774932861 7,-3z\"></path></g></g><g transform=\"matrix(1,0,0,1,8.89900016784668,8.083999633789062)\" opacity=\"1\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(1,0,0,1,-2.5239999294281006,1.3849999904632568)\"><path fill=\"rgb(0,0,0)\" fill-opacity=\"1\" d=\" M0.875,-1.125 C0.875,-1.125 0.875,1.125 0.875,1.125 C0.875,1.607912540435791 0.48291251063346863,2 0,2 C0,2 0,2 0,2 C-0.48291251063346863,2 -0.875,1.607912540435791 -0.875,1.125 C-0.875,1.125 -0.875,-1.125 -0.875,-1.125 C-0.875,-1.607912540435791 -0.48291251063346863,-2 0,-2 C0,-2 0,-2 0,-2 C0.48291251063346863,-2 0.875,-1.607912540435791 0.875,-1.125z\" style=\"fill: #000;\"></path></g></g><g transform=\"matrix(1,0,0,1,14.008999824523926,8.083999633789062)\" opacity=\"1\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(1,0,0,1,-2.5239999294281006,1.3849999904632568)\"><path fill=\"rgb(0,0,0)\" fill-opacity=\"1\" d=\" M0.8999999761581421,-1.100000023841858 C0.8999999761581421,-1.100000023841858 0.8999999761581421,1.100000023841858 0.8999999761581421,1.100000023841858 C0.8999999761581421,1.596709966659546 0.4967099726200104,2 0,2 C0,2 0,2 0,2 C-0.4967099726200104,2 -0.8999999761581421,1.596709966659546 -0.8999999761581421,1.100000023841858 C-0.8999999761581421,1.100000023841858 -0.8999999761581421,-1.100000023841858 -0.8999999761581421,-1.100000023841858 C-0.8999999761581421,-1.596709966659546 -0.4967099726200104,-2 0,-2 C0,-2 0,-2 0,-2 C0.4967099726200104,-2 0.8999999761581421,-1.596709966659546 0.8999999761581421,-1.100000023841858z\" style=\"fill: #000;\"></path></g></g></g></svg></span>\n            </div>\n        </div>\n  </div>\n    </div>\n  <div class=\"xplayer-icons xplayer-comment-box\"><div class=\"xplayer-setting-item xplayer-setting-showdan showdan-setting\"> <span class=\"xplayer-label\"></span>\n<div class=\"xplayer-toggle\"><input class=\"xplayer-showdan-setting-input\"type=\"checkbox\"name=\"xplayer-toggle-dan\"><label for=\"xplayer-toggle-dan\"></label></div></div>\n        <button class=\"xplayer-icon xplayer-comment-setting-icon\" data-balloon=\"";
-    value += $escape(tran("Setting"));
-    value += "\" data-balloon-pos=\"up\">\n            <span class=\"xplayer-icon-content\">";
-    value += icons.pallette;
-    value += "</span>\n        </button>\n        <div class=\"xplayer-comment-setting-box\">\n <div class=\"xplayer-setting-item xplayer-setting-danunlimit\">\n                        <span class=\"xplayer-label\">";
-    value += $escape(tran("Unlimited danmaku"));
-    value += "</span>\n                        <div class=\"xplayer-toggle\">\n                            <input class=\"xplayer-danunlimit-setting-input\" type=\"checkbox\" name=\"xplayer-toggle-danunlimit\">\n                            <label for=\"xplayer-toggle-danunlimit\"></label>\n                        </div>\n                    </div>\n                    <div class=\"xplayer-setting-item xplayer-setting-danmaku\">\n                        <span class=\"xplayer-label\">";
-    value += $escape(tran("Opacity for danmaku"));
-    value += "</span>\n                        <div class=\"xplayer-danmaku-bar-wrap\">\n                            <div class=\"xplayer-danmaku-bar\">\n                                <div class=\"xplayer-danmaku-bar-inner\">\n                                    <span class=\"xplayer-thumb\"></span>\n                                </div>\n                            </div>\n                        </div>\n                    </div>\n                  <div class=\"xplayer-comment-setting-type\">\n                <div class=\"xplayer-comment-setting-title\">";
+    value += "\"><svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 18 18\" width=\"18\" height=\"18\" preserveAspectRatio=\"xMidYMid meet\" style=\"width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px);\"><defs><clipPath id=\"__lottie_element_25\"><rect width=\"18\" height=\"18\" x=\"0\" y=\"0\"></rect></clipPath></defs><g clip-path=\"url(#__lottie_element_25)\"><g transform=\"matrix(1,0,0,1,8.937000274658203,8.25)\" opacity=\"0.14\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(1,0,0,1,0.07500000298023224,1.2130000591278076)\"><path fill=\"rgb(251,114,153)\" fill-opacity=\"1\" d=\" M9,-3.5 C9,-3.5 9,3.5 9,3.5 C9,5.707600116729736 7.207600116729736,7.5 5,7.5 C5,7.5 -5,7.5 -5,7.5 C-7.207600116729736,7.5 -9,5.707600116729736 -9,3.5 C-9,3.5 -9,-3.5 -9,-3.5 C-9,-5.707600116729736 -7.207600116729736,-7.5 -5,-7.5 C-5,-7.5 5,-7.5 5,-7.5 C7.207600116729736,-7.5 9,-5.707600116729736 9,-3.5z\"></path></g></g><g transform=\"matrix(1,0,0,1,9.140999794006348,8.67199993133545)\" opacity=\"0.28\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(1,0,0,1,-0.1509999930858612,0.7990000247955322)\"><path fill=\"rgb(251,114,153)\" fill-opacity=\"1\" d=\" M8,-3 C8,-3 8,3 8,3 C8,4.931650161743164 6.431650161743164,6.5 4.5,6.5 C4.5,6.5 -4.5,6.5 -4.5,6.5 C-6.431650161743164,6.5 -8,4.931650161743164 -8,3 C-8,3 -8,-3 -8,-3 C-8,-4.931650161743164 -6.431650161743164,-6.5 -4.5,-6.5 C-4.5,-6.5 4.5,-6.5 4.5,-6.5 C6.431650161743164,-6.5 8,-4.931650161743164 8,-3z\"></path></g></g><g transform=\"matrix(0.9883429408073425,-0.7275781631469727,0.6775955557823181,0.920446515083313,7.3224687576293945,-0.7606706619262695)\" opacity=\"1\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(0.9937776327133179,-0.11138220876455307,0.11138220876455307,0.9937776327133179,-2.5239999294281006,1.3849999904632568)\"><path fill=\"rgb(0,0,0)\" fill-opacity=\"1\" d=\" M0.75,-1.25 C0.75,-1.25 0.75,1.25 0.75,1.25 C0.75,1.663925051689148 0.4139249920845032,2 0,2 C0,2 0,2 0,2 C-0.4139249920845032,2 -0.75,1.663925051689148 -0.75,1.25 C-0.75,1.25 -0.75,-1.25 -0.75,-1.25 C-0.75,-1.663925051689148 -0.4139249920845032,-2 0,-2 C0,-2 0,-2 0,-2 C0.4139249920845032,-2 0.75,-1.663925051689148 0.75,-1.25z\" style=\"fill: #000;\"></path></g></g><g transform=\"matrix(1.1436611413955688,0.7535901665687561,-0.6317168474197388,0.9587040543556213,16.0070743560791,2.902894973754883)\" opacity=\"1\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(0.992861807346344,0.1192704513669014,-0.1192704513669014,0.992861807346344,-2.5239999294281006,1.3849999904632568)\"><path fill=\"rgb(0,0,0)\" fill-opacity=\"1\" d=\" M0.75,-1.25 C0.75,-1.25 0.75,1.25 0.75,1.25 C0.75,1.663925051689148 0.4139249920845032,2 0,2 C0,2 0,2 0,2 C-0.4139249920845032,2 -0.75,1.663925051689148 -0.75,1.25 C-0.75,1.25 -0.75,-1.25 -0.75,-1.25 C-0.75,-1.663925051689148 -0.4139249920845032,-2 0,-2 C0,-2 0,-2 0,-2 C0.4139249920845032,-2 0.75,-1.663925051689148 0.75,-1.25z\" style=\"fill: #000;\"></path></g></g><g transform=\"matrix(1,0,0,1,8.890999794006348,8.406000137329102)\" opacity=\"1\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(1,0,0,1,0.09099999815225601,1.1009999513626099)\"><path fill=\"rgb(255,255,255)\" fill-opacity=\"1\" d=\" M7,-3 C7,-3 7,3 7,3 C7,4.379749774932861 5.879749774932861,5.5 4.5,5.5 C4.5,5.5 -4.5,5.5 -4.5,5.5 C-5.879749774932861,5.5 -7,4.379749774932861 -7,3 C-7,3 -7,-3 -7,-3 C-7,-4.379749774932861 -5.879749774932861,-5.5 -4.5,-5.5 C-4.5,-5.5 4.5,-5.5 4.5,-5.5 C5.879749774932861,-5.5 7,-4.379749774932861 7,-3z\"></path><path stroke-linecap=\"butt\" stroke-linejoin=\"miter\" fill-opacity=\"0\" stroke-miterlimit=\"4\" stroke=\"rgb(0,0,0)\" stroke-opacity=\"1\" stroke-width=\"1.5\" d=\" M7,-3 C7,-3 7,3 7,3 C7,4.379749774932861 5.879749774932861,5.5 4.5,5.5 C4.5,5.5 -4.5,5.5 -4.5,5.5 C-5.879749774932861,5.5 -7,4.379749774932861 -7,3 C-7,3 -7,-3 -7,-3 C-7,-4.379749774932861 -5.879749774932861,-5.5 -4.5,-5.5 C-4.5,-5.5 4.5,-5.5 4.5,-5.5 C5.879749774932861,-5.5 7,-4.379749774932861 7,-3z\"></path></g></g><g transform=\"matrix(1,0,0,1,8.89900016784668,8.083999633789062)\" opacity=\"1\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(1,0,0,1,-2.5239999294281006,1.3849999904632568)\"><path fill=\"rgb(0,0,0)\" fill-opacity=\"1\" d=\" M0.875,-1.125 C0.875,-1.125 0.875,1.125 0.875,1.125 C0.875,1.607912540435791 0.48291251063346863,2 0,2 C0,2 0,2 0,2 C-0.48291251063346863,2 -0.875,1.607912540435791 -0.875,1.125 C-0.875,1.125 -0.875,-1.125 -0.875,-1.125 C-0.875,-1.607912540435791 -0.48291251063346863,-2 0,-2 C0,-2 0,-2 0,-2 C0.48291251063346863,-2 0.875,-1.607912540435791 0.875,-1.125z\" style=\"fill: #000;\"></path></g></g><g transform=\"matrix(1,0,0,1,14.008999824523926,8.083999633789062)\" opacity=\"1\" style=\"display: block;\"><g opacity=\"1\" transform=\"matrix(1,0,0,1,-2.5239999294281006,1.3849999904632568)\"><path fill=\"rgb(0,0,0)\" fill-opacity=\"1\" d=\" M0.8999999761581421,-1.100000023841858 C0.8999999761581421,-1.100000023841858 0.8999999761581421,1.100000023841858 0.8999999761581421,1.100000023841858 C0.8999999761581421,1.596709966659546 0.4967099726200104,2 0,2 C0,2 0,2 0,2 C-0.4967099726200104,2 -0.8999999761581421,1.596709966659546 -0.8999999761581421,1.100000023841858 C-0.8999999761581421,1.100000023841858 -0.8999999761581421,-1.100000023841858 -0.8999999761581421,-1.100000023841858 C-0.8999999761581421,-1.596709966659546 -0.4967099726200104,-2 0,-2 C0,-2 0,-2 0,-2 C0.4967099726200104,-2 0.8999999761581421,-1.596709966659546 0.8999999761581421,-1.100000023841858z\" style=\"fill: #000;\"></path></g></g></g></svg></span>\n            </div>\n        </div>\n  </div>\n    </div>";
+    value += "<div class=\"xplayer-icons xplayer-comment-box xplayer-danmaku-composer\">\n<button type=\"button\" class=\"xplayer-icon xplayer-setting-showdan showdan-setting\" data-balloon=\"显示弹幕\" data-balloon-pos=\"up\" aria-label=\"显示弹幕\" aria-pressed=\"true\"><input class=\"xplayer-showdan-setting-input\" type=\"checkbox\" tabindex=\"-1\" aria-hidden=\"true\"><span class=\"xplayer-icon-content\">" + icons.danmakuSwitch + "</span></button><button type=\"button\" class=\"xplayer-icon xplayer-comment-setting-icon\" data-balloon=\"弹幕显示设置\" data-balloon-pos=\"up\" aria-label=\"弹幕显示设置\" aria-expanded=\"false\"><span class=\"xplayer-icon-content\">" + icons.pallette + "</span></button>";
+    value += "<div class=\"xplayer-danmaku-display-box\" role=\"group\" aria-label=\"弹幕显示设置\" aria-hidden=\"true\">\n<div class=\"xplayer-danmaku-display-title\">按类型显示</div>\n<div class=\"xplayer-danmaku-filters\"><label><input type=\"checkbox\" data-danmaku-filter=\"right\" checked><span>滚动</span></label><label><input type=\"checkbox\" data-danmaku-filter=\"fixed\" checked><span>固定</span></label><label><input type=\"checkbox\" data-danmaku-filter=\"color\" checked><span>彩色</span></label></div>\n<label class=\"xplayer-setting-item xplayer-setting-danunlimit xplayer-danmaku-density\"><span class=\"xplayer-label\">海量弹幕</span><input class=\"xplayer-danunlimit-setting-input\" type=\"checkbox\"></label>\n<label class=\"xplayer-danmaku-display-row\"><span>显示区域</span><input type=\"range\" data-danmaku-display=\"area\" aria-label=\"弹幕显示区域\" min=\"25\" max=\"100\" step=\"25\" value=\"100\"><output>100%</output></label>\n<label class=\"xplayer-danmaku-display-row\"><span>不透明度</span><input type=\"range\" data-danmaku-display=\"opacity\" aria-label=\"弹幕不透明度\" min=\"0\" max=\"100\" step=\"1\" value=\"70\"><output>70%</output></label>\n<label class=\"xplayer-danmaku-display-row\"><span>弹幕字号</span><input type=\"range\" data-danmaku-display=\"size\" aria-label=\"观看弹幕字号\" min=\"50\" max=\"150\" step=\"5\" value=\"100\"><output>100%</output></label>\n<label class=\"xplayer-danmaku-display-row\"><span>弹幕速度</span><input type=\"range\" data-danmaku-display=\"speed\" aria-label=\"弹幕移动速度\" min=\"0.5\" max=\"2\" step=\"0.25\" value=\"1\"><output>适中</output></label>\n</div>\n<button type=\"button\" class=\"xplayer-icon xplayer-send-style-icon\" data-balloon=\"发送弹幕样式\" data-balloon-pos=\"up\" aria-label=\"发送弹幕样式\" aria-expanded=\"false\"><span aria-hidden=\"true\"><svg viewBox=\"0 0 24 24\" class=\"xplayer-send-style-svg\"><path d=\"m5.5 17 5.4-12.2a1.2 1.2 0 0 1 2.2 0L18.5 17M8 12h8M4 21h16\"/></svg></span></button>\n<div class=\"xplayer-comment-setting-box\" role=\"group\" aria-label=\"发送弹幕样式\" aria-hidden=\"true\"><div class=\"xplayer-danmaku-display-title\">发送弹幕样式</div><div class=\"xplayer-comment-setting-type\"><div class=\"xplayer-comment-setting-title\">";
     value += $escape(tran("Set danmaku type"));
     value += "</div>\n                <label>\n                    <input type=\"radio\" name=\"xplayer-danmaku-type-";
     value += $escape(index);
@@ -2203,7 +2201,7 @@ function (module, exports, requireModule) {
     value += $escape(index);
     value += "\" value=\"bottom\">\n                    <span>";
     value += $escape(tran("Bottom"));
-    value += "</span>\n                </label>\n            </div>\n    <div class=\"xplayer-comment-setting-font\"><div class=\"xplayer-comment-setting-title\">弹幕大小</div><label><input type=\"radio\"name=\"xplayer-danmaku-font-0\"value=\"50px\"><span>超大</span></label><label><input type=\"radio\"name=\"xplayer-danmaku-font-0\"value=\"35px\"><span>较大</span></label><label><input type=\"radio\"name=\"xplayer-danmaku-font-0\"value=\"27.5px\"checked=\"\"><span>标准</span></label><label><input type=\"radio\"name=\"xplayer-danmaku-font-0\"value=\"18px\"><span>较小</span></label></div>      <div class=\"xplayer-comment-setting-color\">\n                <div class=\"xplayer-comment-setting-title\">";
+    value += "</span>\n                </label>\n            </div>\n    <div class=\"xplayer-comment-setting-font\"><div class=\"xplayer-comment-setting-title\">弹幕大小</div><label><input type=\"radio\"name=\"xplayer-danmaku-font-" + $escape(index) + "\"value=\"50px\"><span>超大</span></label><label><input type=\"radio\"name=\"xplayer-danmaku-font-" + $escape(index) + "\"value=\"35px\"><span>较大</span></label><label><input type=\"radio\"name=\"xplayer-danmaku-font-" + $escape(index) + "\"value=\"27.5px\"checked=\"\"><span>标准</span></label><label><input type=\"radio\"name=\"xplayer-danmaku-font-" + $escape(index) + "\"value=\"18px\"><span>较小</span></label></div>      <div class=\"xplayer-comment-setting-color\">\n                <div class=\"xplayer-comment-setting-title\">";
     value += $escape(tran("Set danmaku color"));
     value += "</div>\n                <label>\n                    <input type=\"radio\" name=\"xplayer-danmaku-color-";
     value += $escape(index);
@@ -2238,7 +2236,7 @@ function (module, exports, requireModule) {
     value += "\" maxlength=\"30\">\n        <button class=\"xplayer-icon xplayer-send-icon\" data-balloon=\"";
     value += $escape(tran("Send"));
     value += "\" data-balloon-pos=\"up\">\n            <span class=\"xplayer-icon-content\">";
-    value += icons.send;
+    value += "发送";
     value += "</span>\n        </button>\n<input id=\"dmtext\" dmtype=\"right\" size=\"27.5px\" class=\"yzm-xplayer-comment-input\" type=\"text\" placeholder=\"";
     value += $escape(tran("Input danmaku, hit Enter"));
     value += "\" maxlength=\"30\" >\n        <button class=\"xplayer-icon yzm-xplayer-send-icon\" data-balloon=\"";
@@ -2403,6 +2401,11 @@ function (module, exports, requireModule) {
       this._opacity = this.options.opacity;
       this.events = this.options.events;
       this.unlimited = this.options.unlimited;
+      this._displayArea = 100;
+      this._displaySize = 100;
+      this._displaySpeed = 1;
+      this._displayFilters = {right: true, fixed: true, color: true};
+      this._unlimitedCursor = {right: 0, top: 0, bottom: 0};
       this._measure("");
       this.load();
     }
@@ -2548,135 +2551,281 @@ function (module, exports, requireModule) {
         return this._opacity;
       }
     }, {
-      key: "draw",
-      value: function (argument20) {
-        var self4 = this;
-        if (this.showing) {
-          var height = this.options.height;
-          var offsetWidth = this.container.offsetWidth;
-          var offsetHeight = this.container.offsetHeight;
-          var value9 = parseInt(offsetHeight / height);
-          function helper4(argument21) {
-            var value1 = argument21.offsetWidth || parseInt(argument21.style.width);
-            var value10 = argument21.getBoundingClientRect().right || self4.container.getBoundingClientRect().right + value1;
-            return self4.container.getBoundingClientRect().right - value10;
+      key: "displayArea",
+      value: function (percent) {
+        return this._displayPreference("_displayArea", percent, 25, 100);
+      }
+    }, {
+      key: "displaySize",
+      value: function (percent) {
+        return this._displayPreference("_displaySize", percent, 50, 150);
+      }
+    }, {
+      key: "displaySpeed",
+      value: function (multiplier) {
+        return this._displayPreference("_displaySpeed", multiplier, 0.5, 2);
+      }
+    }, {
+      key: "displayFilter",
+      value: function (kind, enabled) {
+        if (!Object.prototype.hasOwnProperty.call(this._displayFilters, kind)) return undefined;
+        if (undefined !== enabled && this._displayFilters[kind] !== !!enabled) {
+          this._displayFilters[kind] = !!enabled;
+          this._refreshDisplay();
+        }
+        return this._displayFilters[kind];
+      }
+    }, {
+      key: "_displayPreference",
+      value: function (key, input, minimum, maximum) {
+        if (undefined !== input && Number.isFinite(Number(input))) {
+          var next = Math.max(minimum, Math.min(maximum, Number(input)));
+          if (next !== this[key]) {
+            this[key] = next;
+            this._refreshDisplay();
           }
-          function helper5(argument22) {
-            return (offsetWidth + argument22) / 5;
+        }
+        return this[key];
+      }
+    }, {
+      key: "_displayColor",
+      value: function (color) {
+        if (null === color || undefined === color || color === "") return "#fff";
+        if (typeof color === "number" || /^\d+$/.test(String(color))) {
+          var numeric = Number(color);
+          if (Number.isInteger(numeric) && numeric >= 0 && numeric <= 0xffffff) {
+            return "#" + numeric.toString(16).padStart(6, "0");
           }
-          function helper6(argument23, argument24, argument25) {
-            var value11 = offsetWidth / helper5(argument25);
-            for (var index6 = 0; self4.unlimited || index6 < value9; index6++) {
-              var value12 = function (argument26) {
-                var value13 = self4.danTunnel[argument24][argument26 + ""];
-                if (!value13 || !value13.length) {
-                  self4.danTunnel[argument24][argument26 + ""] = [argument23];
-                  argument23.addEventListener("animationend", function () {
-                    self4.danTunnel[argument24][argument26 + ""].splice(0, 1);
-                  });
-                  return {
-                    v: argument26 % value9
-                  };
+        }
+        return String(color);
+      }
+    }, {
+      key: "_displayAllowed",
+      value: function (item) {
+        var type = item.type || "right";
+        if (!Object.prototype.hasOwnProperty.call(this.danTunnel, type)) return false;
+        if (!this._displayFilters[type === "right" ? "right" : "fixed"]) return false;
+        var color = this._displayColor(item.color).replace(/\s+/g, "").toLowerCase();
+        var white = ["#fff", "#ffffff", "white", "rgb(255,255,255)", "rgba(255,255,255,1)"].includes(color);
+        return this._displayFilters.color || white;
+      }
+    }, {
+      key: "_animationProgress",
+      value: function (element) {
+        var state = element._danmakuState;
+        if (!state) return 0;
+        if (state.staged) return state.progress;
+        if (element.getAnimations) {
+          var animation = element.getAnimations()[0];
+          if (animation && animation.effect) {
+            var timing = animation.effect.getComputedTiming && animation.effect.getComputedTiming();
+            if (timing && typeof timing.progress === "number") return Math.max(0, Math.min(1, timing.progress));
+            var delay = parseFloat(element.style.animationDelay) || 0;
+            if (typeof animation.currentTime === "number") {
+              return Math.max(0, Math.min(1, (animation.currentTime / 1000 - delay) / state.duration));
+            }
+          }
+        }
+        if (state.type === "right") {
+          var right = element.getBoundingClientRect().right;
+          var containerRight = this.container.getBoundingClientRect().right;
+          if (right) return Math.max(0, Math.min(1, (containerRight + state.width - right) / (this.container.offsetWidth + state.width)));
+        }
+        var now = state.pausedAt || Date.now();
+        return Math.max(0, Math.min(1, (now - state.startedAt) / (state.duration * 1000)));
+      }
+    }, {
+      key: "_refreshDisplay",
+      value: function () {
+        var items = [], states = [];
+        var elements = Array.from(this.container.getElementsByClassName("xplayer-danmaku-item"));
+        for (var index = 0; index < elements.length; index++) {
+          if (!elements[index]._danmakuItem) continue;
+          var progress = this._animationProgress(elements[index]);
+          if (progress < 1) {
+            items.push(elements[index]._danmakuItem);
+            states.push({progress: progress, hovered: false});
+          }
+          elements[index]._danmakuState.active = false;
+        }
+        this.danTunnel = {right: {}, top: {}, bottom: {}};
+        this._unlimitedCursor = {right: 0, top: 0, bottom: 0};
+        this.container.innerHTML = "";
+        if (items.length) this.draw(items, states);
+      }
+    }, {
+      key: "_animationDuration",
+      value: function (type) {
+        var probe = this.container.ownerDocument.createElement("div");
+        probe.classList.add("xplayer-danmaku-item", "xplayer-danmaku-" + type, "xplayer-danmaku-move");
+        probe.style.visibility = "hidden";
+        probe.style.animationPlayState = "paused";
+        this.container.appendChild(probe);
+        var style = getComputedStyle(probe);
+        var duration = (style.animationDuration || "").split(",")[0].trim();
+        this.fontFamily = style.fontFamily || this.fontFamily;
+        this.fontWeight = style.fontWeight || this.fontWeight;
+        probe.remove();
+        var seconds = parseFloat(duration);
+        if (/ms$/.test(duration)) seconds /= 1000;
+        if (!(seconds > 0)) seconds = type === "right" ? 13.5 : 4;
+        return seconds / this._displaySpeed;
+      }
+    }, {
+      key: "_tunnelFits",
+      value: function (previous, element) {
+        var oldState = previous._danmakuState, state = element._danmakuState;
+        if (!oldState || !oldState.active) return true;
+        if (state.type !== "right" || oldState.hovered) return false;
+        var width = this.container.offsetWidth;
+        var oldProgress = this._animationProgress(previous);
+        var left = width - state.progress * (width + state.width);
+        var oldRight = width + oldState.width - oldProgress * (width + oldState.width);
+        var gap = left - oldRight - 10;
+        if (gap <= 0) return false;
+        var speed = (width + state.width) / state.duration;
+        var oldSpeed = (width + oldState.width) / oldState.duration;
+        return speed <= oldSpeed || gap > (speed - oldSpeed) * oldState.duration * (1 - oldProgress);
+      }
+    }, {
+      key: "_allocateTunnel",
+      value: function (element, availableHeight) {
+        var self = this, state = element._danmakuState;
+        var tunnel = this.danTunnel[state.type], maximumTop = availableHeight - state.height;
+        if (maximumTop < 0) return -1;
+        var tunnels = state.type === "right" ? [tunnel] : [this.danTunnel.top, this.danTunnel.bottom];
+        var top = 0;
+        while (top <= maximumTop) {
+          var blockedBottom = top;
+          var actualTop = state.type === "bottom" ? maximumTop - top : top;
+          for (var tunnelIndex = 0; tunnelIndex < tunnels.length; tunnelIndex++) {
+            for (var key in tunnels[tunnelIndex]) {
+              var members = tunnels[tunnelIndex][key];
+              for (var index = 0; index < members.length; index++) {
+                var previous = members[index], oldState = previous._danmakuState;
+                if (!oldState || !oldState.active || oldState.actualTop + oldState.height <= actualTop || oldState.actualTop >= actualTop + state.height) continue;
+                if (!this._tunnelFits(previous, element)) {
+                  var next = state.type === "bottom" ? availableHeight - oldState.actualTop : oldState.actualTop + oldState.height;
+                  blockedBottom = Math.max(blockedBottom, next);
                 }
-                if ("right" !== argument24) {
-                  return "continue";
-                }
-                for (var index7 = 0; index7 < value13.length; index7++) {
-                  var value14 = helper4(value13[index7]) - 10;
-                  if (value14 <= offsetWidth - value11 * helper5(parseInt(value13[index7].style.width)) || value14 <= 0) {
-                    break;
-                  }
-                  if (index7 === value13.length - 1) {
-                    self4.danTunnel[argument24][argument26 + ""].push(argument23);
-                    argument23.addEventListener("animationend", function () {
-                      self4.danTunnel[argument24][argument26 + ""].splice(0, 1);
-                    });
-                    return {
-                      v: argument26 % value9
-                    };
-                  }
-                }
-              }(index6);
-              switch (value12) {
-                case "continue":
-                  continue;
-                default:
-                  if ("object" === (undefined === value12 ? "undefined" : value(value12))) {
-                    return value12.v;
-                  }
               }
             }
-            return -1;
           }
+          if (blockedBottom === top) break;
+          top = Math.ceil(blockedBottom);
+        }
+        if (top > maximumTop) {
+          if (!this.unlimited) return -1;
+          var rows = Math.max(1, Math.floor(availableHeight / state.height));
+          top = (this._unlimitedCursor[state.type]++ % rows) * state.height;
+        }
+        state.top = top;
+        state.actualTop = state.type === "bottom" ? maximumTop - top : top;
+        tunnel[top] ||= [];
+        tunnel[top].push(element);
+        element.addEventListener("animationend", function () {
+          state.active = false;
+          var members = self.danTunnel[state.type][top];
+          if (!members) return;
+          var index = members.indexOf(element);
+          if (index >= 0) members.splice(index, 1);
+          if (!members.length) delete self.danTunnel[state.type][top];
+        });
+        return top;
+      }
+    }, {
+      key: "draw",
+      value: function (argument20, restoreStates) {
+        var self4 = this;
+        if (this.showing) {
+          var offsetWidth = this.container.offsetWidth;
+          var offsetHeight = this.container.offsetHeight;
+          var availableHeight = offsetHeight * this._displayArea / 100;
+          var durations = {}, drawn = [];
           if ("[object Array]" !== Object.prototype.toString.call(argument20)) {
             argument20 = [argument20];
           }
-          var value0 = document.createDocumentFragment();
+          var doc = this.container.ownerDocument;
+          var value0 = doc.createDocumentFragment();
           for (var index5 = 0; index5 < argument20.length; index5++) {
             (function (argument27) {
-              argument20[argument27].type ||= "right";
-              argument20[argument27].color ||= "#fff";
-              if (!argument20[argument27].size) {
-                argument20[argument27].fontSize = "27.5px";
-              }
-              var value15 = document.createElement("div");
+              var item = argument20[argument27];
+              if (!item || !self4._displayAllowed(item)) return;
+              var type = item.type || "right";
+              var restore = restoreStates && restoreStates[argument27];
+              var progress = restore ? restore.progress : 0;
+              if (progress >= 1) return;
+              var value15 = doc.createElement("div");
               var canReport = !window.XplayerDanmakuSources || window.XplayerDanmakuSources.canReport();
               if (canReport) value15.addEventListener("click", function () {
-                window.XGGM.danmu.report(String(argument20[argument27].commentId || ''), String(argument20[argument27].playerId || ''), String(argument20[argument27].text), String(argument20[argument27].author || ''));
+                window.XGGM.danmu.report(String(item.commentId || ''), String(item.playerId || ''), String(item.text), String(item.author || ''));
               });
               value15.setAttribute("style", "pointer-events: auto !important;cursor:" + (canReport ? 'pointer' : 'default') + ";");
               if (canReport) {value15.setAttribute("data-balloon", "点击举报此弹幕");value15.setAttribute("data-balloon-pos", "down");}
               value15.addEventListener("mouseenter", function () {
+                value15._danmakuState.hovered = true;
+                value15._danmakuState.pausedAt ||= Date.now();
                 value15.style.animationPlayState = "paused";
               });
               value15.addEventListener("mouseleave", function () {
+                var state = value15._danmakuState;
+                state.hovered = false;
+                if (!self4.paused && state.pausedAt) {
+                  state.startedAt += Date.now() - state.pausedAt;
+                  state.pausedAt = 0;
+                }
                 value15.style.animationPlayState = "";
               });
               value15.classList.add("xplayer-danmaku-item");
-              value15.classList.add("xplayer-danmaku-" + argument20[argument27].type);
-              if(window.XplayerDanmakuContent)window.XplayerDanmakuContent.render(value15,argument20[argument27].text);
-              else value15.textContent = String(argument20[argument27].text || '');
-              if (argument20[argument27].border) value15.style.borderBottom = argument20[argument27].border;
+              value15.classList.add("xplayer-danmaku-" + type);
+              if(window.XplayerDanmakuContent)window.XplayerDanmakuContent.render(value15,item.text);
+              else value15.textContent = String(item.text || '');
+              if (item.border) value15.style.borderBottom = item.border;
               value15.style.opacity = self4._opacity;
-              value15.style.color = argument20[argument27].color;
-              var fontSize = window.XplayerDanmakuContent ? window.XplayerDanmakuContent.fontSize(argument20[argument27].size,self4.container.ownerDocument) : parseFloat(argument20[argument27].size)||27.5;
-              value15.style.fontSize = fontSize + 'px';
+              value15.style.color = self4._displayColor(item.color);
+              var fontSize = window.XplayerDanmakuContent ? window.XplayerDanmakuContent.fontSize(item.size,doc) : parseFloat(item.size)||27.5;
+              fontSize *= self4._displaySize / 100;
+              value15.style.setProperty("font-size", fontSize + "px", "important");
+              var hasBadge = window.XplayerDanmakuContent && window.XplayerDanmakuContent.parts && window.XplayerDanmakuContent.parts(item.text).some(function (part) {return !!part.badge;});
+              var height = Math.ceil(Math.max((self4.options.height || 30) * self4._displaySize / 100, fontSize * (hasBadge ? 1.667 : 1.125) + 2));
+              durations[type] ||= self4._animationDuration(type);
+              var value16 = self4._measure(item.text,fontSize) + 1;
+              value15._danmakuItem = item;
+              value15._danmakuState = {
+                type: type, width: value16, height: height, duration: durations[type], progress: progress,
+                staged: true, active: true, hovered: !!(restore && restore.hovered),
+                startedAt: Date.now() - progress * durations[type] * 1000,
+                pausedAt: self4.paused || restore && restore.hovered ? Date.now() : 0
+              };
+              value15.style.height = height + "px";
+              value15.style.animationDuration = durations[type] + "s";
+              value15.style.webkitAnimationDuration = durations[type] + "s";
+              if (progress) {
+                value15.style.animationDelay = -progress * durations[type] + "s";
+                value15.style.webkitAnimationDelay = value15.style.animationDelay;
+              }
+              if (restore && restore.hovered) value15.style.animationPlayState = "paused";
               value15.addEventListener("animationend", function () {
                 value15.remove();
               });
-              var value16 = self4._measure(argument20[argument27].text,fontSize);
-              var value17 = undefined;
-              switch (argument20[argument27].type) {
-                case "right":
-                  value17 = helper6(value15, argument20[argument27].type, value16);
-                  if (value17 >= 0) {
-                    value15.style.width = value16 + 1 + "px";
-                    value15.style.top = height * value17 + "px";
-                    value15.style.transform = "translateX(-" + offsetWidth + "px)";
-                  }
-                  break;
-                case "top":
-                  value17 = helper6(value15, argument20[argument27].type);
-                  if (value17 >= 0) {
-                    value15.style.top = height * value17 + "px";
-                  }
-                  break;
-                case "bottom":
-                  value17 = helper6(value15, argument20[argument27].type);
-                  if (value17 >= 0) {
-                    value15.style.bottom = height * value17 + "px";
-                  }
-                  break;
-                default:
-                  console.error("Can't handled danmaku type: " + argument20[argument27].type);
-              }
+              var value17 = self4._allocateTunnel(value15, availableHeight);
               if (value17 >= 0) {
+                if (type === "bottom") value15.style.bottom = offsetHeight - availableHeight + value17 + "px";
+                else value15.style.top = value17 + "px";
+                if (type === "right") {
+                  value15.style.width = value16 + "px";
+                  value15.style.transform = "translateX(-" + offsetWidth + "px)";
+                }
                 value15.classList.add("xplayer-danmaku-move");
                 value0.appendChild(value15);
+                drawn.push(value15);
+              } else {
+                value15._danmakuState.active = false;
               }
             })(index5);
           }
           this.container.appendChild(value0);
+          for (var index = 0; index < drawn.length; index++) drawn[index]._danmakuState.staged = false;
           return value0;
         }
       }
@@ -2684,11 +2833,24 @@ function (module, exports, requireModule) {
       key: "play",
       value: function () {
         this.paused = false;
+        var elements = this.container.getElementsByClassName("xplayer-danmaku-item"), now = Date.now();
+        for (var index = 0; index < elements.length; index++) {
+          var state = elements[index]._danmakuState;
+          if (state && state.pausedAt && !state.hovered) {
+            state.startedAt += now - state.pausedAt;
+            state.pausedAt = 0;
+          }
+        }
       }
     }, {
       key: "pause",
       value: function () {
         this.paused = true;
+        var elements = this.container.getElementsByClassName("xplayer-danmaku-item");
+        for (var index = 0; index < elements.length; index++) {
+          var state = elements[index]._danmakuState;
+          if (state && !state.pausedAt) state.pausedAt = Date.now();
+        }
       }
     }, {
       key: "_measure",
@@ -2717,11 +2879,16 @@ function (module, exports, requireModule) {
     }, {
       key: "clear",
       value: function () {
+        var elements = this.container.getElementsByClassName("xplayer-danmaku-item");
+        for (var index = 0; index < elements.length; index++) {
+          if (elements[index]._danmakuState) elements[index]._danmakuState.active = false;
+        }
         this.danTunnel = {
           right: {},
           top: {},
           bottom: {}
         };
+        this._unlimitedCursor = {right: 0, top: 0, bottom: 0};
         this.danIndex = 0;
         this.options.container.innerHTML = "";
         if (this.events) {
@@ -2736,10 +2903,7 @@ function (module, exports, requireModule) {
     }, {
       key: "resize",
       value: function () {
-        var offsetWidth2 = this.container.offsetWidth;
-        for (var value19 = this.container.getElementsByClassName("xplayer-danmaku-item"), index8 = 0; index8 < value19.length; index8++) {
-          value19[index8].style.transform = "translateX(-" + offsetWidth2 + "px)";
-        }
+        this._refreshDisplay();
       }
     }, {
       key: "hide",
@@ -2895,35 +3059,143 @@ function (module, exports, requireModule) {
       var self = this;
       helper(this, Fullscreen);
       this.player = player;
+      this.container = player.container;
+      this.video = player.video;
+      this.destroyed = false;
+      this.browserFullscreenActive = false;
+      this.nativeVideoFullscreen = false;
+      this.orientationFullscreenActive = false;
+      this.orientationFullscreenMode = "";
+      this.orientationSession = 0;
+      this.orientationLockPending = false;
+      this.orientationLockOwned = false;
       this.player.events.on("webfullscreen", function () {
         self.player.resize();
+        self.syncOrientation();
       });
       this.player.events.on("webfullscreen_cancel", function () {
         self.player.resize();
-        value2.default.setScrollPosition(self.lastScrollPosition);
+        self.syncOrientation();
+        if (self.lastScrollPosition) value2.default.setScrollPosition(self.lastScrollPosition);
       });
-      function helper4() {
-        self.player.resize();
-        if (self.isFullScreen("browser")) {
-          self.player.events.trigger("fullscreen");
-        } else {
-          value2.default.setScrollPosition(self.lastScrollPosition);
-          self.player.events.trigger("fullscreen_cancel");
+      this.onFullscreenChange = function () {
+        if (self.destroyed) return;
+        var active = self.isPlayerFullscreen();
+        if (active !== self.browserFullscreenActive) {
+          self.browserFullscreenActive = active;
+          self.player.resize();
+          if (active) {
+            self.player.events.trigger("fullscreen");
+          } else {
+            if (self.lastScrollPosition) value2.default.setScrollPosition(self.lastScrollPosition);
+            self.player.events.trigger("fullscreen_cancel");
+          }
         }
-      }
-      this.player.container.addEventListener("fullscreenchange", helper4);
-      this.player.container.addEventListener("mozfullscreenchange", helper4);
-      this.player.container.addEventListener("webkitfullscreenchange", helper4);
+        self.syncOrientation();
+      };
+      this.fullscreenChangeEvents = ["fullscreenchange", "mozfullscreenchange", "webkitfullscreenchange", "MSFullscreenChange"];
+      this.fullscreenChangeEvents.forEach(function (event) {
+        document.addEventListener(event, self.onFullscreenChange);
+        self.container.addEventListener(event, self.onFullscreenChange);
+      });
+      this.onNativeFullscreenBegin = function () {
+        self.nativeVideoFullscreen = true;
+        self.onFullscreenChange();
+      };
+      this.onNativeFullscreenEnd = function () {
+        self.nativeVideoFullscreen = false;
+        self.onFullscreenChange();
+      };
+      this.video.addEventListener("webkitbeginfullscreen", this.onNativeFullscreenBegin);
+      this.video.addEventListener("webkitendfullscreen", this.onNativeFullscreenEnd);
+      this.player.events.on("destroy", function () {
+        self.destroyed = true;
+        self.orientationFullscreenActive = false;
+        self.orientationFullscreenMode = "";
+        self.orientationSession++;
+        self.releaseOrientation();
+        self.fullscreenChangeEvents.forEach(function (event) {
+          document.removeEventListener(event, self.onFullscreenChange);
+          self.container.removeEventListener(event, self.onFullscreenChange);
+        });
+        self.video.removeEventListener("webkitbeginfullscreen", self.onNativeFullscreenBegin);
+        self.video.removeEventListener("webkitendfullscreen", self.onNativeFullscreenEnd);
+      });
     }
     value(Fullscreen, [{
       key: "isFullScreen",
       value: function () {
         switch (arguments.length > 0 && undefined !== arguments[0] ? arguments[0] : "browser") {
           case "browser":
-            return document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
+            return document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement || this.nativeVideoFullscreen;
           case "web":
-            return this.player.container.classList.contains("xplayer-fulled");
+            return this.container.classList.contains("xplayer-fulled");
         }
+      }
+    }, {
+      key: "isPlayerFullscreen",
+      value: function () {
+        var element = document.fullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement || document.msFullscreenElement;
+        return !!(this.nativeVideoFullscreen || element && (element === this.container || this.container.contains(element)));
+      }
+    }, {
+      key: "syncOrientation",
+      value: function () {
+        if (this.destroyed) return;
+        var mode = this.isPlayerFullscreen() ? "browser" : this.isFullScreen("web") ? "web" : "";
+        var active = !!mode;
+        if (mode === this.orientationFullscreenMode) return;
+        this.orientationFullscreenActive = active;
+        this.orientationFullscreenMode = mode;
+        this.orientationSession++;
+        if (active) this.requestLandscape();
+        else this.releaseOrientation();
+      }
+    }, {
+      key: "requestLandscape",
+      value: function () {
+        var self = this;
+        var navigator = window.navigator;
+        var mobile = value2.default.isMobile || /android|ipad|iphone|ipod/i.test(navigator.userAgent) || navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1;
+        if (!mobile || this.destroyed || this.orientationLockOwned || this.orientationLockPending) return;
+        var screen = window.screen;
+        if (!screen) return;
+        var orientation = screen.orientation;
+        var target = orientation && typeof orientation.lock === "function" ? orientation : screen;
+        var lock = target === orientation ? orientation.lock : screen.lockOrientation || screen.mozLockOrientation || screen.msLockOrientation || screen.webkitLockOrientation;
+        var unlock = target === orientation ? orientation.unlock : screen.unlockOrientation || screen.mozUnlockOrientation || screen.msUnlockOrientation || screen.webkitUnlockOrientation;
+        if (typeof lock !== "function") return;
+        var session = this.orientationSession;
+        this.orientationLockPending = true;
+        try {
+          // Modern mobile browsers require real fullscreen before accepting a lock.
+          var result = lock.call(target, "landscape");
+          Promise.resolve(result).then(function (locked) {
+            self.orientationLockPending = false;
+            if (locked === false) return;
+            self.orientationLockOwned = true;
+            self.orientationUnlock = typeof unlock === "function" ? function () { unlock.call(target); } : null;
+            // An exit or destruction can happen while the orientation promise is pending.
+            if (self.destroyed || !self.orientationFullscreenActive) self.releaseOrientation();
+          }, function () {
+            self.orientationLockPending = false;
+            // A new entry may have occurred while an earlier request was pending.
+            if (!self.destroyed && self.orientationFullscreenActive && session !== self.orientationSession) self.requestLandscape();
+          });
+        } catch (_) {
+          this.orientationLockPending = false;
+        }
+      }
+    }, {
+      key: "releaseOrientation",
+      value: function () {
+        if (!this.orientationLockOwned) return;
+        this.orientationLockOwned = false;
+        var unlock = this.orientationUnlock;
+        this.orientationUnlock = null;
+        try {
+          if (unlock) unlock();
+        } catch (_) {}
       }
     }, {
       key: "request",
@@ -2936,15 +3208,17 @@ function (module, exports, requireModule) {
         }
         switch (value5) {
           case "browser":
-            if (this.player.container.requestFullscreen) {
-              this.player.container.requestFullscreen();
-            } else if (this.player.container.mozRequestFullScreen) {
-              this.player.container.mozRequestFullScreen();
-            } else if (this.player.container.webkitRequestFullscreen) {
-              this.player.container.webkitRequestFullscreen();
-            } else if (this.player.video.webkitEnterFullscreen) {
-              this.player.video.webkitEnterFullscreen();
-            }
+            var self = this;
+            var request = this.container.requestFullscreen || this.container.mozRequestFullScreen || this.container.webkitRequestFullscreen || this.container.msRequestFullscreen;
+            try {
+              if (request) {
+                Promise.resolve(request.call(this.container)).then(function () {
+                  self.onFullscreenChange();
+                }, function () {});
+              } else if (this.video.webkitEnterFullscreen) {
+                this.video.webkitEnterFullscreen();
+              }
+            } catch (_) {}
             break;
           case "web":
             this.player.container.classList.add("xplayer-fulled");
@@ -2960,13 +3234,17 @@ function (module, exports, requireModule) {
       value: function () {
         switch (arguments.length > 0 && undefined !== arguments[0] ? arguments[0] : "browser") {
           case "browser":
-            if (document.cancelFullScreen) {
-              document.cancelFullScreen();
-            } else if (document.mozCancelFullScreen) {
-              document.mozCancelFullScreen();
-            } else if (document.webkitCancelFullScreen) {
-              document.webkitCancelFullScreen();
-            }
+            var self = this;
+            var exit = document.exitFullscreen || document.cancelFullScreen || document.mozCancelFullScreen || document.webkitExitFullscreen || document.webkitCancelFullScreen || document.msExitFullscreen;
+            try {
+              if (this.nativeVideoFullscreen && this.video.webkitExitFullscreen) {
+                this.video.webkitExitFullscreen();
+              } else if (exit) {
+                Promise.resolve(exit.call(document)).then(function () {
+                  self.onFullscreenChange();
+                }, function () {});
+              }
+            } catch (_) {}
             break;
           case "web":
             this.player.container.classList.remove("xplayer-fulled");
@@ -3041,6 +3319,12 @@ function (module, exports, requireModule) {
         volume: "xplayer-volume",
         unlimited: "xplayer-danmaku-unlimited",
         danmaku: "xplayer-danmaku-show",
+        displayArea: "xplayer-danmaku-display-area",
+        displaySize: "xplayer-danmaku-display-size",
+        displaySpeed: "xplayer-danmaku-display-speed",
+        displayRight: "xplayer-danmaku-display-right",
+        displayFixed: "xplayer-danmaku-display-fixed",
+        displayColor: "xplayer-danmaku-display-color",
         subtitle: "xplayer-subtitle-show"
       };
       this.default = {
@@ -3048,6 +3332,12 @@ function (module, exports, requireModule) {
         volume: argument9.options.volume || 0.7,
         unlimited: (argument9.options.danmaku && argument9.options.danmaku.unlimited ? 1 : 0) || 0,
         danmaku: 1,
+        displayArea: 100,
+        displaySize: 100,
+        displaySpeed: 1,
+        displayRight: 1,
+        displayFixed: 1,
+        displayColor: 1,
         subtitle: 1
       };
       this.data = {};
@@ -3058,7 +3348,9 @@ function (module, exports, requireModule) {
       value: function () {
         for (var value5 in this.storageName) {
           var value6 = this.storageName[value5];
-          this.data[value5] = parseFloat(value2.default.storage.get(value6) || this.default[value5]);
+          var stored = value2.default.storage.get(value6);
+          var parsed = stored === null || stored === undefined || stored === "" ? this.default[value5] : parseFloat(stored);
+          this.data[value5] = Number.isFinite(parsed) ? parsed : this.default[value5];
         }
       }
     }, {
@@ -3521,9 +3813,7 @@ function (module, exports, requireModule) {
       this.initQualityButton();
       this.initScreenshotButton();
       this.initSubtitleButton();
-      if (!value2.default.isMobile) {
-        this.initVolumeButton();
-      }
+      this.initVolumeButton();
     }
     value(Controller, [{
       key: "initPlayButton",
@@ -3988,7 +4278,7 @@ function (module, exports, requireModule) {
       }
       this.player.template.showDanmakuToggle.checked = this.showDanmaku;
       this.player.template.showDanmaku.addEventListener("click", function () {
-        self.player.template.showDanmakuToggle.checked = !self.player.template.showDanmakuToggle.checked;
+        self.player.template.showDanmakuToggle.checked = !self.showDanmaku;
         if (self.player.template.showDanmakuToggle.checked) {
           self.showDanmaku = true;
           self.player.danmaku.show();
@@ -3997,12 +4287,14 @@ function (module, exports, requireModule) {
           self.player.danmaku.hide();
         }
         self.player.user.set("danmaku", self.showDanmaku ? 1 : 0);
-        self.hide();
+        self.player.template.showDanmaku.setAttribute("aria-pressed", String(self.showDanmaku));
+        self.player.template.showDanmaku.setAttribute("aria-label", self.showDanmaku ? "关闭弹幕" : "显示弹幕");
       });
+      this.player.template.showDanmaku.setAttribute("aria-pressed", String(!!this.showDanmaku));
+      this.player.template.showDanmaku.setAttribute("aria-label", this.showDanmaku ? "关闭弹幕" : "显示弹幕");
       this.unlimitDanmaku = this.player.user.get("unlimited");
       this.player.template.unlimitDanmakuToggle.checked = this.unlimitDanmaku;
-      this.player.template.unlimitDanmaku.addEventListener("click", function () {
-        self.player.template.unlimitDanmakuToggle.checked = !self.player.template.unlimitDanmakuToggle.checked;
+      this.player.template.unlimitDanmakuToggle.addEventListener("change", function () {
         if (self.player.template.unlimitDanmakuToggle.checked) {
           self.unlimitDanmaku = true;
           self.player.danmaku.unlimit(true);
@@ -4011,7 +4303,6 @@ function (module, exports, requireModule) {
           self.player.danmaku.unlimit(false);
         }
         self.player.user.set("unlimited", self.unlimitDanmaku ? 1 : 0);
-        self.hide();
       });
       this.player.template.speed.addEventListener("click", function () {
         self.player.template.settingBox.classList.add("xplayer-setting-box-narrow");
@@ -4027,33 +4318,45 @@ function (module, exports, requireModule) {
       }
       if (this.player.danmaku) {
         this.player.on("danmaku_opacity", function (argument0) {
-          self.player.bar.set("danmaku", argument0, "width");
+          var input = self.player.template.danmakuDisplayBox.querySelector('[data-danmaku-display="opacity"]');
+          input.value = Math.round(argument0 * 100);
+          input.parentElement.querySelector("output").textContent = input.value + "%";
           self.player.user.set("opacity", argument0);
         });
         this.player.danmaku.opacity(this.player.user.get("opacity"));
-        function helper5(argument1) {
-          var value5 = argument1 || window.event;
-          var value6 = ((value5.clientX || value5.changedTouches[0].clientX) - value2.default.getElementViewLeft(self.player.template.danmakuOpacityBarWrap)) / 130;
-          value6 = Math.max(value6, 0);
-          value6 = Math.min(value6, 1);
-          self.player.danmaku.opacity(value6);
-        }
-        var helper4 = function value7() {
-          document.removeEventListener(value2.default.nameMap.dragEnd, value7);
-          document.removeEventListener(value2.default.nameMap.dragMove, helper5);
-          self.player.template.danmakuOpacityBox.classList.remove("xplayer-setting-danmaku-active");
-        };
-        this.player.template.danmakuOpacityBarWrapWrap.addEventListener("click", function (argument10) {
-          var value8 = argument10 || window.event;
-          var value9 = ((value8.clientX || value8.changedTouches[0].clientX) - value2.default.getElementViewLeft(self.player.template.danmakuOpacityBarWrap)) / 130;
-          value9 = Math.max(value9, 0);
-          value9 = Math.min(value9, 1);
-          self.player.danmaku.opacity(value9);
+        var methods = {area: "displayArea", size: "displaySize", speed: "displaySpeed"};
+        this.player.template.danmakuDisplayBox.querySelectorAll("[data-danmaku-display]").forEach(function (input) {
+          var kind = input.dataset.danmakuDisplay;
+          var method = methods[kind];
+          if (method) {
+            var stored = self.player.user.get(method);
+            if (Number.isFinite(stored)) self.player.danmaku[method](stored);
+            input.value = self.player.danmaku[method]();
+          }
+          function paint() {
+            var amount = Number(input.value);
+            input.parentElement.querySelector("output").textContent = kind === "speed" ? (amount === 1 ? "适中" : amount + "×") : amount + "%";
+          }
+          paint();
+          input.addEventListener("input", function () {
+            if (kind === "opacity") self.player.danmaku.opacity(Number(input.value) / 100);
+            else {
+              self.player.danmaku[method](Number(input.value));
+              self.player.user.set(method, self.player.danmaku[method]());
+            }
+            paint();
+          });
         });
-        this.player.template.danmakuOpacityBarWrapWrap.addEventListener(value2.default.nameMap.dragStart, function () {
-          document.addEventListener(value2.default.nameMap.dragMove, helper5);
-          document.addEventListener(value2.default.nameMap.dragEnd, helper4);
-          self.player.template.danmakuOpacityBox.classList.add("xplayer-setting-danmaku-active");
+        var filterKeys = {right: "displayRight", fixed: "displayFixed", color: "displayColor"};
+        this.player.template.danmakuDisplayBox.querySelectorAll("[data-danmaku-filter]").forEach(function (input) {
+          var kind = input.dataset.danmakuFilter;
+          var stored = self.player.user.get(filterKeys[kind]);
+          input.checked = stored !== 0;
+          self.player.danmaku.displayFilter(kind, input.checked);
+          input.addEventListener("change", function () {
+            self.player.danmaku.displayFilter(kind, input.checked);
+            self.player.user.set(filterKeys[kind], input.checked ? 1 : 0);
+          });
         });
       }
     }
@@ -4072,6 +4375,7 @@ function (module, exports, requireModule) {
     }, {
       key: "show",
       value: function () {
+        if (this.player.comment) this.player.comment.hide();
         this.player.template.settingBox.classList.add("xplayer-setting-box-open");
         this.player.template.mask.classList.add("xplayer-mask-show");
         this.player.controller.disableAutoHide = true;
@@ -4081,138 +4385,192 @@ function (module, exports, requireModule) {
   }();
   exports.default = SettingsExport;
 },
-/* Recovered original module 46: comment. Bindings renamed by scope, not rewritten. */
+/* Independent viewing settings and authored styles for the danmaku composer. */
 function (module, exports, requireModule) {
   "use strict";
+  Object.defineProperty(exports, "__esModule", {value: true});
 
-  function helper(argument, argument2) {
-    if (!(argument instanceof argument2)) {
-      throw new TypeError("Cannot call a class as a function");
-    }
-  }
-  Object.defineProperty(exports, "__esModule", {
-    value: true
-  });
-  var value = function () {
-    function helper2(argument3, argument4) {
-      for (var index = 0; index < argument4.length; index++) {
-        var value3 = argument4[index];
-        value3.enumerable = value3.enumerable || false;
-        value3.configurable = true;
-        if ("value" in value3) {
-          value3.writable = true;
-        }
-        Object.defineProperty(argument3, value3.key, value3);
-      }
-    }
-    return function (argument5, argument6, argument7) {
-      if (argument6) {
-        helper2(argument5.prototype, argument6);
-      }
-      if (argument7) {
-        helper2(argument5, argument7);
-      }
-      return argument5;
+  function Comment(player) {
+    this.player = player;
+    this.cleanups = [];
+    this.openDocument = null;
+    var self = this, template = player.template;
+    this.outside = function (event) {
+      if (!template.controller.contains(event.target)) self.hide();
+      else if (!template.commentSettingBox.contains(event.target) &&
+        !template.danmakuDisplayBox.contains(event.target) &&
+        !template.sendStyleButton.contains(event.target) &&
+        !template.commentButton.contains(event.target) &&
+        !template.showDanmaku.contains(event.target) &&
+        !template.commentSettingButton.contains(event.target) &&
+        !template.yzmcomment.contains(event.target) &&
+        !template.commentInput.contains(event.target)) self.hide();
     };
-  }();
-  var CommentExport = function () {
-    function Comment(player) {
-      var self = this;
-      helper(this, Comment);
-      this.player = player;
-      this.player.template.mask.addEventListener("click", function () {
-        self.hide();
-      });
-      this.player.template.commentButton.addEventListener("click", function () {
-        self.show();
-      });
-      this.player.template.yzmcomment.addEventListener("click", function () {
-        self.show();
-      });
-      this.player.template.commentSettingButton.addEventListener("click", function () {
-        self.toggleSetting();
-      });
-      this.player.template.commentColorSettingBox.addEventListener("click", function () {
-        if (self.player.template.commentColorSettingBox.querySelector("input:checked+span")) {
-          var value4 = self.player.template.commentColorSettingBox.querySelector("input:checked").value;
-          self.player.template.commentSettingFill.style.fill = value4;
-          self.player.template.commentInput.style.color = value4;
-          self.player.template.commentSendFill.style.fill = value4;
-        }
-      });
-      this.player.template.commentInput.addEventListener("click", function () {
-        self.hideSetting();
-      });
-      this.player.template.commentInput.addEventListener("keydown", function (argument8) {
-        if (13 === (argument8 || window.event).keyCode) {
-          self.send();
-        }
-      });
-      this.player.template.commentSendButton.addEventListener("click", function () {
-        self.send();
-      });
+    this.escape = function (event) {
+      if (event.key === "Escape" || event.keyCode === 27) {
+        var button = template.danmakuDisplayBox.classList.contains("xplayer-danmaku-display-open") ? template.commentSettingButton : template.sendStyleButton;
+        self.hide(); button.focus();
+      }
+    };
+    this.listen(template.mask, "click", function () { self.hide(); });
+    this.listen(template.commentButton, "click", function () { self.show(); });
+    this.listen(template.yzmcomment, "click", function () { self.show(false); self.hideSetting(); self.hideDisplay(); });
+    this.listen(template.commentSettingButton, "click", function () { self.toggleDisplay(); });
+    this.listen(template.sendStyleButton, "click", function () { self.toggleSetting(); });
+    this.listen(template.commentColorSettingBox, "change", function () { self.syncColor(); });
+    this.listen(template.commentInput, "click", function () { self.hideSetting(); self.hideDisplay(); });
+    this.listen(template.commentInput, "keydown", function (event) {
+      if (!event.isComposing && (event.key === "Enter" || event.keyCode === 13)) self.send();
+    });
+    this.listen(template.commentSendButton, "click", function () { self.send(); });
+    this.syncColor();
+    function syncLayout() { self.syncMobileComposer(); self.positionPanels(); }
+    player.on("resize", syncLayout);
+    ["fullscreen", "fullscreen_cancel", "webfullscreen", "webfullscreen_cancel"].forEach(function (event) {
+      player.on(event, syncLayout);
+    });
+    if (window.addEventListener) {
+      this.listen(window, "resize", syncLayout);
+      this.listen(window, "orientationchange", syncLayout);
     }
-    value(Comment, [{
-      key: "show",
-      value: function () {
-        this.player.controller.disableAutoHide = true;
-        this.player.template.controller.classList.add("xplayer-controller-comment");
-        this.player.template.mask.classList.add("xplayer-mask-show");
-        this.player.container.classList.add("xplayer-show-controller");
-        (this.player.template.yzmcomment || this.player.template.commentInput).focus();
-      }
-    }, {
-      key: "hide",
-      value: function () {
-        this.player.template.controller.classList.remove("xplayer-controller-comment");
-        this.player.template.mask.classList.remove("xplayer-mask-show");
-        this.player.container.classList.remove("xplayer-show-controller");
-        this.player.controller.disableAutoHide = false;
-        this.hideSetting();
-      }
-    }, {
-      key: "showSetting",
-      value: function () {
-        this.player.template.commentSettingBox.classList.add("xplayer-comment-setting-open");
-      }
-    }, {
-      key: "hideSetting",
-      value: function () {
-        this.player.template.commentSettingBox.classList.remove("xplayer-comment-setting-open");
-      }
-    }, {
-      key: "toggleSetting",
-      value: function () {
-        if (this.player.template.commentSettingBox.classList.contains("xplayer-comment-setting-open")) {
-          this.hideSetting();
-        } else {
-          this.showSetting();
-        }
-      }
-    }, {
-      key: "send",
-      value: function () {
-        var self2 = this;
-        this.player.template.commentInput.blur();
-        if (!this.player.template.commentInput.value.replace(/^\s+|\s+$/g, "")) {
-          this.player.notice(this.player.tran("Please input danmaku content!"));
-          return;
-        }
-        this.player.danmaku.send({
-          text: this.player.template.commentInput.value,
-          color: this.player.container.querySelector(".xplayer-comment-setting-color input:checked").value,
-          type: this.player.container.querySelector(".xplayer-comment-setting-type input:checked").value,
-          size: this.player.container.querySelector(".xplayer-comment-setting-font input:checked").value
-        }, function (error) {
-          if (error) return;
-          self2.player.template.commentInput.value = "";
-          self2.hide();
-        });
-      }
-    }]);
-    return Comment;
-  }();
-  exports.default = CommentExport;
+    this.syncMobileComposer();
+    player.on("destroy", function () {
+      self.unbindDocument();
+      self.cleanups.forEach(function (cleanup) { cleanup(); });
+    });
+  }
+  Comment.prototype.listen = function (target, type, handler) {
+    target.addEventListener(type, handler);
+    this.cleanups.push(function () { target.removeEventListener(type, handler); });
+  };
+  Comment.prototype.bindDocument = function () {
+    var owner = this.player.container.ownerDocument || document;
+    if (this.openDocument === owner) return;
+    this.unbindDocument(); this.openDocument = owner;
+    owner.addEventListener("click", this.outside);
+    owner.addEventListener("keydown", this.escape);
+  };
+  Comment.prototype.unbindDocument = function () {
+    if (!this.openDocument) return;
+    this.openDocument.removeEventListener("click", this.outside);
+    this.openDocument.removeEventListener("keydown", this.escape);
+    this.openDocument = null;
+  };
+  Comment.prototype.show = function (focus) {
+    if (this.player.container.classList.contains("xplayer-mobile") && !this.player.container.classList.contains("xplayer-mobile-danmaku-visible")) return false;
+    if (this.player.template.settingBox.classList.contains("xplayer-setting-box-open")) this.player.setting.hide();
+    this.player.controller.disableAutoHide = true;
+    var expanded = !this.player.template.controller.classList.contains("xplayer-controller-comment");
+    this.player.template.controller.classList.add("xplayer-controller-comment");
+    this.player.template.mask.classList.add("xplayer-mask-show");
+    this.player.container.classList.add("xplayer-show-controller");
+    this.bindDocument();
+    if (expanded) this.player.resize();
+    if (focus !== false) {
+      (this.player.container.classList.contains("xplayer-mobile") ? this.player.template.commentInput : this.player.template.yzmcomment).focus();
+    }
+    return true;
+  };
+  Comment.prototype.syncMobileComposer = function () {
+    var container = this.player.container;
+    if (!container.classList.contains("xplayer-mobile")) return;
+    var owner = container.ownerDocument || document;
+    var fullscreen = owner.fullscreenElement || owner.webkitFullscreenElement || owner.mozFullScreenElement;
+    var bounds = container.getBoundingClientRect();
+    var visible = !!(container.classList.contains("xplayer-fulled") || fullscreen && (fullscreen === container || fullscreen.contains(container))) && bounds.width > bounds.height;
+    var changed = visible !== container.classList.contains("xplayer-mobile-danmaku-visible");
+    container.classList.toggle("xplayer-mobile-danmaku-visible", visible);
+    this.player.template.sendStyleButton.parentElement.setAttribute("aria-hidden", String(!visible));
+    if (!visible) {
+      var list = container.querySelector(".xplayer-danmu");
+      if (list) list.classList.remove("show");
+      var listButton = container.querySelector(".xplayer-list-icon");
+      if (listButton) listButton.setAttribute("aria-expanded", "false");
+    }
+    if (!visible && this.player.template.controller.classList.contains("xplayer-controller-comment")) this.hide();
+    if (changed) this.player.danmaku.resize();
+  };
+  Comment.prototype.hide = function () {
+    this.hideSetting(); this.hideDisplay();
+    var expanded = this.player.template.controller.classList.contains("xplayer-controller-comment");
+    this.player.template.controller.classList.remove("xplayer-controller-comment");
+    if (!this.player.template.settingBox.classList.contains("xplayer-setting-box-open")) this.player.template.mask.classList.remove("xplayer-mask-show");
+    this.player.container.classList.remove("xplayer-show-controller");
+    this.player.controller.disableAutoHide = this.player.template.settingBox.classList.contains("xplayer-setting-box-open");
+    this.unbindDocument();
+    if (expanded) this.player.resize();
+  };
+  Comment.prototype.positionPanels = function () {
+    var template = this.player.template;
+    var root = this.player.container.getBoundingClientRect();
+    var composer = template.sendStyleButton.parentElement.getBoundingClientRect();
+    this.player.container.style.setProperty("--xplayer-panel-height", Math.max(60, composer.top - root.top - 24) + "px");
+    [[template.danmakuDisplayBox, template.commentSettingButton], [template.commentSettingBox, template.sendStyleButton]].forEach(function (pair) {
+      var panel = pair[0], button = pair[1].getBoundingClientRect();
+      var width = Math.min(panel.offsetWidth, root.width - 24);
+      var left = Math.max(root.left + 12, Math.min(button.left, root.right - width - 12));
+      panel.style.left = left - composer.left + "px";
+    });
+  };
+  Comment.prototype.showSetting = function () {
+    if (this.show(false) === false) return;
+    this.hideDisplay();
+    this.player.template.commentSettingBox.classList.add("xplayer-comment-setting-open");
+    this.player.template.commentSettingBox.setAttribute("aria-hidden", "false");
+    this.player.template.sendStyleButton.setAttribute("aria-expanded", "true");
+    this.positionPanels();
+  };
+  Comment.prototype.hideSetting = function () {
+    this.player.template.commentSettingBox.classList.remove("xplayer-comment-setting-open");
+    this.player.template.commentSettingBox.setAttribute("aria-hidden", "true");
+    this.player.template.sendStyleButton.setAttribute("aria-expanded", "false");
+  };
+  Comment.prototype.toggleSetting = function () {
+    if (this.player.template.commentSettingBox.classList.contains("xplayer-comment-setting-open")) this.hide();
+    else this.showSetting();
+  };
+  Comment.prototype.hideDisplay = function () {
+    this.player.template.danmakuDisplayBox.classList.remove("xplayer-danmaku-display-open");
+    this.player.template.danmakuDisplayBox.setAttribute("aria-hidden", "true");
+    this.player.template.commentSettingButton.setAttribute("aria-expanded", "false");
+  };
+  Comment.prototype.toggleDisplay = function () {
+    if (this.player.template.danmakuDisplayBox.classList.contains("xplayer-danmaku-display-open")) this.hide();
+    else {
+      if (this.show(false) === false) return;
+      this.hideSetting();
+      this.player.template.danmakuDisplayBox.classList.add("xplayer-danmaku-display-open");
+      this.player.template.danmakuDisplayBox.setAttribute("aria-hidden", "false");
+      this.player.template.commentSettingButton.setAttribute("aria-expanded", "true");
+      this.positionPanels();
+    }
+  };
+  Comment.prototype.syncColor = function () {
+    var template = this.player.template;
+    var selected = template.commentColorSettingBox.querySelector("input:checked");
+    if (!selected) return;
+    template.commentSettingFill.style.color = selected.value;
+    template.commentInput.style.color = selected.value;
+    template.yzmcomment.style.color = selected.value;
+    if (template.commentSendFill) template.commentSendFill.style.fill = selected.value;
+  };
+  Comment.prototype.send = function () {
+    var self = this, template = this.player.template;
+    template.commentInput.blur();
+    if (!template.commentInput.value.trim()) {
+      this.player.notice(this.player.tran("Please input danmaku content!")); return;
+    }
+    this.player.danmaku.send({
+      text: template.commentInput.value,
+      color: template.commentSettingBox.querySelector(".xplayer-comment-setting-color input:checked").value,
+      type: template.commentSettingBox.querySelector(".xplayer-comment-setting-type input:checked").value,
+      size: template.commentSettingBox.querySelector(".xplayer-comment-setting-font input:checked").value
+    }, function (error) {
+      if (error) return;
+      template.commentInput.value = ""; self.hide();
+    });
+  };
+  exports.default = Comment;
 },
 /* Recovered original module 47: dom-parser. Bindings renamed by scope, not rewritten. */
 function (module, exports, requireModule) {

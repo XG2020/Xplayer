@@ -72,7 +72,7 @@ module.exports = function (module, exports, requireModule) {
       }
       this.player.template.showDanmakuToggle.checked = this.showDanmaku;
       this.player.template.showDanmaku.addEventListener("click", function () {
-        self.player.template.showDanmakuToggle.checked = !self.player.template.showDanmakuToggle.checked;
+        self.player.template.showDanmakuToggle.checked = !self.showDanmaku;
         if (self.player.template.showDanmakuToggle.checked) {
           self.showDanmaku = true;
           self.player.danmaku.show();
@@ -81,12 +81,14 @@ module.exports = function (module, exports, requireModule) {
           self.player.danmaku.hide();
         }
         self.player.user.set("danmaku", self.showDanmaku ? 1 : 0);
-        self.hide();
+        self.player.template.showDanmaku.setAttribute("aria-pressed", String(self.showDanmaku));
+        self.player.template.showDanmaku.setAttribute("aria-label", self.showDanmaku ? "关闭弹幕" : "显示弹幕");
       });
+      this.player.template.showDanmaku.setAttribute("aria-pressed", String(!!this.showDanmaku));
+      this.player.template.showDanmaku.setAttribute("aria-label", this.showDanmaku ? "关闭弹幕" : "显示弹幕");
       this.unlimitDanmaku = this.player.user.get("unlimited");
       this.player.template.unlimitDanmakuToggle.checked = this.unlimitDanmaku;
-      this.player.template.unlimitDanmaku.addEventListener("click", function () {
-        self.player.template.unlimitDanmakuToggle.checked = !self.player.template.unlimitDanmakuToggle.checked;
+      this.player.template.unlimitDanmakuToggle.addEventListener("change", function () {
         if (self.player.template.unlimitDanmakuToggle.checked) {
           self.unlimitDanmaku = true;
           self.player.danmaku.unlimit(true);
@@ -95,7 +97,6 @@ module.exports = function (module, exports, requireModule) {
           self.player.danmaku.unlimit(false);
         }
         self.player.user.set("unlimited", self.unlimitDanmaku ? 1 : 0);
-        self.hide();
       });
       this.player.template.speed.addEventListener("click", function () {
         self.player.template.settingBox.classList.add("xplayer-setting-box-narrow");
@@ -111,33 +112,45 @@ module.exports = function (module, exports, requireModule) {
       }
       if (this.player.danmaku) {
         this.player.on("danmaku_opacity", function (argument0) {
-          self.player.bar.set("danmaku", argument0, "width");
+          var input = self.player.template.danmakuDisplayBox.querySelector('[data-danmaku-display="opacity"]');
+          input.value = Math.round(argument0 * 100);
+          input.parentElement.querySelector("output").textContent = input.value + "%";
           self.player.user.set("opacity", argument0);
         });
         this.player.danmaku.opacity(this.player.user.get("opacity"));
-        function helper5(argument1) {
-          var value5 = argument1 || window.event;
-          var value6 = ((value5.clientX || value5.changedTouches[0].clientX) - value2.default.getElementViewLeft(self.player.template.danmakuOpacityBarWrap)) / 130;
-          value6 = Math.max(value6, 0);
-          value6 = Math.min(value6, 1);
-          self.player.danmaku.opacity(value6);
-        }
-        var helper4 = function value7() {
-          document.removeEventListener(value2.default.nameMap.dragEnd, value7);
-          document.removeEventListener(value2.default.nameMap.dragMove, helper5);
-          self.player.template.danmakuOpacityBox.classList.remove("xplayer-setting-danmaku-active");
-        };
-        this.player.template.danmakuOpacityBarWrapWrap.addEventListener("click", function (argument10) {
-          var value8 = argument10 || window.event;
-          var value9 = ((value8.clientX || value8.changedTouches[0].clientX) - value2.default.getElementViewLeft(self.player.template.danmakuOpacityBarWrap)) / 130;
-          value9 = Math.max(value9, 0);
-          value9 = Math.min(value9, 1);
-          self.player.danmaku.opacity(value9);
+        var methods = {area: "displayArea", size: "displaySize", speed: "displaySpeed"};
+        this.player.template.danmakuDisplayBox.querySelectorAll("[data-danmaku-display]").forEach(function (input) {
+          var kind = input.dataset.danmakuDisplay;
+          var method = methods[kind];
+          if (method) {
+            var stored = self.player.user.get(method);
+            if (Number.isFinite(stored)) self.player.danmaku[method](stored);
+            input.value = self.player.danmaku[method]();
+          }
+          function paint() {
+            var amount = Number(input.value);
+            input.parentElement.querySelector("output").textContent = kind === "speed" ? (amount === 1 ? "适中" : amount + "×") : amount + "%";
+          }
+          paint();
+          input.addEventListener("input", function () {
+            if (kind === "opacity") self.player.danmaku.opacity(Number(input.value) / 100);
+            else {
+              self.player.danmaku[method](Number(input.value));
+              self.player.user.set(method, self.player.danmaku[method]());
+            }
+            paint();
+          });
         });
-        this.player.template.danmakuOpacityBarWrapWrap.addEventListener(value2.default.nameMap.dragStart, function () {
-          document.addEventListener(value2.default.nameMap.dragMove, helper5);
-          document.addEventListener(value2.default.nameMap.dragEnd, helper4);
-          self.player.template.danmakuOpacityBox.classList.add("xplayer-setting-danmaku-active");
+        var filterKeys = {right: "displayRight", fixed: "displayFixed", color: "displayColor"};
+        this.player.template.danmakuDisplayBox.querySelectorAll("[data-danmaku-filter]").forEach(function (input) {
+          var kind = input.dataset.danmakuFilter;
+          var stored = self.player.user.get(filterKeys[kind]);
+          input.checked = stored !== 0;
+          self.player.danmaku.displayFilter(kind, input.checked);
+          input.addEventListener("change", function () {
+            self.player.danmaku.displayFilter(kind, input.checked);
+            self.player.user.set(filterKeys[kind], input.checked ? 1 : 0);
+          });
         });
       }
     }
@@ -156,6 +169,7 @@ module.exports = function (module, exports, requireModule) {
     }, {
       key: "show",
       value: function () {
+        if (this.player.comment) this.player.comment.hide();
         this.player.template.settingBox.classList.add("xplayer-setting-box-open");
         this.player.template.mask.classList.add("xplayer-mask-show");
         this.player.controller.disableAutoHide = true;

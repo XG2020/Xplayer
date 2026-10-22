@@ -74,9 +74,7 @@ module.exports = function (module, exports, requireModule) {
       this.initQualityButton();
       this.initScreenshotButton();
       this.initSubtitleButton();
-      if (!value2.default.isMobile) {
-        this.initVolumeButton();
-      }
+      this.initVolumeButton();
     }
     value(Controller, [{
       key: "initPlayButton",

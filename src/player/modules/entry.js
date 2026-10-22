@@ -17,5 +17,6 @@ module.exports = function (module, exports, requireModule) {
     }
   }(playerModule);
   console.log('Xplayer by XG.GM');
+  value.default.danmakuSwitchIcon = requireModule(2).default.danmakuSwitch;
   exports.default = value.default;
 };

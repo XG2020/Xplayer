@@ -298,3 +298,588 @@
       font-size: 20px;
     }
 }
+
+/* Keep viewing controls beside the composer; the A button styles new messages. */
+.xplayer {
+    container-name: xplayer;
+    container-type: inline-size;
+}
+
+.xplayer .xplayer-danmaku {
+    inset: 0 0 60px !important;
+}
+
+.xplayer .xplayer-controller {
+    z-index: 20;
+}
+
+.xplayer .xplayer-controller.xplayer-controller-comment {
+    z-index: 1002;
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .showdan-setting {
+    position: relative;
+    display: inline-flex !important;
+    float: none;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 36px;
+    box-sizing: border-box;
+    width: 36px;
+    height: 34px;
+    padding: 0;
+    margin: 0 4px 0 0;
+    border: 0;
+    border-radius: 5px;
+    background: transparent;
+    color: #eee;
+    vertical-align: middle;
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .showdan-setting > input {
+    display: none;
+}
+
+.xplayer .xplayer-danmaku-composer > .showdan-setting svg {
+    display: block;
+    width: 26px;
+    height: 26px;
+    color: #eee;
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .showdan-setting .xplayer-pip-danmaku-frame,
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .showdan-setting .xplayer-pip-danmaku-off {
+    fill: #fff !important;
+    stroke: none !important;
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .showdan-setting .xplayer-pip-danmaku-check {
+    fill: var(--xplayer-theme, #00b5d9) !important;
+    stroke: none !important;
+}
+
+.xplayer .showdan-setting[aria-pressed="true"] .xplayer-pip-danmaku-off,
+.xplayer .showdan-setting[aria-pressed="false"] .xplayer-pip-danmaku-frame,
+.xplayer .showdan-setting[aria-pressed="false"] .xplayer-pip-danmaku-check {
+    display: none;
+}
+
+.xplayer .showdan-setting[aria-pressed="false"] .xplayer-pip-danmaku-off {
+    display: block;
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .xplayer-comment-setting-icon {
+    position: relative;
+    inset: auto;
+    float: none;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 34px;
+    padding: 4px;
+    margin: 0 8px 0 0;
+    vertical-align: middle;
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .showdan-setting:hover {
+    background: rgba(255, 255, 255, .12);
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .xplayer-comment-setting-icon span {
+    float: none;
+    display: block;
+    width: 28px;
+    height: 26px;
+    margin: auto;
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .xplayer-comment-setting-icon[aria-expanded="true"] {
+    background: rgba(255, 255, 255, .15);
+    border-radius: 5px;
+}
+
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer {
+    display: flex !important;
+    align-items: center;
+    height: 34px;
+    width: 42%;
+    left: 28%;
+    right: auto;
+    bottom: 10px;
+    margin: 0;
+    overflow: visible;
+    background: transparent;
+    transition: none;
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .xplayer-send-style-icon {
+    position: relative;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 34px;
+    padding: 0 4px 2px;
+    margin: 0;
+    border-radius: 7px 0 0 7px;
+    color: #eee;
+    background: rgba(255, 255, 255, .28);
+    line-height: 1;
+}
+
+.xplayer .xplayer-send-style-icon span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 26px;
+    margin: auto;
+}
+
+.xplayer .xplayer-controller .xplayer-send-style-icon .xplayer-send-style-svg {
+    width: 23px;
+    height: 23px;
+}
+
+.xplayer .xplayer-controller .xplayer-send-style-icon .xplayer-send-style-svg path {
+    fill: none !important;
+    stroke: currentColor;
+    stroke-width: 1.65px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .xplayer-send-style-icon:hover,
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .xplayer-send-style-icon[aria-expanded="true"] {
+    background: rgba(255, 255, 255, .4);
+}
+
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer > .yzm-xplayer-comment-input,
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer > .xplayer-comment-input {
+    position: static;
+    display: block;
+    flex: 1 1 0;
+    float: none;
+    width: 0;
+    min-width: 0;
+    height: 34px;
+    margin: 0;
+    padding: 5px 8px 5px 2px;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+    background: rgba(255, 255, 255, .28);
+    color: #fff;
+    font-size: 14px;
+    text-align: left;
+    line-height: 24px;
+    text-overflow: ellipsis;
+}
+
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer > .xplayer-comment-input,
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer > .xplayer-send-icon {
+    display: none !important;
+}
+
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer > .yzm-xplayer-send-icon,
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer > .xplayer-send-icon {
+    position: static;
+    flex: 0 0 60px;
+    float: none;
+    width: 60px;
+    height: 34px;
+    margin: 0;
+    padding: 0 8px;
+    border-radius: 0 7px 7px 0;
+    background: var(--xplayer-theme, #00a1d6);
+    color: #fff;
+    font-size: 14px;
+    line-height: 34px;
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-composer > .dmrules {
+    position: absolute;
+    display: none;
+}
+
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-comment-setting-box,
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-danmaku-display-box {
+    position: absolute;
+    box-sizing: border-box;
+    bottom: calc(100% + 12px);
+    left: 0;
+    z-index: 71;
+    width: 292px;
+    max-width: calc(100cqw - 24px);
+    max-height: var(--xplayer-panel-height, 280px);
+    overflow: auto;
+    overscroll-behavior: contain;
+    padding: 16px;
+    border: 1px solid rgba(255, 255, 255, .08);
+    border-radius: 6px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .35);
+    background: rgba(18, 18, 18, .96);
+    color: #eee;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left;
+    scrollbar-width: thin;
+    scrollbar-color: #666 transparent;
+    transform: none;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .15s ease, visibility .15s ease;
+}
+
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-danmaku-display-box {
+    width: 360px;
+}
+
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-comment-setting-box.xplayer-comment-setting-open,
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-danmaku-display-box.xplayer-danmaku-display-open {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+}
+
+.xplayer .xplayer-danmaku-display-title {
+    margin: 0 0 12px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 22px;
+}
+
+.xplayer .xplayer-danmaku-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.xplayer .xplayer-danmaku-filters label {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-width: 0;
+    height: 34px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, .12);
+    cursor: pointer;
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-display-box input[type="checkbox"] {
+    appearance: auto;
+    -webkit-appearance: checkbox;
+    position: static;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    accent-color: var(--xplayer-theme, #00a1d6);
+    cursor: pointer;
+}
+
+.xplayer .xplayer-danmaku-density {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 0 12px;
+    margin-bottom: 3px;
+    border-bottom: 1px solid rgba(255, 255, 255, .12);
+    cursor: pointer;
+}
+
+.xplayer .xplayer-danmaku-density .xplayer-label {
+    float: none;
+    line-height: 26px;
+}
+
+.xplayer .xplayer-danmaku-display-row {
+    display: grid;
+    grid-template-columns: 72px minmax(0, 1fr) 44px;
+    align-items: center;
+    gap: 12px;
+    min-height: 44px;
+    cursor: pointer;
+}
+
+.xplayer .xplayer-danmaku-display-row > span {
+    white-space: nowrap;
+}
+
+.xplayer .xplayer-danmaku-display-row output {
+    color: #ccc;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+}
+
+.xplayer .xplayer-danmaku-display-row input[type="range"] {
+    appearance: auto;
+    -webkit-appearance: auto;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    height: 24px;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+    accent-color: var(--xplayer-theme, #00a1d6);
+    cursor: pointer;
+}
+
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-comment-setting-box .xplayer-comment-setting-title {
+    margin: 8px 0;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-comment-setting-box .xplayer-comment-setting-type span,
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-comment-setting-box .xplayer-comment-setting-font span {
+    padding: 8px 4px;
+    font-size: 14px;
+    line-height: 18px;
+}
+
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-comment-setting-box .xplayer-comment-setting-color {
+    padding: 0;
+}
+
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-comment-setting-box .xplayer-comment-setting-color label {
+    padding: 5px 8px 5px 0;
+}
+
+.xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-comment-setting-box .xplayer-comment-setting-color span {
+    width: 27px;
+    height: 27px;
+    border-radius: 3px;
+}
+
+.xplayer .xplayer-controller .xplayer-danmaku-composer button:focus-visible,
+.xplayer .xplayer-controller .xplayer-danmaku-composer .showdan-setting:focus-visible,
+.xplayer .xplayer-controller .xplayer-comment-setting-icon:focus-visible,
+.xplayer .xplayer-controller .xplayer-danmaku-display-box input:focus-visible,
+.xplayer .xplayer-controller .xplayer-danmaku-composer label:has(input:focus-visible) {
+    outline: 2px solid var(--xplayer-theme, #00a1d6);
+    outline-offset: 3px;
+}
+
+.xplayer.xplayer-no-danmaku .xplayer-controller .xplayer-danmaku-composer,
+.xplayer.xplayer-no-danmaku .xplayer-controller .xplayer-danmaku-composer .showdan-setting,
+.xplayer.xplayer-no-danmaku .xplayer-controller .xplayer-danmaku-composer .xplayer-comment-setting-icon,
+.danmu-off .xplayer .xplayer-controller .xplayer-danmaku-composer,
+.danmu-off .xplayer .xplayer-controller .xplayer-danmaku-composer .showdan-setting,
+.danmu-off .xplayer .xplayer-controller .xplayer-danmaku-composer .xplayer-comment-setting-icon {
+    display: none !important;
+}
+
+@container xplayer (max-width: 420px) {
+    .xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-comment-setting-box,
+    .xplayer .xplayer-controller .xplayer-icons.xplayer-danmaku-composer .xplayer-danmaku-display-box {
+        padding: 12px;
+    }
+
+    .xplayer .xplayer-danmaku-display-row {
+        grid-template-columns: 64px minmax(0, 1fr) 40px;
+        gap: 8px;
+        min-height: 40px;
+        font-size: 13px;
+    }
+
+    .xplayer .xplayer-danmaku-filters {
+        gap: 6px;
+    }
+}
+
+.xplayer.xplayer-no-danmaku .xplayer-controller .xplayer-icons.xplayer-danmaku-composer {
+    display: none !important;
+}
+
+/* One shared toolbar row for desktop and mobile playback. */
+.xplayer:not(.xplayer-pip-container) .xplayer-controller {
+    display: grid;
+    grid-template-columns: max-content minmax(0, 1fr) max-content;
+    grid-template-rows: 34px;
+    align-items: center;
+    gap: clamp(6px, 2cqw, 32px);
+    box-sizing: border-box;
+    height: 70px;
+    padding: 10px 16px 26px;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .controller-box {
+    display: contents;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-left,
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-right {
+    position: relative;
+    inset: auto !important;
+    display: flex !important;
+    align-items: center;
+    width: auto;
+    height: 34px;
+    margin: 0;
+    float: none;
+    white-space: nowrap;
+    z-index: 3;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-left {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-right {
+    grid-column: 3;
+    grid-row: 1;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons.xplayer-danmaku-composer {
+    position: relative;
+    inset: auto;
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    max-width: 880px;
+    min-width: 0;
+    height: 34px !important;
+    margin: 0;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-left .xplayer-icon,
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-right .xplayer-icon {
+    position: relative;
+    inset: auto !important;
+    flex: none;
+    box-sizing: border-box;
+    width: 40px;
+    height: 34px;
+    padding: 0;
+    margin: 0;
+    float: none;
+    vertical-align: middle;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-left .xplayer-icon > span,
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-right .xplayer-icon > span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    margin: auto;
+    float: none;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-left .xplayer-icon svg,
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-right .xplayer-icon svg {
+    width: 28px;
+    height: 28px;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-time,
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-time .xplayer-ptime,
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-time .xplayer-dtime {
+    position: static;
+    inset: auto;
+    display: inline;
+    color: #eee;
+    font-size: 13px !important;
+    line-height: 34px;
+    margin: 0;
+    padding: 0;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-time {
+    margin-left: 8px;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-volume {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    height: 34px;
+    margin: 0;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-full-in-icon {
+    display: inline-block;
+}
+
+.xplayer.xplayer-mobile.xplayer-mobile-danmaku-visible:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons .xplayer-list-icon {
+    display: inline-block !important;
+}
+
+.xplayer.xplayer-mobile:not(.xplayer-mobile-danmaku-visible) .xplayer-controller .xplayer-icons .xplayer-list-icon,
+.xplayer.xplayer-mobile:not(.xplayer-mobile-danmaku-visible) .xplayer-danmu {
+    display: none !important;
+}
+
+.xplayer.xplayer-mobile:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons .xplayer-volume {
+    display: inline-flex;
+}
+
+.xplayer.xplayer-mobile:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons .xplayer-full-in-icon {
+    display: inline-block;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-bar-wrap {
+    position: absolute;
+    top: auto;
+    bottom: 60px;
+    left: 16px;
+    right: 16px;
+    width: auto;
+    height: 12px;
+    padding: 0;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-danmaku {
+    bottom: 80px !important;
+}
+
+.xplayer.xplayer-mobile:not(.xplayer-mobile-danmaku-visible) .xplayer-controller .xplayer-icons.xplayer-danmaku-composer,
+.xplayer.xplayer-mobile .xplayer-controller .xplayer-icons .xplayer-comment,
+.xplayer .xplayer-controller .xplayer-icons .xplayer-comment,
+.xplayer.xplayer-mobile .xplayer-controller .xplayer-icons.xplayer-danmaku-composer > .yzm-xplayer-comment-input,
+.xplayer.xplayer-mobile .xplayer-controller .xplayer-icons.xplayer-danmaku-composer > .yzm-xplayer-send-icon {
+    display: none !important;
+}
+
+.xplayer.xplayer-mobile.xplayer-mobile-danmaku-visible .xplayer-controller .xplayer-icons.xplayer-danmaku-composer {
+    display: flex !important;
+    width: min(100%, clamp(240px, 44cqw, 420px));
+}
+
+.xplayer.xplayer-mobile .xplayer-controller .xplayer-icons.xplayer-danmaku-composer > .xplayer-comment-input,
+.xplayer.xplayer-mobile .xplayer-controller .xplayer-icons.xplayer-danmaku-composer > .xplayer-send-icon {
+    display: block !important;
+}
+
+.xplayer.xplayer-no-danmaku .xplayer-controller .xplayer-icons.xplayer-danmaku-composer {
+    display: none !important;
+}
+
+@container xplayer (max-width: 600px) {
+    .xplayer:not(.xplayer-pip-container) .xplayer-controller {
+        padding-left: 8px;
+        padding-right: 8px;
+        gap: 6px;
+    }
+
+    .xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-left .xplayer-icon,
+    .xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-right .xplayer-icon {
+        width: 32px;
+    }
+
+    .xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-time {
+        font-size: 11px !important;
+        margin-left: 4px;
+    }
+}

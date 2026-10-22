@@ -50,6 +50,12 @@ module.exports = function (module, exports, requireModule) {
         volume: "xplayer-volume",
         unlimited: "xplayer-danmaku-unlimited",
         danmaku: "xplayer-danmaku-show",
+        displayArea: "xplayer-danmaku-display-area",
+        displaySize: "xplayer-danmaku-display-size",
+        displaySpeed: "xplayer-danmaku-display-speed",
+        displayRight: "xplayer-danmaku-display-right",
+        displayFixed: "xplayer-danmaku-display-fixed",
+        displayColor: "xplayer-danmaku-display-color",
         subtitle: "xplayer-subtitle-show"
       };
       this.default = {
@@ -57,6 +63,12 @@ module.exports = function (module, exports, requireModule) {
         volume: argument9.options.volume || 0.7,
         unlimited: (argument9.options.danmaku && argument9.options.danmaku.unlimited ? 1 : 0) || 0,
         danmaku: 1,
+        displayArea: 100,
+        displaySize: 100,
+        displaySpeed: 1,
+        displayRight: 1,
+        displayFixed: 1,
+        displayColor: 1,
         subtitle: 1
       };
       this.data = {};
@@ -67,7 +79,9 @@ module.exports = function (module, exports, requireModule) {
       value: function () {
         for (var value5 in this.storageName) {
           var value6 = this.storageName[value5];
-          this.data[value5] = parseFloat(value2.default.storage.get(value6) || this.default[value5]);
+          var stored = value2.default.storage.get(value6);
+          var parsed = stored === null || stored === undefined || stored === "" ? this.default[value5] : parseFloat(stored);
+          this.data[value5] = Number.isFinite(parsed) ? parsed : this.default[value5];
         }
       }
     }, {

@@ -1,8 +1,6 @@
 /* Original Xplayer animation data and desktop skin, served entirely locally. */
 (function(global){
  'use strict';
- const desktopSkin=document.getElementById('xplayer-desktop-skin');
- if(desktopSkin&&/mobile/i.test(navigator.userAgent))desktopSkin.disabled=true;
  global.XplayerControls={attach(player){
   if(!global.lottie||!global.XplayerControlIconData)return;
   const animations=new Map(),cleanup=[];

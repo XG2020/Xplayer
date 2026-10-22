@@ -125,7 +125,6 @@ var XGGM = {
     XGGM.danmu.list();
     XGGM.def();
     XGGM.video.try();
-    XGGM.dp.danmaku.opacity(1);
   },
   def: function () {
     var value5 = "9|8|7|2|10|3|12|6|11|13|5|0|4|1|14".split("|");
@@ -316,37 +315,13 @@ var XGGM = {
     send: function () {
       g = $(".yzm-xplayer-send-icon");
       d = $("#dmtext");
-      h = ".xplayer-comment-setting-";
-      $(h + "color input").on("click", function () {
-        r = $(this).attr("value");
-        setTimeout(function () {
-          d.css({
-            color: r
-          });
-        }, 100);
-      });
-      $(h + "type input").on("click", function () {
-        t = $(this).attr("value");
-        setTimeout(function () {
-          d.attr("dmtype", t);
-        }, 100);
-      });
-      $(h + "font input").on("click", function () {
-        if (up.trysee > 0 && config.group == config.group_x) {
-          layer.msg("会员专属功能");
-          return;
-        }
-        t = $(this).attr("value");
-        setTimeout(function () {
-          d.attr("size", t);
-        }, 100);
-      });
       g.on("click", function () {
         a = document.getElementById("dmtext");
         a = a.value;
-        b = d.attr("dmtype");
-        c = d.css("color");
-        z = d.attr("size");
+        var sending = XGGM.dp.template.commentSettingBox;
+        b = sending.querySelector(".xplayer-comment-setting-type input:checked").value;
+        c = sending.querySelector(".xplayer-comment-setting-color input:checked").value;
+        z = sending.querySelector(".xplayer-comment-setting-font input:checked").value;
         if (up.trysee > 0 && config.group < config.group_x && config.group != "") {
           layer.msg("登陆后才能发弹幕yo(・ω・)");
           return;
