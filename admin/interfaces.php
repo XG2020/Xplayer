@@ -8,9 +8,9 @@ require_once __DIR__.'/View.php';adminRequireAccount();$pageTitle='接口设置'
 adminField('zyapi','资源站 / 苹果 CMS 搜索接口',adminLines($zyapi),'每行一个接口，支持标准 /api.php/provide/vod/ 基础地址或完整搜索前缀，例如 https://cms.example/api.php/provide/vod/。只显示包含当前视频原链接且集数最多的结果。',['type'=>'textarea','list'=>true,'wide'=>true,'rows'=>4]);
 adminField('metadataApi','剧集元数据接口',$user['metadataApi'],'用于资源站检索前识别片名和集号；不要求此接口返回完整列表。留空使用默认服务，也可填写自己的接口前缀或 {url} 模板。实际条目数量以列表为准。',['wide'=>true,'placeholder'=>'https://metadata.example.com/?url=']);
 ?></div><?php adminToggle('zywlist','从资源站补全剧集',$zywlist,'关闭时读取内置或自建列表；启用后优先检索已配置资源站，无匹配结果时回退。需同时开启播放器的“显示剧集列表”。'); ?></section>
-<?php adminStartGroup('视频解析','仅在输入第三方播放页地址、需要转换为媒体直链时配置。接口应返回有效播放地址。'); ?><div class="field-grid">
+<?php adminStartGroup('视频解析','把第三方播放页转换为媒体地址，仍在本站播放器播放。自动识别 JSON 与支持的网页解析响应。'); ?><div class="field-grid">
 <?php
-adminField('api','通用解析接口',adminLines($api),'每行一个接口，按顺序尝试。填写接口前缀，或使用 {url} 表示待解析地址。',['type'=>'textarea','list'=>true,'wide'=>true,'rows'=>4,'placeholder'=>'https://parser.example/?url=']);
+adminField('api','通用解析接口',adminLines($api),'每行一个接口，JSON 与网页解析可混用，失败时尝试下一条。填写地址前缀，或使用 {url} 表示待解析地址。支持媒体标签、常见播放器配置，以及已适配的令牌和加密结果；依赖其他动态脚本或验证的页面可能无法提取。',['type'=>'textarea','list'=>true,'wide'=>true,'rows'=>5,'placeholder'=>'https://parser.example/?url=']);
 adminField('specialApi','指定域名的解析接口',adminLines($specialapi),'每行填写「域名|接口地址」，匹配的域名优先走专线；域名可使用 *.example.com。',['type'=>'textarea','list'=>true,'wide'=>true,'rows'=>3,'placeholder'=>'video.example|https://parser.example/?url=']);
 ?></div><?php adminToggle('async','异步解析',$async,'先打开播放器，再请求解析结果；适合解析耗时较长的接口。'); ?></section>
 <?php adminStartGroup('弹幕与访问来源','默认弹幕服务位于本站；来源限制留空时不限定嵌入网站。'); ?><div class="field-grid">

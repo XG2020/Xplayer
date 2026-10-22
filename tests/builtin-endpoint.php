@@ -363,7 +363,7 @@ try {
                 $fixture = $temporary . '/' . $name;
                 mkdir($fixture . '/class', 0700, true);
                 mkdir($fixture . '/includes', 0700, true);
-                foreach (['Vinfo.Class.php', 'BuiltinEndpoint.php', 'Common.Class.php', 'Http.php', 'Security.php', 'Settings.php', 'Statistics.php', 'DanmakuFilter.php'] as $file) {
+                foreach (['Vinfo.Class.php', 'BuiltinEndpoint.php', 'Common.Class.php', 'PlaybackResolver.php', 'Http.php', 'Security.php', 'Settings.php', 'Statistics.php', 'DanmakuFilter.php'] as $file) {
                     endpointExpect(copy($applicationRoot . '/class/' . $file, $fixture . '/class/' . $file),
                         'Could not copy isolated test classes');
                 }

@@ -35,7 +35,7 @@
 | 项目 | 要求 |
 | --- | --- |
 | PHP | 8.2 或更新版本，建议使用仍受支持的分支 |
-| PHP 扩展 | PDO、PDO MySQL、cURL、OpenSSL；JSON 支持；DASH 清单转发还需 DOM / libxml |
+| PHP 扩展 | PDO、PDO MySQL、cURL、OpenSSL；JSON 支持；网页解析和 DASH 清单转发还需 DOM / libxml |
 | 数据库 | MySQL / MariaDB，支持 InnoDB 与 utf8mb4 |
 | Web 服务器 | Apache、Nginx 或配置了 PHP FastCGI 的 IIS |
 | 浏览器 | 当前版本的 Chrome、Edge、Firefox、Safari；部分功能受浏览器能力限制 |
@@ -115,7 +115,7 @@ https://player.example.com/?url=https%3A%2F%2Fmedia.example.com%2Fmovie.mp4
 
 ### 视频解析
 
-“接口设置”中的通用解析接口每行一个，按顺序尝试。支持地址前缀或 `{url}` 模板：
+“接口设置”中的通用解析接口每行一个，按顺序尝试，JSON 与网页解析接口可以混用，无需选择类型。支持地址前缀或 `{url}` 模板：
 
 ```text
 https://parser.example.com/parse?url=
@@ -128,13 +128,24 @@ https://parser.example.com/parse?source={url}
 video.example.com|https://parser.example.com/parse?url=
 ```
 
-匹配的域名专线先于通用接口。接口返回 JSON，至少提供合法的 HTTP(S) 媒体地址，例如：
+匹配的域名专线先于通用接口。JSON 接口至少提供合法的 HTTP(S) 媒体地址，例如：
 
 ```json
 {"code":200,"url":"https://media.example.com/movie.m3u8"}
 ```
 
-也兼容 `data.url`。解析、元数据和资源站请求由服务器发起，服务器必须能连接这些服务。
+也兼容 `data.url`。可附带 `type`（`hls` / `m3u8`、`dash` / `mpd`、`flv`），用于识别没有文件扩展名的播放地址；类型会随解析结果一起缓存。
+
+网页解析接口填写方法相同，例如 `https://parser.example.com/player/?url=`。服务器读取页面并提取媒体地址，成功后交给本站播放器，继续使用本站的弹幕、选集及播放控件。目前支持：
+
+- 页面中的 `video` / `audio` / `source` 媒体地址，以及有限层数的内嵌播放器页面。
+- DPlayer、Artplayer、Clappr、ckplayer、JW Player 等常见初始化配置中的字面量媒体地址，以及 `player_aaaa` 一类配置的 URL 编码和 Base64 地址。
+- 页面通过 `playerConfig.videoUrl`、`apiToken` 和 `assets/player.js` 使用同站 `api/resolve.php?token=…` 返回媒体 JSON 的解析流程。
+- AlphaPlayer 页面内携带加密播放结果的流程：在匹配页面结构和脚本路径后解码，仅接受原视频地址一致且解析成功的媒体结果；不会执行对方脚本或导入其广告、配置。
+
+网页解析需要 PHP DOM 扩展。每条接口最多读取 3 个页面或解析响应，单次响应最多 2 MiB、累计最多 4 MiB，所有请求沿用公网地址校验和重定向检查。不会执行第三方页面脚本。只有浏览器执行动态脚本、交互验证后才能产生地址的接口，或其他未适配的私有流程，不保证兼容；提取失败时会继续尝试下一条接口。
+
+解析、元数据和资源站请求由服务器发起，服务器必须能连接这些服务。取得地址后，媒体源仍须能被观看者访问并满足跨域要求；依赖对方 Cookie、特定 Referer、IP 绑定或 DRM 的地址不一定能在本站播放。
 
 ### 剧集元数据与资源站
 

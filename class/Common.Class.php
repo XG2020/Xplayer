@@ -8,6 +8,7 @@ require_once __DIR__ . '/Security.php';
 require_once __DIR__ . '/Http.php';
 require_once __DIR__ . '/Settings.php';
 require_once __DIR__ . '/Statistics.php';
+require_once __DIR__ . '/PlaybackResolver.php';
 
 class Tools
 {
@@ -258,6 +259,7 @@ class parseUrl
     private Http $http;
     private string $lastFailure = '';
     private array $videoIdentity = [];
+    private string $mediaType = 'auto';
 
     public function __construct($url, $api = [], $specialapi = [], $cacheTime = 300, $secret = false, $secretKey = '', ?Http $http = null)
     {
@@ -284,6 +286,7 @@ class parseUrl
     {
         $this->lastFailure = '';
         $this->videoIdentity = [];
+        $this->mediaType = PlaybackResolver::mediaType($this->url);
         if (self::directMedia($this->url)) return $this->url;
         $endpoints = [];
         foreach (array_slice($this->special, 0, 40) as $entry) {
@@ -296,9 +299,10 @@ class parseUrl
             foreach (array_slice($endpoints, 0, 10) as $endpoint) {
                 if (!is_string($endpoint) || $endpoint === '') continue;
                 try {
-                    $data = $this->http->json(self::endpoint($endpoint, $this->url));
+                    $data = (new PlaybackResolver($this->http))->resolve(self::endpoint($endpoint, $this->url), $this->url);
                     $play = $data['url'] ?? ($data['data']['url'] ?? '');
                     if (Http::validUrl($play)) {
+                        $this->mediaType = PlaybackResolver::mediaType($play, $data['type'] ?? '');
                         $details = is_array($data['data'] ?? null) ? array_replace($data, $data['data']) : $data;
                         foreach (['vid', 'tvid', 'videoId'] as $field) {
                             $value = $details[$field] ?? null;
@@ -330,21 +334,26 @@ class parseUrl
         $fallbackUrl = $fallback['url'] ?? '';
         // Catalogue URLs may differ only by tracking parameters or point to an
         // episode page instead of a season page. Neither is a playable medium.
-        return self::directMedia($fallbackUrl) && $fallbackUrl !== $this->url ? $fallbackUrl : '';
+        if (self::directMedia($fallbackUrl) && $fallbackUrl !== $this->url) {
+            $this->mediaType = PlaybackResolver::mediaType($fallbackUrl);
+            return $fallbackUrl;
+        }
+        return '';
     }
 
     public function start(): array
     {
-        // Older cache entries may contain catalogue HTML accepted as media.
-        $cacheKey = 'parse-v3|' . Security::json([$this->url, $this->api, $this->special,
+        // Keep detected media types with URLs, including extensionless HLS/DASH sources.
+        $cacheKey = 'parse-v4|' . Security::json([$this->url, $this->api, $this->special,
             $GLOBALS['zyapi'] ?? [], $GLOBALS['user']['metadataApi'] ?? '']);
         $cache = new Cache('Cache/', $this->cacheTime, $cacheKey);
         $cached = json_decode($cache->load() ?? '', true);
         $play = is_array($cached) ? ($cached['url'] ?? '') : '';
         $this->videoIdentity = is_array($cached['identity'] ?? null) ? $cached['identity'] : [];
+        $this->mediaType = PlaybackResolver::mediaType(is_string($play) ? $play : '', $cached['type'] ?? '');
         if (!Http::validUrl($play)) {
             $play = $this->getPlay();
-            if (Http::validUrl($play)) $cache->write(Security::json(['url' => $play, 'identity' => $this->videoIdentity]));
+            if (Http::validUrl($play)) $cache->write(Security::json(['url' => $play, 'type' => $this->mediaType, 'identity' => $this->videoIdentity]));
         }
         $success = Http::validUrl($play);
         if (($GLOBALS['conn'] ?? null) instanceof PDO) {
@@ -352,9 +361,7 @@ class parseUrl
             catch (Throwable $error) { error_log('Xplayer statistics: ' . $error->getMessage()); }
         }
         if (!$success) return ['code' => 100, 'msg' => $this->lastFailure ?: '未找到可播放地址：直链可直接播放，网页链接需配置可用解析接口'];
-        $type = preg_match('/\.m3u8\z/i', (string) parse_url($play, PHP_URL_PATH)) ? 'hls' :
-            (preg_match('/\.mpd\z/i', (string) parse_url($play, PHP_URL_PATH)) ? 'dash' :
-            (preg_match('/\.flv\z/i', (string) parse_url($play, PHP_URL_PATH)) ? 'flv' : 'auto'));
+        $type = $this->mediaType;
         if (in_array($type, ['hls', 'dash'], true) && $this->secret) {
             $token = Security::issueToken($type === 'dash' ? 'dash-playlist' : 'playlist', $play, $this->secretKey, 43200);
             $play = 'api.php?type=' . ($type === 'dash' ? 'mpd' : 'm3u8') . '&vkey=' . rawurlencode($token);

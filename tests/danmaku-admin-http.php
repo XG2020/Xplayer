@@ -90,7 +90,7 @@ try {
         dmHttpExpect(mkdir($temporary . '/' . $directory, 0700, true), 'Could not create the temporary fixture');
     }
     $confirmedRoot = realpath($temporary);
-    foreach (['Security.php', 'Common.Class.php', 'Http.php', 'Settings.php', 'Statistics.php', 'Installer.php', 'Danmaku.php', 'DanmakuAdmin.php', 'DanmakuFilter.php'] as $file) {
+    foreach (['Security.php', 'Common.Class.php', 'PlaybackResolver.php', 'Http.php', 'Settings.php', 'Statistics.php', 'Installer.php', 'Danmaku.php', 'DanmakuAdmin.php', 'DanmakuFilter.php'] as $file) {
         dmHttpExpect(copy($source . '/class/' . $file, $temporary . '/class/' . $file), 'Missing required class: ' . $file);
     }
     dmHttpExpect(copy($source . '/danmaku.php', $temporary . '/danmaku.php'), 'The public danmaku endpoint is missing');
