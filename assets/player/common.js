@@ -2175,7 +2175,7 @@ function (module, exports, requireModule) {
     value += icons.right;
     value += "</div>\n                    </div>\n                    <div class=\"xplayer-setting-item xplayer-setting-loop\">\n                        <span class=\"xplayer-label\">";
     value += $escape(tran("Loop"));
-    value += "</span>\n                        <div class=\"xplayer-toggle\">\n                            <input class=\"xplayer-toggle-setting-input\" type=\"checkbox\" name=\"xplayer-toggle\">\n                            <label for=\"xplayer-toggle\"></label>\n                        </div>\n                    </div><div class=\"xplayer-setting-item xplayer-setting-jlast\"><span class=\"xplayer-label\">跳过片尾 <span class=\"xplayer-skip-time\"><input id=\"jumptime\" inputmode=\"numeric\" aria-label=\"跳过片尾时长（秒）\" placeholder=\"0\"><span class=\"xplayer-skip-time-unit\" aria-hidden=\"true\">秒</span></span></span><div class=\"xplayer-toggle\"><input class=\"xplayer-toggle-setting-input\" type=\"checkbox\" name=\"xplayer-toggle\"><label for=\"xplayer-toggle\"></label></div></div><div class=\"xplayer-setting-item xplayer-setting-jfrist\"><span class=\"xplayer-label\">跳过片头 <span class=\"xplayer-skip-time\"><input id=\"fristtime\" inputmode=\"numeric\" aria-label=\"跳过片头时长（秒）\" placeholder=\"0\"><span class=\"xplayer-skip-time-unit\" aria-hidden=\"true\">秒</span></span></span><div class=\"xplayer-toggle\"><input class=\"xplayer-toggle-setting-input\" type=\"checkbox\" name=\"xplayer-toggle\"><label for=\"xplayer-toggle\"></label></div></div>\n             </div>\n                <div class=\"xplayer-setting-speed-panel\">\n                    <div class=\"xplayer-setting-speed-item\" data-speed=\"0.5\">\n                        <span class=\"xplayer-label\">0.5</span>\n                    </div>\n                    <div class=\"xplayer-setting-speed-item\" data-speed=\"0.75\">\n                        <span class=\"xplayer-label\">0.75</span>\n                    </div>\n                    <div class=\"xplayer-setting-speed-item\" data-speed=\"1\">\n                        <span class=\"xplayer-label\">";
+    value += "</span>\n                        <div class=\"xplayer-toggle\">\n                            <input class=\"xplayer-toggle-setting-input\" type=\"checkbox\" name=\"xplayer-toggle\" id=\"xplayer-toggle-loop-" + $escape(index) + "\" aria-label=\"循环播放\">\n                            <label for=\"xplayer-toggle-loop-" + $escape(index) + "\"></label>\n                        </div>\n                    </div><div class=\"xplayer-setting-item xplayer-setting-jlast\"><span class=\"xplayer-label\">跳过片尾 <span class=\"xplayer-skip-time\"><input id=\"jumptime\" inputmode=\"numeric\" aria-label=\"跳过片尾时长（秒）\" placeholder=\"0\"><span class=\"xplayer-skip-time-unit\" aria-hidden=\"true\">秒</span></span></span><div class=\"xplayer-toggle\"><input class=\"xplayer-toggle-setting-input\" type=\"checkbox\" name=\"xplayer-toggle\" id=\"xplayer-toggle-skip-tail-" + $escape(index) + "\" aria-label=\"跳过片尾\"><label for=\"xplayer-toggle-skip-tail-" + $escape(index) + "\"></label></div></div><div class=\"xplayer-setting-item xplayer-setting-jfrist\"><span class=\"xplayer-label\">跳过片头 <span class=\"xplayer-skip-time\"><input id=\"fristtime\" inputmode=\"numeric\" aria-label=\"跳过片头时长（秒）\" placeholder=\"0\"><span class=\"xplayer-skip-time-unit\" aria-hidden=\"true\">秒</span></span></span><div class=\"xplayer-toggle\"><input class=\"xplayer-toggle-setting-input\" type=\"checkbox\" name=\"xplayer-toggle\" id=\"xplayer-toggle-skip-head-" + $escape(index) + "\" aria-label=\"跳过片头\"><label for=\"xplayer-toggle-skip-head-" + $escape(index) + "\"></label></div></div>\n             </div>\n                <div class=\"xplayer-setting-speed-panel\">\n                    <div class=\"xplayer-setting-speed-item\" data-speed=\"0.5\">\n                        <span class=\"xplayer-label\">0.5</span>\n                    </div>\n                    <div class=\"xplayer-setting-speed-item\" data-speed=\"0.75\">\n                        <span class=\"xplayer-label\">0.75</span>\n                    </div>\n                    <div class=\"xplayer-setting-speed-item\" data-speed=\"1\">\n                        <span class=\"xplayer-label\">";
     value += $escape(tran("Normal"));
     value += "</span>\n                    </div>\n                    <div class=\"xplayer-setting-speed-item\" data-speed=\"1.25\">\n                        <span class=\"xplayer-label\">1.25</span>\n                    </div>\n                    <div class=\"xplayer-setting-speed-item\" data-speed=\"1.5\">\n                        <span class=\"xplayer-label\">1.5</span>\n                    </div>\n                    <div class=\"xplayer-setting-speed-item\" data-speed=\"2\">\n                        <span class=\"xplayer-label\">2</span>\n                    </div>\n                </div>\n            </div>\n        </div>\n   <button onclick=\"hzh()\" class=\"xplayer-icon xplayer-full-in-icon\" data-balloon=\"画中画\" data-balloon-pos=\"up\"><span class=\"xplayer-icon-content\"><svg width=\"22\" height=\"22\" viewBox=\"0 0 22 22\" xmlns=\"http://www.w3.org/2000/svg\"><g fill=\"#E6E6E6\" fill-rule=\"evenodd\"><path d=\"M17 4a2 2 0 012 2v6h-2V6.8a.8.8 0 00-.8-.8H4.8a.8.8 0 00-.794.7L4 6.8v8.4a.8.8 0 00.7.794l.1.006H11v2H4a2 2 0 01-2-2V6a2 2 0 012-2h13z\"></path><rect id=\"huazhonghua\" x=\"13\" y=\"14\" width=\"8\" height=\"6\" rx=\"1\"></rect></g></svg></span></button> \n        <div class=\"xplayer-full\">\n         <button class=\"xplayer-icon xplayer-full-icon\" data-balloon=\"";
     value += $escape(tran("Full screen"));
@@ -3824,10 +3824,10 @@ function (module, exports, requireModule) {
         });
         if (value2.default.isMobile) {
           this.player.template.videoWrap.addEventListener("click", function () {
-            self2.toggle();
+            self2.setAutoHide();
           });
           this.player.template.controllerMask.addEventListener("click", function () {
-            self2.toggle();
+            self2.setAutoHide();
           });
         } else {
           this.player.template.videoWrap.addEventListener("click", function () {
@@ -3970,6 +3970,7 @@ function (module, exports, requireModule) {
         bar.addEventListener(enterEvent, moveHover, {passive: true});
         bar.addEventListener(leaveEvent, hideHover);
         if (pointerEvents) bar.addEventListener("lostpointercapture", cancelDrag);
+        this.cancelProgressDrag = function () {finishDrag(null, false);hideHover();};
         this.progressDragCleanup = function () {
           disposed = true;
           finishDrag(null, false);
@@ -4006,6 +4007,7 @@ function (module, exports, requireModule) {
           document.removeEventListener(value2.default.nameMap.dragMove, helper7);
           self6.player.template.volumeButton.classList.remove("xplayer-volume-active");
         };
+        this.cancelVolumeDrag = helper8;
         this.player.template.volumeBarWrapWrap.addEventListener("click", function (argument11) {
           var value13 = argument11 || window.event;
           var value14 = ((value13.clientX || value13.changedTouches[0].clientX) - value2.default.getElementViewLeft(self6.player.template.volumeBarWrap) - 5.5) / 35;
@@ -4118,8 +4120,15 @@ function (module, exports, requireModule) {
         }
       }
     }, {
+      key: "cancelInteraction",
+      value: function () {
+        if (this.cancelProgressDrag) this.cancelProgressDrag();
+        if (this.cancelVolumeDrag) this.cancelVolumeDrag();
+      }
+    }, {
       key: "destroy",
       value: function () {
+        this.cancelInteraction();
         if (this.progressDragCleanup) this.progressDragCleanup();
         clearTimeout(this.autoHideTimer);
       }
@@ -4264,8 +4273,12 @@ function (module, exports, requireModule) {
       });
       this.loop = this.player.options.loop;
       this.player.template.loopToggle.checked = this.loop;
-      this.player.template.loop.addEventListener("click", function () {
-        self.player.template.loopToggle.checked = !self.player.template.loopToggle.checked;
+      this.player.template.loop.addEventListener("click", function (event) {
+        if (event.target !== self.player.template.loopToggle) {
+          // A label now targets this input; handle its click once at the row.
+          event.preventDefault();
+          self.player.template.loopToggle.checked = !self.player.template.loopToggle.checked;
+        }
         if (self.player.template.loopToggle.checked) {
           self.loop = true;
         } else {

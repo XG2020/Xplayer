@@ -21,6 +21,7 @@ fs.writeFileSync(path.join(output,'common.js'),head+files.map(name=>fs.readFileS
 for(const [input,dest] of [['controller.js','config.js'],['contextmenu.js','contextmenu.js'],['contextmenu.css','contextmenu.css'],['compatibility.js','compatibility.js'],['start.js','start.js']])fs.copyFileSync(path.join(source,input),path.join(output,dest));
 for(const file of ['controls.js','controls.css','progress.js','progress.css','playback-settings.js','playback-settings.css','picture-in-picture.js','picture-in-picture.css'])fs.copyFileSync(path.join(source,file),path.join(output,file));
 for(const file of ['loading.js','loading.css'])fs.copyFileSync(path.join(source,file),path.join(output,file));
+for(const file of ['control-lock.js','control-lock.css','devtools-guard.js'])fs.copyFileSync(path.join(source,file),path.join(output,file));
 fs.copyFileSync(path.join(source,'danmaku-sources.js'),path.join(output,'danmaku-sources.js'));
 fs.copyFileSync(path.join(source,'visibility.js'),path.join(output,'visibility.js'));
 for(const file of ['danmaku-content.js','danmaku-content.css'])fs.copyFileSync(path.join(source,file),path.join(output,file));

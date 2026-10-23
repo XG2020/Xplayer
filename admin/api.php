@@ -68,7 +68,7 @@ try {
             return (int) $value;
         };
         if ($section === 'player') {
-            $keys = ['title','logo','ico','img','themeColor','autoplay','danmuon','showlist','home404','notice','bad','forbidden','button','startAD','pauseAD'];
+            $keys = ['title','logo','ico','img','themeColor','autoplay','danmuon','showlist','home404','devtoolsGuard','devtoolsGuardMode','cdnEnabled','cdnRef','notice','bad','forbidden','button','startAD','pauseAD'];
             $partial = array_intersect_key($data, array_flip($keys));
             $writes[] = ['user', Settings::validateUser($partial, $user), false];
             if (array_key_exists('ad', $data)) $writes[] = ['ad', $boolean($data['ad']), false];

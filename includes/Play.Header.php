@@ -2,8 +2,9 @@
 /** Prepare one explicit bootstrap object instead of interpolating executable JS. */
 if (!defined('IN_SYS')) { http_response_code(403); exit('Access denied'); }
 require_once dirname(__DIR__) . '/config.php';
+require_once dirname(__DIR__) . '/class/PlayerAssets.php';
 header('X-Content-Type-Options: nosniff');
-header("Content-Security-Policy: script-src 'self' 'unsafe-inline'; worker-src 'self' blob:; object-src 'none'; base-uri 'self'");
+header('Content-Security-Policy: ' . PlayerAssets::scriptPolicy($user));
 header('Referrer-Policy: strict-origin-when-cross-origin');
 if (!Tools::inOriginArr(Tools::get_origin())) {
     http_response_code(403);
@@ -14,6 +15,7 @@ $playback = $url === '' ? ['code' => 204, 'msg' => '请提供播放链接'] :
     ($async ? ['code' => 202] : (new parseUrl($url, $api, $specialapi, $cacheTime, $secret, $secretKey))->start());
 $button = Settings::siteButton((string) $user['button']);
 $bootstrap = [
+    'assetBase' => PlayerAssets::base($user),
     'source' => $url, 'playback' => $playback, 'async' => $async,
     'parseToken' => $url !== '' ? Security::issueToken('parse', $url, $secretKey, 900) : '',
     'listToken' => $url !== '' ? Security::issueToken('vlist', $url, $secretKey, 21600) : '',
@@ -21,6 +23,8 @@ $bootstrap = [
     'settings' => Player::settings($user, $AD),
     'title' => (string) $user['title'], 'poster' => Settings::assetUrl($user['img']) ? $user['img'] : '',
     'autoplay' => (bool) $user['autoplay'], 'showlist' => (bool) $user['showlist'],
+    'devtoolsGuard' => (bool) ($user['devtoolsGuard'] ?? false),
+    'devtoolsGuardMode' => ($user['devtoolsGuardMode'] ?? 'shortcut') === 'enhanced' ? 'enhanced' : 'shortcut',
     'danmakuApi' => Player::danmakuApi($user),
     'danmakuApis' => Player::danmakuApis($user),
     'danmakuCreateApis' => array_values(array_filter(explode("\n", (string) $user['danmakuCreateApis']))),

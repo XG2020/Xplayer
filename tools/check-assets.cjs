@@ -28,6 +28,9 @@ for(const badge of JSON.parse(fs.readFileSync(path.join(root,'assets/player/badg
 }
 for(const relative of ['index.php','admin/Head.Include.php','install/index.php']){
  const text=fs.readFileSync(path.join(root,relative),'utf8');
+ for(const match of text.matchAll(/PlayerAssets::url\('([^']+)'/g)){
+  if(!fs.existsSync(path.resolve(root,match[1])))failures.push(relative+': missing '+match[1]);
+ }
  for(const match of text.matchAll(/(?:src|href)="([^"?<>]+\.(?:js|css|svg|png))(?=[?"])/g)){
   const reference=match[1];if(/^(?:https?:)?\/\//.test(reference)){failures.push(relative+': external UI asset '+reference);continue;}
   if(!fs.existsSync(path.resolve(root,path.dirname(relative),reference)))failures.push(relative+': missing '+reference);

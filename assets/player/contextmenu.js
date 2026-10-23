@@ -605,7 +605,12 @@ const engine = {
         const moveEvent = pointerEvents ? 'pointermove' : 'touchmove';
         const endEvent = pointerEvents ? 'pointerup' : 'touchend';
         const cancelEvent = pointerEvents ? 'pointercancel' : 'touchcancel';
-        let gesture = null, suppressClickUntil = 0;
+        let gesture = null, lastTap = null, suppressClickUntil = 0;
+
+        function onPicture(target) {
+            return !!target.closest?.('.xplayer-video-wrap,.xplayer-controller-mask') &&
+                !target.closest('button,a,input,textarea,select,[contenteditable],.xplayer-controller,.xplayer-bar-wrap,.xplayer-menu');
+        }
 
         function validVideo() {
             return !player.options.live && Number.isFinite(player.video.duration) && player.video.duration > 0 && Number.isFinite(player.video.currentTime);
@@ -624,13 +629,16 @@ const engine = {
         function cancelSession() {
             if (!gesture || gesture.cancelled) return;
             gesture.cancelled = true;
+            lastTap = null;
             if (gesture.horizontal) player.notice('已取消快进快退');
         }
         function update(event) {
             const touch = point(event);
-            if (!touch || gesture.cancelled || gesture.vertical) return;
+            if (!touch) return;
             const dx = touch.clientX - gesture.x, dy = touch.clientY - gesture.y;
             if (!Number.isFinite(dx) || !Number.isFinite(dy)) return;
+            if (Math.max(Math.abs(dx), Math.abs(dy)) >= 12) {gesture.moved = true; lastTap = null;}
+            if (gesture.cancelled || gesture.vertical || !gesture.seekable) return;
             if (!gesture.horizontal) {
                 if (Math.max(Math.abs(dx), Math.abs(dy)) < 12) return;
                 if (Math.abs(dy) >= Math.abs(dx)) {gesture.vertical = true; return;}
@@ -650,7 +658,7 @@ const engine = {
         }
         function finish(event, commit) {
             if (!gesture || event && !point(event)) return;
-            const sameVideo = validVideo() && player.video === gesture.video && player.video.src === gesture.source;
+            const sameVideo = player.video === gesture.video && player.video.src === gesture.source;
             if (commit && event && sameVideo) update(event);
             const session = gesture;
             gesture = null;
@@ -663,11 +671,24 @@ const engine = {
             try {
                 if (pointerEvents && session.target.hasPointerCapture(session.id)) session.target.releasePointerCapture(session.id);
             } catch (_) {}
-            if (!session.horizontal) return;
             // Refresh on release so holding the finger still cannot let a synthetic click through.
             suppressClickUntil = Date.now() + 700;
             if (event?.cancelable) event.preventDefault();
-            if (commit && sameVideo && !session.cancelled && session.position !== session.time) {
+            if (!session.horizontal) {
+                const now = Date.now();
+                if (commit && sameVideo && !session.cancelled && !session.moved && now - session.startedAt <= 350) {
+                    const doubleTap = lastTap && now - lastTap.at <= 350 &&
+                        lastTap.video === session.video && lastTap.source === session.source &&
+                        Math.hypot(session.x - lastTap.x, session.y - lastTap.y) <= 40;
+                    lastTap = doubleTap ? null : {at: now, x: session.x, y: session.y, video: session.video, source: session.source};
+                    if (doubleTap) player.toggle();
+                    // A single touch reveals controls immediately; the second toggles playback once.
+                    player.controller.setAutoHide();
+                } else lastTap = null;
+                return;
+            }
+            lastTap = null;
+            if (commit && sameVideo && validVideo() && !session.cancelled && session.position !== session.time) {
                 player.seek(Math.max(0, Math.min(player.video.duration, session.position)));
             } else if (!session.cancelled) {
                 player.notice('已取消快进快退');
@@ -675,7 +696,7 @@ const engine = {
         }
         function move(event) {
             if (!pointerEvents && event.touches.length !== 1) {cancelSession(); return;}
-            if (gesture && !validVideo()) {finish(null, false); return;}
+            if (gesture?.seekable && !validVideo()) {finish(null, false); return;}
             update(event);
         }
         function end(event) {finish(event, true);}
@@ -687,16 +708,20 @@ const engine = {
         }
         function begin(event) {
             if (gesture) return;
-            if (pointerEvents ? event.pointerType !== 'touch' || event.isPrimary === false : event.touches.length !== 1) return;
+            if (pointerEvents ? event.pointerType !== 'touch' || event.isPrimary === false : event.touches.length !== 1) {
+                lastTap = null;
+                suppressClickUntil = 0;
+                return;
+            }
             suppressClickUntil = 0;
             const target = event.target;
-            if (!validVideo() || !target.closest?.('.xplayer-video-wrap,.xplayer-controller-mask') ||
-                target.closest('button,a,input,textarea,select,[contenteditable],.xplayer-controller,.xplayer-bar-wrap,.xplayer-menu')) return;
+            if (!onPicture(target)) {lastTap = null; return;}
             const touch = pointerEvents ? event : event.touches[0];
             if (!Number.isFinite(touch.clientX) || !Number.isFinite(touch.clientY)) return;
             const owner = container.ownerDocument;
             gesture = {id: pointerEvents ? event.pointerId : touch.identifier, x: touch.clientX, y: touch.clientY,
                 time: player.video.currentTime, position: player.video.currentTime, video: player.video, source: player.video.src,
+                startedAt: Date.now(), seekable: validVideo(), moved: false,
                 horizontal: false, vertical: false, cancelled: false, target, document: owner, window: owner.defaultView || global};
             owner.addEventListener(startEvent, additionalTouch, {capture: true, passive: true});
             owner.addEventListener(moveEvent, move, {capture: true, passive: false});
@@ -707,14 +732,19 @@ const engine = {
             try {if (pointerEvents) target.setPointerCapture(event.pointerId);} catch (_) {}
         }
         function click(event) {
-            if (Date.now() < suppressClickUntil) {event.preventDefault(); event.stopImmediatePropagation();}
+            if (Date.now() < suppressClickUntil && onPicture(event.target)) {event.preventDefault(); event.stopImmediatePropagation();}
         }
+        function controlLock(event) {if (event.detail?.locked) {lastTap = null; finish(null, false);}}
         container.addEventListener(startEvent, begin, {capture: true, passive: true});
         container.addEventListener('click', click, true);
+        container.addEventListener('dblclick', click, true);
+        container.addEventListener('xplayer:control-lock-change', controlLock);
         return () => {
             finish(null, false);
             container.removeEventListener(startEvent, begin, true);
             container.removeEventListener('click', click, true);
+            container.removeEventListener('dblclick', click, true);
+            container.removeEventListener('xplayer:control-lock-change', controlLock);
         };
     }
 
@@ -739,9 +769,12 @@ const engine = {
         };
         document.addEventListener('keydown', onKey);
         const cleanupGesture = attachSeekGesture(player);
+        const onControlLock = event => {if (event.detail?.locked && state.dialog !== null) global.layer.close(state.dialog);};
+        player.container.addEventListener('xplayer:control-lock-change', onControlLock);
         player.on('play', () => {if(state.audio?.audioCtx?.state === 'suspended') state.audio.audioCtx.resume().catch(() => {});});
         player.on('destroy', () => {
             document.removeEventListener('keydown', onKey);
+            player.container.removeEventListener('xplayer:control-lock-change', onControlLock);
             cleanupGesture();
             if (state.dialog !== null) global.layer.close(state.dialog);
             if (state.audio?.audioCtx) {
@@ -1033,7 +1066,7 @@ const engine = {
     }
     function showShortcuts(player) {
         const panel=element('div','xplayer-shortcuts-panel');
-        [['Space','播放/暂停'],['→','快进5秒'],['←','快退5秒'],['↑','音量增加10%'],['↓','音量降低10%'],['Esc','退出全屏'],['F','全屏/退出全屏'],['[','上一集（已播放过）'],[']','下一集'],['Enter','发弹幕'],['右滑','快进（手机）'],['左滑','快退（手机）'],['上滑','取消（快进快退中）']].forEach(([key,action])=>{
+        [['Space','播放/暂停'],['→','快进5秒'],['←','快退5秒'],['↑','音量增加10%'],['↓','音量降低10%'],['Esc','退出全屏'],['F','全屏/退出全屏'],['[','上一集（已播放过）'],[']','下一集'],['Enter','发弹幕'],['单击画面','显示控件（手机）'],['双击画面','播放/暂停（手机）'],['右滑','快进（手机）'],['左滑','快退（手机）'],['上滑','取消（快进快退中）']].forEach(([key,action])=>{
             const row=element('div','xplayer-shortcut-row');row.append(element('span','',key),element('span','',action));panel.append(row);
         });
         openDialog(stateFor(player),'快捷键说明',panel);

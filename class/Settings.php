@@ -9,7 +9,9 @@ final class Settings
     public static function userDefaults(): array
     {
         return [
-            'danmuon' => 1, 'autoplay' => 0, 'showlist' => 1, 'home404' => 0,
+            'danmuon' => 1, 'autoplay' => 0, 'showlist' => 1, 'home404' => 0, 'devtoolsGuard' => 0,
+            'devtoolsGuardMode' => 'shortcut',
+            'cdnEnabled' => 0, 'cdnRef' => 'main',
             'title' => 'Xplayer | H5高级播放器',
             'logo' => 'assets/branding/xplayer-logo.svg',
             'ico' => 'assets/branding/xplayer-icon.svg',
@@ -138,9 +140,17 @@ final class Settings
         $result = array_replace($allowed, $previous);
         foreach ($allowed as $key => $default) {
             if (!array_key_exists($key, $data)) continue;
-            if (in_array($key, ['danmuon', 'autoplay', 'showlist', 'home404', 'danmakuLocalFallback'], true)) {
+            if (in_array($key, ['danmuon', 'autoplay', 'showlist', 'home404', 'devtoolsGuard', 'cdnEnabled', 'danmakuLocalFallback'], true)) {
                 if (!in_array($data[$key], [0, 1, '0', '1'], true)) throw new InvalidArgumentException('开关值不正确');
                 $result[$key] = (int) $data[$key];
+            } elseif ($key === 'devtoolsGuardMode') {
+                if (!in_array($data[$key], ['shortcut', 'enhanced'], true)) throw new InvalidArgumentException('防开发者调试模式不正确');
+                $result[$key] = $data[$key];
+            } elseif ($key === 'cdnRef') {
+                if (!is_string($data[$key]) || !preg_match('/\A[A-Za-z0-9][A-Za-z0-9._-]{0,127}\z/', $data[$key])) {
+                    throw new InvalidArgumentException('CDN 版本须为 1–128 个字符，以英文字母或数字开头，仅允许英文字母、数字、点、下划线和短横线，不支持斜杠');
+                }
+                $result[$key] = $data[$key];
             } elseif ($key === 'danmakuBlockedWords') {
                 $result[$key] = self::normalizeDanmakuBlockedWords(Security::text($data[$key], 32768));
             } else {

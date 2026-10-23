@@ -1,6 +1,7 @@
 <?php
 /** Browser configuration and bounded HLS/DASH manifest rewriting. */
 require_once __DIR__ . '/Common.Class.php';
+require_once __DIR__ . '/PlayerAssets.php';
 
 final class Player
 {
@@ -26,7 +27,7 @@ final class Player
     {
         $data = [
             'color' => preg_match('/\A#[0-9a-fA-F]{6}\z/', (string) $user['themeColor']) ? $user['themeColor'] : '#ff0000',
-            'logo' => Settings::assetUrl($user['logo'] ?? '') ? $user['logo'] : '',
+            'logo' => Settings::assetUrl($user['logo'] ?? '') ? PlayerAssets::branding((string) $user['logo'], $user) : '',
             'trytime' => 0, 'waittime' => 0, 'sendtime' => 3,
             'dmrule' => 'assets/docs/danmaku-rules.html', 'pbgjz' => '',
             'danmuon' => !empty($user['danmuon']) && self::danmakuApi($user) !== '',

@@ -256,14 +256,29 @@
         state.host = host;
         return {host, bar};
     }
+    function stylesheetAssetBase() {
+        try {
+            const base = JSON.parse(mainDocument.getElementById('xplayer-bootstrap')?.textContent || '{}').assetBase;
+            if (typeof base === 'string' && /^https:\/\/cdn\.jsdelivr\.net\/gh\/XG2020\/Xplayer@[A-Za-z0-9][A-Za-z0-9._-]{0,127}\/$/.test(base)) return base;
+        } catch (_) {}
+        return '';
+    }
+    function approvedStylesheet(source, url, assetBase) {
+        if (url.origin === global.location.origin) return true;
+        const asset = source.getAttribute('data-xplayer-asset');
+        if (!assetBase || !asset || asset.length > 240 || !/^assets\/(?:[A-Za-z0-9][A-Za-z0-9._-]*\/)*[A-Za-z0-9][A-Za-z0-9._-]*\.css$/.test(asset)) return false;
+        const expected = new URL(asset, assetBase);
+        return !url.username && !url.password && !url.hash && url.origin === expected.origin && url.pathname === expected.pathname;
+    }
     function copyStyles(target) {
+        const assetBase = stylesheetAssetBase();
         const base = target.createElement('base'); base.href = mainDocument.baseURI; target.head.append(base);
         for (const source of mainDocument.head.querySelectorAll('style,link[rel="stylesheet"]')) {
             if (source.tagName === 'LINK') {
                 let url; try { url = new URL(source.href, mainDocument.baseURI); } catch (_) { continue; }
-                if (url.origin !== global.location.origin) continue;
+                if (!approvedStylesheet(source, url, assetBase)) continue;
                 if (source.disabled) continue;
-                // Read already-loaded same-origin CSS so the PiP does not flash unstyled
+                // Read already-loaded local or approved CORS CSS so the PiP does not flash unstyled
                 // or depend on a second stylesheet request. Keep asset URLs absolute.
                 try {
                     const css = Array.from(source.sheet.cssRules, rule => rule.cssText).join('\n');
@@ -275,6 +290,10 @@
                     style.media = source.media; target.head.append(style); continue;
                 } catch (_) {}
                 const link = target.createElement('link'); link.rel = 'stylesheet'; link.href = url.href;
+                for (const attribute of ['crossorigin','integrity','referrerpolicy','data-xplayer-asset']) {
+                    const value = source.getAttribute(attribute);
+                    if (value !== null) link.setAttribute(attribute, value);
+                }
                 link.disabled = source.disabled; link.media = source.media; target.head.append(link);
             } else target.head.append(source.cloneNode(true));
         }

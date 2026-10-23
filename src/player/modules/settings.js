@@ -58,8 +58,12 @@ module.exports = function (module, exports, requireModule) {
       });
       this.loop = this.player.options.loop;
       this.player.template.loopToggle.checked = this.loop;
-      this.player.template.loop.addEventListener("click", function () {
-        self.player.template.loopToggle.checked = !self.player.template.loopToggle.checked;
+      this.player.template.loop.addEventListener("click", function (event) {
+        if (event.target !== self.player.template.loopToggle) {
+          // A label now targets this input; handle its click once at the row.
+          event.preventDefault();
+          self.player.template.loopToggle.checked = !self.player.template.loopToggle.checked;
+        }
         if (self.player.template.loopToggle.checked) {
           self.loop = true;
         } else {

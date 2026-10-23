@@ -187,6 +187,7 @@
         global.XplayerPlaybackSettings.attach(player);
         global.XplayerPip.attach(player);
         global.XplayerVisibility.attach(player);
+        global.XplayerControlLock.attach(player);
         player.container.addEventListener('xplayer:playback-settings-change',event=>{
             config.autoplay=event.detail.preferences.autoplay;
             if(event.detail.preferences.loop||event.detail.preferences.playMode==='pause')clearTimeout(nextEpisodeTimer);
@@ -367,12 +368,15 @@
     }
     global.XplayerBootstrap={start:async function(){
         if(!data.source){global.XplayerLoading?.hide();$('#xplayer-open').prop('hidden',false);return;}
+        const guard=global.XplayerDevtoolsGuard.start(data.devtoolsGuard===true,data.devtoolsGuardMode);
+        if(guard.blocked)return;
         global.XplayerLoading?.show('正在解析视频');
         const list=data.showlist?loadEpisodes():Promise.resolve();
         try {
             const playback=data.async?await post('parse','vkey',data.parseToken):data.playback;
+            if(guard.blocked)return;
             if(Number(playback.code)!==200||!safeUrl(playback.url))throw Error(playback.msg||data.errorText);
-            config.url=playback.url;await list;global.XplayerLoading?.show('正在加载视频');
+            config.url=playback.url;await list;if(guard.blocked)return;global.XplayerLoading?.show('正在加载视频');
             const danmakuContext={
                 url:data.source,mediaUrl:playback.url,title:episodes?.data?.name||text(params.get('title')),episode:config.sid,
                 episodeLabel:episodes?.data?.episodeLabel||currentEpisodeLabel,

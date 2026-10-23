@@ -1,4 +1,4 @@
-/* Decode supported source badges into local image nodes. Never insert provider HTML. */
+/* Decode supported source badges into project image nodes. Never insert provider HTML. */
 (function(global){
  'use strict';
  const names={
@@ -6,7 +6,23 @@
   '20181108_kmvs8c81wgf':'v4','20181108_9emyfllpvo5':'v5','20181108_modlxx19wxm':'v6',
   '20181108_vrbs64jccp':'v7','20190430_j2554xpzpqp':'starlight'
  };
- const base=new URL('assets/player/badges/',document.baseURI).href,cache=new Map();
+ const cdnBasePattern=/^https:\/\/cdn\.jsdelivr\.net\/gh\/XG2020\/Xplayer@[A-Za-z0-9][A-Za-z0-9._-]{0,127}\/$/;
+ function badgeBase(){
+  const script=document.currentScript,asset='assets/player/danmaku-content.js';
+  // A marked CDN script pins its badges to the same repository ref, even if bootstrap is stale.
+  try{
+   if(script?.getAttribute('data-xplayer-asset')===asset){
+    const url=new URL(script.src,document.baseURI),root=url.origin+url.pathname.slice(0,-asset.length);
+    if(!url.username&&!url.password&&!url.hash&&url.pathname.endsWith('/'+asset)&&cdnBasePattern.test(root))return root+'assets/player/badges/';
+   }
+  }catch(_){}
+  try{
+   const configured=JSON.parse(document.getElementById('xplayer-bootstrap')?.textContent||'{}').assetBase;
+   if(typeof configured==='string'&&cdnBasePattern.test(configured))return configured+'assets/player/badges/';
+  }catch(_){}
+  return new URL('assets/player/badges/',document.baseURI).href;
+ }
+ const base=badgeBase(),cache=new Map();
  const badgeWidth=350/177+.15;
  function decode(text){
   const named={amp:'&',lt:'<',gt:'>',quot:'"',apos:"'",nbsp:' '};

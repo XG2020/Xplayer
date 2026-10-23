@@ -33,38 +33,42 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= Security::html($user['title']) ?></title>
-    <link rel="icon" href="<?= Security::html(Settings::assetUrl($user['ico']) ? $user['ico'] : '') ?>">
-    <link rel="stylesheet" href="assets/player/skin.css?v=<?= filemtime(__DIR__ . '/assets/player/skin.css') ?>">
-    <link id="xplayer-desktop-skin" rel="stylesheet" href="assets/player/controls.css?v=<?= filemtime(__DIR__ . '/assets/player/controls.css') ?>">
-    <link rel="stylesheet" href="assets/player/player.css?v=<?= filemtime(__DIR__ . '/assets/player/player.css') ?>">
-    <link rel="stylesheet" href="assets/player/contextmenu.css?v=<?= filemtime(__DIR__ . '/assets/player/contextmenu.css') ?>">
-    <link rel="stylesheet" href="assets/player/progress.css?v=<?= filemtime(__DIR__ . '/assets/player/progress.css') ?>">
-    <link rel="stylesheet" href="assets/player/playback-settings.css?v=<?= filemtime(__DIR__ . '/assets/player/playback-settings.css') ?>">
-    <link rel="stylesheet" href="assets/player/picture-in-picture.css?v=<?= filemtime(__DIR__ . '/assets/player/picture-in-picture.css') ?>">
-    <link rel="stylesheet" href="assets/player/loading.css?v=<?= filemtime(__DIR__ . '/assets/player/loading.css') ?>">
-    <link rel="stylesheet" href="assets/player/danmaku-content.css?v=<?= filemtime(__DIR__ . '/assets/player/danmaku-content.css') ?>">
-    <script defer src="assets/vendor/jquery/jquery.min.js"></script>
-    <script defer src="assets/vendor/crypto/crypto-js.min.js"></script>
-    <script defer src="assets/vendor/hls/hls.min.js"></script>
-    <script defer src="assets/vendor/dash/dash.all.min.js"></script>
-    <script defer src="assets/vendor/flv/flv.min.js"></script>
-    <script defer src="assets/vendor/layer/layer.js"></script>
-    <script defer src="assets/vendor/lottie/lottie.min.js"></script>
-    <script defer src="assets/player/loading-animation-data.js?v=<?= filemtime(__DIR__ . '/assets/player/loading-animation-data.js') ?>"></script>
-    <script defer src="assets/player/loading.js?v=<?= filemtime(__DIR__ . '/assets/player/loading.js') ?>"></script>
-    <script defer src="assets/player/common.js?v=<?= filemtime(__DIR__ . '/assets/player/common.js') ?>"></script>
-    <script defer src="assets/player/config.js?v=<?= filemtime(__DIR__ . '/assets/player/config.js') ?>"></script>
-    <script defer src="assets/player/danmaku-sources.js?v=<?= filemtime(__DIR__ . '/assets/player/danmaku-sources.js') ?>"></script>
-    <script defer src="assets/player/danmaku-content.js?v=<?= filemtime(__DIR__ . '/assets/player/danmaku-content.js') ?>"></script>
-    <script defer src="assets/player/contextmenu.js?v=<?= filemtime(__DIR__ . '/assets/player/contextmenu.js') ?>"></script>
-    <script defer src="assets/player/control-icon-data.js?v=<?= filemtime(__DIR__ . '/assets/player/control-icon-data.js') ?>"></script>
-    <script defer src="assets/player/controls.js?v=<?= filemtime(__DIR__ . '/assets/player/controls.js') ?>"></script>
-    <script defer src="assets/player/progress.js?v=<?= filemtime(__DIR__ . '/assets/player/progress.js') ?>"></script>
-    <script defer src="assets/player/playback-settings.js?v=<?= filemtime(__DIR__ . '/assets/player/playback-settings.js') ?>"></script>
-    <script defer src="assets/player/picture-in-picture.js?v=<?= filemtime(__DIR__ . '/assets/player/picture-in-picture.js') ?>"></script>
-    <script defer src="assets/player/visibility.js?v=<?= filemtime(__DIR__ . '/assets/player/visibility.js') ?>"></script>
-    <script defer src="assets/player/compatibility.js?v=<?= filemtime(__DIR__ . '/assets/player/compatibility.js') ?>"></script>
-    <script defer src="assets/player/start.js?v=<?= filemtime(__DIR__ . '/assets/player/start.js') ?>"></script>
+    <link rel="icon" href="<?= Security::html(Settings::assetUrl($user['ico']) ? PlayerAssets::branding((string) $user['ico'], $user) : '') ?>">
+    <link id="layuicss-layer" rel="stylesheet" href="<?= Security::html(PlayerAssets::url('assets/vendor/layer/theme/layer.css', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/vendor/layer/theme/layer.css">
+    <link rel="stylesheet" href="<?= Security::html(PlayerAssets::url('assets/player/skin.css', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/skin.css">
+    <link id="xplayer-desktop-skin" rel="stylesheet" href="<?= Security::html(PlayerAssets::url('assets/player/controls.css', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/controls.css">
+    <link rel="stylesheet" href="<?= Security::html(PlayerAssets::url('assets/player/player.css', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/player.css">
+    <link rel="stylesheet" href="<?= Security::html(PlayerAssets::url('assets/player/contextmenu.css', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/contextmenu.css">
+    <link rel="stylesheet" href="<?= Security::html(PlayerAssets::url('assets/player/progress.css', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/progress.css">
+    <link rel="stylesheet" href="<?= Security::html(PlayerAssets::url('assets/player/playback-settings.css', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/playback-settings.css">
+    <link rel="stylesheet" href="<?= Security::html(PlayerAssets::url('assets/player/picture-in-picture.css', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/picture-in-picture.css">
+    <link rel="stylesheet" href="<?= Security::html(PlayerAssets::url('assets/player/loading.css', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/loading.css">
+    <link rel="stylesheet" href="<?= Security::html(PlayerAssets::url('assets/player/danmaku-content.css', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/danmaku-content.css">
+    <link rel="stylesheet" href="<?= Security::html(PlayerAssets::url('assets/player/control-lock.css', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/control-lock.css">
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/devtools-guard.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/devtools-guard.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/vendor/jquery/jquery.min.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/vendor/jquery/jquery.min.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/vendor/crypto/crypto-js.min.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/vendor/crypto/crypto-js.min.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/vendor/hls/hls.min.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/vendor/hls/hls.min.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/vendor/dash/dash.all.min.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/vendor/dash/dash.all.min.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/vendor/flv/flv.min.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/vendor/flv/flv.min.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/vendor/layer/layer.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/vendor/layer/layer.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/vendor/lottie/lottie.min.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/vendor/lottie/lottie.min.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/loading-animation-data.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/loading-animation-data.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/loading.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/loading.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/common.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/common.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/config.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/config.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/danmaku-sources.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/danmaku-sources.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/danmaku-content.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/danmaku-content.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/contextmenu.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/contextmenu.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/control-icon-data.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/control-icon-data.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/controls.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/controls.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/progress.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/progress.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/playback-settings.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/playback-settings.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/picture-in-picture.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/picture-in-picture.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/visibility.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/visibility.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/control-lock.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/control-lock.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/compatibility.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/compatibility.js"></script>
+    <script defer src="<?= Security::html(PlayerAssets::url('assets/player/start.js', $user)) ?>" crossorigin="anonymous" data-xplayer-asset="assets/player/start.js"></script>
 </head>
 <body>
     <div id="xplayer-loading" class="Loading" aria-live="polite">正在准备视频</div>

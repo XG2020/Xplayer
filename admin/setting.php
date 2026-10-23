@@ -12,9 +12,18 @@ adminField('logo','播放器 LOGO',$user['logo'],'显示在播放器角落，推
 adminField('ico','网站图标',$user['ico'],'显示在浏览器标签页的小图标。');
 adminField('img','默认封面',$user['img'],'视频信息未提供封面时使用；留空显示播放器背景。',['wide'=>true]);
 ?></div></section>
+<?php adminStartGroup('静态资源','使用 jsDelivr GitHub 线路加载 XG2020/Xplayer 仓库中的播放器资源。');
+adminToggle('cdnEnabled','使用 CDN 在线资源',$user['cdnEnabled'],'开启前，请确认所选仓库版本的资源与本地部署保持一致；默认关闭，关闭后使用本站资源。');
+adminField('cdnRef','CDN 版本',$user['cdnRef'],'填写分支、标签或提交 SHA；推荐固定标签或提交，避免 main 分支缓存导致版本不一致。限 1–128 个字符，以英文字母或数字开头，仅允许英文字母、数字、点、下划线和短横线；暂不支持含斜杠的分支名。',['required'=>true,'maxlength'=>128,'pattern'=>'[A-Za-z0-9][A-Za-z0-9._\-]{0,127}','placeholder'=>'main']);
+?></section>
 <?php adminStartGroup('首页访问','设置未提供播放参数时的入口页面。');
 adminToggle('home404','首页显示404',$user['home404'],'开启后，直接访问首页或 url 为空时返回简洁的 404 页面；带有播放链接的页面和后台仍正常使用。');
 ?></section>
+<?php adminStartGroup('播放页保护','仅对前台播放器页面生效，默认关闭。');
+adminToggle('devtoolsGuard','防开发者调试',$user['devtoolsGuard'],'触发所选模式后停止播放并尝试关闭页面，浏览器不允许关闭时跳转空白页。关闭开关后保留所选模式。');
+?>
+<div class="field"><label for="devtoolsGuardMode">防调试模式</label><select id="devtoolsGuardMode" name="devtoolsGuardMode" aria-describedby="devtoolsGuardMode-help"><option value="shortcut" <?= ($user['devtoolsGuardMode']??'shortcut')!=='enhanced'?'selected':'' ?>>稳妥模式：仅调试快捷键</option><option value="enhanced" <?= ($user['devtoolsGuardMode']??'shortcut')==='enhanced'?'selected':'' ?>>加强模式：快捷键与窗口尺寸检测</option></select><p class="field-help" id="devtoolsGuardMode-help">稳妥模式仅响应调试快捷键；加强模式还根据窗口尺寸检测，可能将浏览器侧栏或部分缩放误判为调试工具。两种模式均无法保证识别通过菜单打开或独立窗口中的工具。</p></div>
+</section>
 <?php adminStartGroup('播放与弹幕','这些是新访问者的默认行为；观看者保存的个人偏好优先。');
 adminToggle('autoplay','默认自动播放',$user['autoplay'],'视频就绪后尝试开始播放；浏览器可能要求用户先点击。');
 adminToggle('danmuon','启用弹幕',$user['danmuon'],'显示弹幕控件与发送入口；弹幕服务在接口设置中配置。');

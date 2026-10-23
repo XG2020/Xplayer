@@ -85,10 +85,10 @@ module.exports = function (module, exports, requireModule) {
         });
         if (value2.default.isMobile) {
           this.player.template.videoWrap.addEventListener("click", function () {
-            self2.toggle();
+            self2.setAutoHide();
           });
           this.player.template.controllerMask.addEventListener("click", function () {
-            self2.toggle();
+            self2.setAutoHide();
           });
         } else {
           this.player.template.videoWrap.addEventListener("click", function () {
@@ -231,6 +231,7 @@ module.exports = function (module, exports, requireModule) {
         bar.addEventListener(enterEvent, moveHover, {passive: true});
         bar.addEventListener(leaveEvent, hideHover);
         if (pointerEvents) bar.addEventListener("lostpointercapture", cancelDrag);
+        this.cancelProgressDrag = function () {finishDrag(null, false);hideHover();};
         this.progressDragCleanup = function () {
           disposed = true;
           finishDrag(null, false);
@@ -267,6 +268,7 @@ module.exports = function (module, exports, requireModule) {
           document.removeEventListener(value2.default.nameMap.dragMove, helper7);
           self6.player.template.volumeButton.classList.remove("xplayer-volume-active");
         };
+        this.cancelVolumeDrag = helper8;
         this.player.template.volumeBarWrapWrap.addEventListener("click", function (argument11) {
           var value13 = argument11 || window.event;
           var value14 = ((value13.clientX || value13.changedTouches[0].clientX) - value2.default.getElementViewLeft(self6.player.template.volumeBarWrap) - 5.5) / 35;
@@ -379,8 +381,15 @@ module.exports = function (module, exports, requireModule) {
         }
       }
     }, {
+      key: "cancelInteraction",
+      value: function () {
+        if (this.cancelProgressDrag) this.cancelProgressDrag();
+        if (this.cancelVolumeDrag) this.cancelVolumeDrag();
+      }
+    }, {
       key: "destroy",
       value: function () {
+        this.cancelInteraction();
         if (this.progressDragCleanup) this.progressDragCleanup();
         clearTimeout(this.autoHideTimer);
       }
