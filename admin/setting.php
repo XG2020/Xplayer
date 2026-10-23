@@ -22,7 +22,7 @@ adminToggle('home404','首页显示404',$user['home404'],'开启后，直接访�
 <?php adminStartGroup('播放页保护','仅对前台播放器页面生效，默认关闭。');
 adminToggle('devtoolsGuard','防开发者调试',$user['devtoolsGuard'],'触发所选模式后停止播放并尝试关闭页面，浏览器不允许关闭时跳转空白页。关闭开关后保留所选模式。');
 ?>
-<div class="field"><label for="devtoolsGuardMode">防调试模式</label><select id="devtoolsGuardMode" name="devtoolsGuardMode" aria-describedby="devtoolsGuardMode-help"><option value="shortcut" <?= ($user['devtoolsGuardMode']??'shortcut')!=='enhanced'?'selected':'' ?>>稳妥模式：仅调试快捷键</option><option value="enhanced" <?= ($user['devtoolsGuardMode']??'shortcut')==='enhanced'?'selected':'' ?>>加强模式：快捷键与窗口尺寸检测</option></select><p class="field-help" id="devtoolsGuardMode-help">稳妥模式仅响应调试快捷键；加强模式还根据窗口尺寸检测，可能将浏览器侧栏或部分缩放误判为调试工具。两种模式均无法保证识别通过菜单打开或独立窗口中的工具。</p></div>
+<div class="field"><label for="devtoolsGuardMode">防调试模式</label><select id="devtoolsGuardMode" name="devtoolsGuardMode" aria-describedby="devtoolsGuardMode-help"><option value="shortcut" <?= ($user['devtoolsGuardMode']??'shortcut')!=='enhanced'?'selected':'' ?>>稳妥模式：快捷键与调试暂停检测</option><option value="enhanced" <?= ($user['devtoolsGuardMode']??'shortcut')==='enhanced'?'selected':'' ?>>加强模式：额外检测窗口尺寸</option></select><p class="field-help" id="devtoolsGuardMode-help">稳妥模式拦截调试快捷键，并检测独立任务的调试暂停，以补充菜单打开工具的场景。加强模式还检查窗口尺寸，可能误判浏览器侧栏或部分缩放。禁用断点、浏览器限制等情况仍可能绕过检测。</p></div>
 </section>
 <?php adminStartGroup('播放与弹幕','这些是新访问者的默认行为；观看者保存的个人偏好优先。');
 adminToggle('autoplay','默认自动播放',$user['autoplay'],'视频就绪后尝试开始播放；浏览器可能要求用户先点击。');

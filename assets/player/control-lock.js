@@ -2,7 +2,7 @@
 (function (global) {
     'use strict';
     const instances = new WeakMap();
-    const inputEvents = ['click','dblclick','auxclick','contextmenu','pointerdown','pointermove','pointerup','pointercancel','mousedown','mousemove','mouseup','touchstart','touchmove','touchend','touchcancel','wheel','keydown','keypress','keyup','dragstart','drop','beforeinput','input','change','focusin'];
+    const inputEvents = ['click','dblclick','auxclick','contextmenu','pointerdown','pointermove','pointerup','pointercancel','mousedown','mousemove','mouseup','touchstart','touchmove','touchend','touchcancel','wheel','keydown','keypress','keyup','dragstart','drop','beforeinput','input','change','focusin','focusout'];
     const capture = {capture: true, passive: false};
     const hideDelay = 3000;
     const shacklePaths = {locked:'M7.5 10V7a4.5 4.5 0 0 1 9 0v3', unlocked:'M7.5 10V7a4.5 4.5 0 0 1 9 0'};
@@ -19,8 +19,29 @@
         shield.className = 'xplayer-control-lock-shield'; shield.hidden = true; shield.setAttribute('aria-hidden','true');
         container.append(shield, button);
         let locked = false, destroyed = false, ownerWindow = null, hideTimer = null, timerWindow = null;
+        let inputMode = '', lastTouchTime = 0;
         const inertChildren = new Map();
         const contains = (parent, target) => !!target?.nodeType && parent.contains(target);
+        function paintInput() {
+            button.classList.toggle('xplayer-control-lock-mouse', inputMode === 'mouse');
+            button.classList.toggle('xplayer-control-lock-keyboard-focus', inputMode === 'keyboard' && container.ownerDocument.activeElement === button);
+        }
+        function trackInput(event) {
+            if (event.type === 'keydown' && !browserShortcut(event)) inputMode = 'keyboard';
+            else if (event.type === 'pointerdown' || event.type === 'pointermove' && event.pointerType !== 'touch') {
+                inputMode = event.pointerType === 'mouse' ? 'mouse' : 'touch';
+            } else if (event.type === 'touchstart') {
+                lastTouchTime = Date.now(); inputMode = 'touch';
+            } else if ((event.type === 'mousedown' || event.type === 'mousemove') && !ownerWindow.PointerEvent &&
+                !event.sourceCapabilities?.firesTouchEvents && Date.now() - lastTouchTime > 800) {
+                // Older touch browsers synthesize mouse events after a tap.
+                inputMode = 'mouse';
+            }
+            paintInput();
+            if (event.type === 'focusout' && (event.target === button || contains(button, event.target))) {
+                button.classList.remove('xplayer-control-lock-keyboard-focus');
+            }
+        }
         function clearHideTimer() {
             if (hideTimer !== null) timerWindow.clearTimeout(hideTimer);
             hideTimer = null; timerWindow = null;
@@ -49,6 +70,8 @@
         }
         function guard(event) {
             if (destroyed) return;
+            trackInput(event);
+            if (event.type === 'focusout') return;
             const inside = contains(container, event.target);
             // Reveal before stopping input: a tap on the locked picture only exposes the unlock button.
             if (inside && (event.type === 'mousemove' || event.type === 'pointermove' && event.pointerType !== 'touch' ||
@@ -82,6 +105,7 @@
             clearHideTimer();
             if (ownerWindow) inputEvents.forEach(type => ownerWindow.removeEventListener(type, guard, true));
             ownerWindow = next;
+            inputMode = ''; lastTouchTime = 0; paintInput();
             // Window capture runs before the existing document and container listeners.
             inputEvents.forEach(type => ownerWindow.addEventListener(type, guard, capture));
         }
@@ -106,7 +130,7 @@
             button.setAttribute('aria-pressed', String(locked));
             shackle.setAttribute('d', shacklePaths[locked ? 'locked' : 'unlocked']);
             const text = locked ? '解锁播放器' : '锁定播放器';
-            button.setAttribute('aria-label', text); button.setAttribute('title', text); label.textContent = text;
+            button.setAttribute('aria-label', text); label.textContent = text;
         }
         function setLocked(next) {
             if (destroyed || locked === !!next) return locked;
@@ -119,8 +143,11 @@
             }
             container.dispatchEvent(new global.CustomEvent('xplayer:control-lock-change', {bubbles:true, detail:{player, locked}}));
             paint();
-            if (locked) {makeChildrenInert();focusButton();}
-            else {restoreChildren();player.controller?.setAutoHide?.();focusButton();}
+            if (locked) makeChildrenInert();
+            else {restoreChildren();player.controller?.setAutoHide?.();}
+            player.focus = true;
+            if (inputMode === 'keyboard') focusButton();
+            paintInput();
             reveal();
             return locked;
         }

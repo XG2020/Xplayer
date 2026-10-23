@@ -1,12 +1,12 @@
 /* Both lock states fade after inactivity; moving or tapping the picture reveals the button. */
 .xplayer>.xplayer-control-lock{appearance:none;position:absolute;left:16px;top:56%;transform:translateY(-50%);z-index:19891030;display:flex;align-items:center;justify-content:center;width:36px;height:36px;margin:0;padding:8px;border:1px solid #ffffff24;border-radius:50%;background:#15151580;color:#fff;box-sizing:border-box;cursor:pointer;touch-action:manipulation;opacity:0;pointer-events:none;transition:opacity .16s,background .16s}
-.xplayer>.xplayer-control-lock.xplayer-control-lock-visible,.xplayer>.xplayer-control-lock:focus-visible{opacity:.88;pointer-events:auto}
+.xplayer>.xplayer-control-lock.xplayer-control-lock-visible,.xplayer>.xplayer-control-lock.xplayer-control-lock-keyboard-focus{opacity:.88;pointer-events:auto}
 .xplayer>.xplayer-control-lock svg{display:block;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
 .xplayer>.xplayer-control-lock svg path,.xplayer>.xplayer-control-lock svg rect{fill:none!important}
-.xplayer>.xplayer-control-lock.xplayer-control-lock-visible:hover,.xplayer>.xplayer-control-lock:focus-visible{opacity:1;background:#252525e6}
-.xplayer>.xplayer-control-lock:focus-visible{outline:2px solid var(--xplayer-theme,#00aeec);outline-offset:3px}
+.xplayer>.xplayer-control-lock.xplayer-control-lock-keyboard-focus{opacity:1;background:#252525e6;outline:2px solid var(--xplayer-theme,#00aeec);outline-offset:3px}
 .xplayer>.xplayer-control-lock .xplayer-control-lock-text{position:absolute;left:calc(100% + 9px);top:50%;transform:translateY(-50%);padding:5px 8px;border-radius:4px;background:#171717e6;color:#fff;font:12px/1.5 Arial,"Microsoft YaHei",sans-serif;white-space:nowrap;visibility:hidden;opacity:0;pointer-events:none}
-.xplayer>.xplayer-control-lock.xplayer-control-lock-visible:hover .xplayer-control-lock-text,.xplayer>.xplayer-control-lock:focus-visible .xplayer-control-lock-text{visibility:visible;opacity:1}
+.xplayer>.xplayer-control-lock.xplayer-control-lock-keyboard-focus .xplayer-control-lock-text{visibility:visible;opacity:1}
+@media(any-hover:hover){.xplayer>.xplayer-control-lock.xplayer-control-lock-visible.xplayer-control-lock-mouse:hover{opacity:1;background:#252525e6}.xplayer>.xplayer-control-lock.xplayer-control-lock-visible.xplayer-control-lock-mouse:hover .xplayer-control-lock-text{visibility:visible;opacity:1}}
 .xplayer>.xplayer-control-lock-shield{position:absolute;inset:0;z-index:19891028;background:transparent;touch-action:none;cursor:default}
 .xplayer>.xplayer-control-lock-shield[hidden]{display:none!important}
 .xplayer.xplayer-controls-locked{touch-action:none}
