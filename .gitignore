@@ -9,4 +9,5 @@
 /count.txt
 /clean.txt
 *.log
-/tests/danmaku-settings.cjs
+/tests/
+/test/
