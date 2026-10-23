@@ -47,11 +47,14 @@ module.exports = function (module, exports, requireModule) {
       var self = this;
       helper(this, Settings);
       this.player = player;
+      this.resetTimer = null;
       this.player.template.mask.addEventListener("click", function () {
         self.hide();
       });
+      this.player.template.settingButton.setAttribute("aria-expanded", "false");
+      this.player.template.settingBox.setAttribute("aria-hidden", "true");
       this.player.template.settingButton.addEventListener("click", function () {
-        self.show();
+        self.toggle();
       });
       this.loop = this.player.options.loop;
       this.player.template.loopToggle.checked = this.loop;
@@ -159,8 +162,12 @@ module.exports = function (module, exports, requireModule) {
       value: function () {
         var self2 = this;
         this.player.template.settingBox.classList.remove("xplayer-setting-box-open");
+        this.player.template.settingButton.setAttribute("aria-expanded", "false");
+        this.player.template.settingBox.setAttribute("aria-hidden", "true");
         this.player.template.mask.classList.remove("xplayer-mask-show");
-        setTimeout(function () {
+        clearTimeout(this.resetTimer);
+        this.resetTimer = setTimeout(function () {
+          self2.resetTimer = null;
           self2.player.template.settingBox.classList.remove("xplayer-setting-box-narrow");
           self2.player.template.settingBox.classList.remove("xplayer-setting-box-speed");
         }, 300);
@@ -169,10 +176,22 @@ module.exports = function (module, exports, requireModule) {
     }, {
       key: "show",
       value: function () {
+        clearTimeout(this.resetTimer);
+        this.resetTimer = null;
+        this.player.template.settingBox.classList.remove("xplayer-setting-box-narrow");
+        this.player.template.settingBox.classList.remove("xplayer-setting-box-speed");
         if (this.player.comment) this.player.comment.hide();
         this.player.template.settingBox.classList.add("xplayer-setting-box-open");
+        this.player.template.settingButton.setAttribute("aria-expanded", "true");
+        this.player.template.settingBox.setAttribute("aria-hidden", "false");
         this.player.template.mask.classList.add("xplayer-mask-show");
         this.player.controller.disableAutoHide = true;
+      }
+    }, {
+      key: "toggle",
+      value: function () {
+        if (this.player.template.settingBox.classList.contains("xplayer-setting-box-open")) this.hide();
+        else this.show();
       }
     }]);
     return Settings;

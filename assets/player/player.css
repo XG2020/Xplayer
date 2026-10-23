@@ -11,9 +11,16 @@ html,body{height:100%;width:100%;margin:0;background:#000;overflow:hidden;font-f
 #xplayer-open input{flex:1;min-width:0;padding:10px}#xplayer-open button{padding:10px 18px;cursor:pointer}
 #ADplayer,#ADtip{position:absolute;inset:0;z-index:20}#ADplayer:empty,#ADtip:empty{display:none}
 #time_ad{position:absolute;right:16px;top:16px;background:#000a;color:white;padding:8px;z-index:25}
-.xplayer .xplayer-episode-button{color:white;width:auto!important;padding:0 10px!important;font:14px/40px Arial,"Microsoft YaHei",sans-serif}
 #xplayer-vlist{position:absolute;right:8px;top:40px;bottom:64px;width:min(420px,85%);padding:28px 30px;box-sizing:border-box;z-index:25;overflow:auto;border-radius:12px;background:rgba(20,20,20,.88);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid #ffffff16;color:#eee;font-size:14px;line-height:1.5}
 #xplayer-vlist h2{margin:10px 0;font-size:18px;color:#fff}#xplayer-vlist h3{margin:16px 0 12px;font-size:14px}
+#xplayer-vlist .xplayer-episode-source-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:16px 0 12px}
+#xplayer-vlist .xplayer-episode-source-header h3{min-width:0;margin:0;overflow-wrap:anywhere}
+#xplayer-vlist .xplayer-episode-order{display:inline-flex;flex:none;align-items:center;justify-content:center;gap:5px;min-height:28px;padding:3px 6px;border:0;border-radius:5px;background:transparent;color:#ccc;font:inherit;font-size:13px;line-height:20px}
+#xplayer-vlist .xplayer-episode-order:hover:not(:disabled){background:#ffffff12;color:#fff}
+#xplayer-vlist .xplayer-episode-order:disabled{opacity:.45;cursor:default}
+#xplayer-vlist .xplayer-episode-order:focus-visible{outline:2px solid var(--xplayer-theme,#00aeec);outline-offset:2px}
+#xplayer-vlist .xplayer-episode-order svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+#xplayer-vlist .xplayer-episode-order-desc .xplayer-episode-order-arrow{transform:rotate(180deg);transform-origin:4px 8px}
 #xplayer-vlist button{cursor:pointer}#xplayer-vlist .xplayer-vlist-close{position:absolute;right:16px;top:10px;background:none;border:0;font:30px/1 Arial;color:#eee}
 .xplayer-list-notice{border-bottom:1px solid #ffffff18;padding:18px 0;color:#bbb}
 .xplayer-series-poster{float:left;width:90px;max-height:130px;object-fit:cover;margin:16px 12px 16px 0;border-radius:8px}
@@ -26,8 +33,8 @@ html,body{height:100%;width:100%;margin:0;background:#000;overflow:hidden;font-f
 .xplayer-episode-grid button{padding:15px 6px;background:#ffffff0d;border:1px solid #ffffff1a;border-radius:10px;color:#eee;font-size:13px}
 .xplayer-episode-grid button.current{color:var(--xplayer-theme,#00aeec);border-color:var(--xplayer-theme,#00aeec);box-shadow:0 0 6px #0005}
 .danmuku-list .report{cursor:pointer}#player_pause a{display:block}.xplayer .xplayer-info-panel-item-url{display:block}
-@media(max-width:600px){#xplayer-vlist{top:18px;bottom:55px;padding:20px 18px}.xplayer-episode-grid{gap:8px}#xplayer-open{flex-wrap:wrap}.xplayer .xplayer-episode-button{padding:0 6px!important}}
+@media(max-width:600px){#xplayer-vlist{top:18px;bottom:55px;padding:20px 18px}.xplayer-episode-grid{gap:8px}#xplayer-open{flex-wrap:wrap}}
 
 /* Keep episode text independent of the legacy player's inherited rem sizing. */
 #xplayer-vlist p{font-size:14px;line-height:1.6;margin:10px 0}#xplayer-vlist .xplayer-list-notice{font-size:13px}#xplayer-vlist h2{line-height:1.4}
-@media(max-width:600px){.xplayer .xplayer-episode-button{font-size:12px}#xplayer-vlist h2{font-size:16px}#xplayer-vlist p,#xplayer-vlist .xplayer-episode-grid button{font-size:12px}}
+@media(max-width:600px){#xplayer-vlist h2{font-size:16px}#xplayer-vlist p,#xplayer-vlist .xplayer-episode-grid button{font-size:12px}}

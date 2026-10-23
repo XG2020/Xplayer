@@ -777,6 +777,26 @@
     float: none;
 }
 
+/* Rounded text shares the icon row's center and has room before the next control. */
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-right .xplayer-episode-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    margin-right: 8px;
+    color: #eee;
+    font-family: "YouYuan", "幼圆", "Yuanti SC", "STYuanti", "Microsoft YaHei", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: .5px;
+}
+
+.xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-right .xplayer-episode-button > span {
+    width: auto;
+    height: auto;
+}
+
 .xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-left .xplayer-icon svg,
 .xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-right .xplayer-icon svg {
     width: 28px;
@@ -881,5 +901,21 @@
     .xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-time {
         font-size: 11px !important;
         margin-left: 4px;
+    }
+
+    .xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-icons-right .xplayer-episode-button {
+        min-width: 40px;
+        margin-right: 4px;
+        font-size: 15px;
+    }
+
+    .xplayer:not(.xplayer-pip-container) .xplayer-controller .xplayer-volume:not(:hover):not(.xplayer-volume-active) .xplayer-volume-bar-wrap {
+        margin: 0;
+    }
+}
+
+@container xplayer (max-width: 360px) {
+    .xplayer:not(.xplayer-pip-container) .xplayer-controller {
+        column-gap: 2px;
     }
 }

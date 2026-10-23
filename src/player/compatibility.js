@@ -176,6 +176,7 @@
         $('#player').append(panel);
     };
     let episodes=null,currentVideo=null,currentSource=null,currentEpisodeLabel='',currentEpisodeTitle='',onlineTimer;
+    let episodeDescending=store.get('xplayer.episode-order')==='desc';
     const originalPlay=XGGM.play;
     XGGM.play=function(url){
         originalPlay(url);const player=XGGM.dp;
@@ -196,7 +197,7 @@
         if(player.video.readyState>=2)finishLoading();
         $('#error').prop('hidden',true);
         // Only inject the missing bootstrap's episode entry; all other controls are original.
-        if(data.showlist){$('<button class="xplayer-icon xplayer-episode-button">').text('选集').attr({'data-balloon':'选集','data-balloon-pos':'up','aria-label':'选集','aria-controls':'xplayer-vlist','aria-expanded':'false'}).on('click',showEpisodes).prependTo('.xplayer-icons-right');}
+        if(data.showlist){$('<button type="button" class="xplayer-icon xplayer-episode-button">').append($('<span class="xplayer-icon-content">').text('选集')).attr({'data-balloon':'选集','data-balloon-pos':'up','aria-label':'选集','aria-controls':'xplayer-vlist','aria-expanded':'false'}).on('click',showEpisodes).prependTo('.xplayer-icons-right');}
         $('.xplayer-logo img').attr('alt','Xplayer Pro');
         player.on('error',()=>{if(!player.audioReloading)player.notice('视频加载失败，请检查源地址、网络和跨域许可');});
         clearInterval(onlineTimer);const online=()=>$.getJSON('tj.php').done(result=>$('.xplayer-watching-number').text(result.num)).fail(()=>{});
@@ -226,17 +227,29 @@
         if(currentEpisodeTitle&&currentEpisodeTitle!==currentEpisodeLabel)$('<p class="xplayer-vlist-current-title">').text(currentEpisodeTitle).appendTo(info);
         if(data.notice&&data.notice!=='请选择视频或输入播放链接')$('<p class="xplayer-list-notice">').text(data.notice).appendTo(host);
         if(!Array.isArray(episodes?.video)||!episodes.video.length)$('<p>').text(episodes?.msg||'暂未获取到剧集，请配置自建元数据或苹果 CMS 接口').appendTo(host);
+        const episodeGrids=[],orderButtons=[];
+        const paintOrder=()=>{
+            orderButtons.forEach(button=>button.toggleClass('xplayer-episode-order-desc',episodeDescending).attr({'aria-pressed':String(episodeDescending),'aria-label':episodeDescending?'切换为正序排列剧集':'切换为倒序排列剧集','title':episodeDescending?'切换为正序':'切换为倒序'}).find('span').text(episodeDescending?'倒序':'正序'));
+            episodeGrids.forEach(({grid,buttons})=>grid[0].append(...(episodeDescending?buttons.slice().reverse():buttons)));
+        };
         (episodes?.video||[]).forEach(video=>{
             (video.url||[]).forEach(source=>{
                 const count=(source.play||[]).filter(url=>safeUrl(url)).length;
-                $('<h3>').text((source.name||'剧集')+' · '+count+'项').appendTo(host);const grid=$('<div class="xplayer-episode-grid">').appendTo(host);
+                const sourceHeader=$('<div class="xplayer-episode-source-header">').appendTo(host);
+                $('<h3>').text((source.name||'剧集')+' · '+count+'项').appendTo(sourceHeader);
+                const order=$('<button type="button" class="xplayer-episode-order">').prop('disabled',count<2).append('<svg viewBox="0 0 16 16" aria-hidden="true"><path class="xplayer-episode-order-arrow" d="M4 3v10m-2-2 2 2 2-2"></path><path d="M9 4h5M9 8h4M9 12h3"></path></svg>',$('<span>')).on('click',()=>{episodeDescending=!episodeDescending;store.set('xplayer.episode-order',episodeDescending?'desc':'asc');paintOrder();}).appendTo(sourceHeader);
+                orderButtons.push(order);
+                const grid=$('<div class="xplayer-episode-grid">').appendTo(host),buttons=[];
                 (source.play||[]).forEach((url,i)=>{
                     if(!safeUrl(url))return;const button=$('<button type="button">').text(source.labels?.[i]||String(i+1));
                     if(text(source.titles?.[i]))button.attr('title',source.titles[i]);
                     button.toggleClass('current',i===episodeIndex(source)).on('click',()=>{store.set('xplayer.episodes',episodes);config.next=url;XGGM.video.next();}).appendTo(grid);
+                    buttons.push(button[0]);
                 });
+                episodeGrids.push({grid,buttons});
             });
         });
+        paintOrder();
         $('#player').append(host);
     }
     async function post(type,field,token){
